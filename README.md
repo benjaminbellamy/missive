@@ -1,5 +1,8 @@
 # Missive
 
+> **missive** \\mi.siv\\  
+> French, from Medieval Latin *missīvus*, from *mittō* (“to send”): mail intended to be sent.
+
 Run personalized email campaigns by **mail merge over SMTP** — a GNOME desktop
 app written in Vala with GTK 4 and libadwaita.
 
@@ -30,7 +33,20 @@ server**. No telemetry, no third-party services.
 
 ## Install (Flatpak)
 
-Missive builds and runs as a sandboxed Flatpak against the GNOME 49 runtime.
+Missive runs as a sandboxed Flatpak against the GNOME 49 runtime.
+
+### From a release
+
+Install the prebuilt bundle from the [latest
+release](https://github.com/benjaminbellamy/missive/releases/latest) — it will
+offer to pull the GNOME 49 runtime from Flathub if needed:
+
+```sh
+flatpak install --user https://github.com/benjaminbellamy/missive/releases/download/v0.1.0/missive-0.1.0-x86_64.flatpak
+flatpak run fr.bellamy.missive
+```
+
+### Build from source
 
 **Prerequisites** — `flatpak` and `flatpak-builder`, plus the GNOME 49 runtime
 and SDK:
@@ -39,15 +55,10 @@ and SDK:
 flatpak install flathub org.gnome.Platform//49 org.gnome.Sdk//49
 ```
 
-**Build and install** (from the project root):
+**Build, install and run** (from the project root):
 
 ```sh
 flatpak-builder --user --install --force-clean build-dir build-aux/fr.bellamy.missive.json
-```
-
-**Run:**
-
-```sh
 flatpak run fr.bellamy.missive
 ```
 
