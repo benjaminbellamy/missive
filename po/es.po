@@ -1,0 +1,605 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: missive\n"
+"Report-Msgid-Bugs-To: https://github.com/benjaminbellamy/missive/issues\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "_Help"
+msgstr "_Ayuda"
+
+msgid "_Preferences"
+msgstr "_Preferencias"
+
+msgid "_About Missive"
+msgstr "_Acerca de Missive"
+
+msgid "Missive"
+msgstr "Missive"
+
+msgid "Mailing Campaigns"
+msgstr "Campañas de envío"
+
+msgid "Message Templates"
+msgstr "Plantillas de mensaje"
+
+msgid "Address Sheets"
+msgstr "Hojas de direcciones"
+
+msgid "Sender Identities"
+msgstr "Identidades de remitente"
+
+msgid "Campaigns"
+msgstr "Campañas"
+
+msgid "New"
+msgstr "Nuevo"
+
+msgid "Main Menu"
+msgstr "Menú principal"
+
+msgid "No Identities"
+msgstr "Sin identidades"
+
+msgid "Add a sender identity to start sending campaigns."
+msgstr "Añada una identidad de remitente para empezar a enviar campañas."
+
+msgid "Identity"
+msgstr "Identidad"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid "Label"
+msgstr "Etiqueta"
+
+msgid "From Name"
+msgstr "Nombre del remitente"
+
+msgid "From Email"
+msgstr "Correo del remitente"
+
+msgid "SMTP Server"
+msgstr "Servidor SMTP"
+
+msgid "Verify Login"
+msgstr "Verificar acceso"
+
+msgid "Test the SMTP connection"
+msgstr "Probar la conexión SMTP"
+
+msgid "Host"
+msgstr "Servidor"
+
+msgid "Port"
+msgstr "Puerto"
+
+msgid "Encryption"
+msgstr "Cifrado"
+
+msgid "Username"
+msgstr "Nombre de usuario"
+
+msgid "Password"
+msgstr "Contraseña"
+
+msgid "Connection"
+msgstr "Conexión"
+
+msgid "Signature"
+msgstr "Firma"
+
+msgid "HTML appended to every message sent from this identity."
+msgstr "HTML añadido a cada mensaje enviado desde esta identidad."
+
+msgid "No CSV Sheets"
+msgstr "Sin hojas CSV"
+
+msgid "Import a CSV file of recipients to use in a campaign."
+msgstr "Importe un archivo CSV de destinatarios para usar en una campaña."
+
+msgid "Import CSV"
+msgstr "Importar CSV"
+
+msgid "Import"
+msgstr "Importar"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Recipient Column"
+msgstr "Columna de destinatario"
+
+msgid "Column holding each recipient’s email address"
+msgstr "Columna con la dirección de correo de cada destinatario"
+
+msgid "Detected"
+msgstr "Detectado"
+
+msgid "Preview"
+msgstr "Vista previa"
+
+msgid "Recipient column:"
+msgstr "Columna de destinatario:"
+
+msgid "No Templates"
+msgstr "Sin plantillas"
+
+msgid "Create a message template to use in a campaign."
+msgstr "Cree una plantilla de mensaje para usar en una campaña."
+
+msgid "Template"
+msgstr "Plantilla"
+
+msgid "Subject"
+msgstr "Asunto"
+
+msgid "Insert Fields From"
+msgstr "Insertar campos desde"
+
+msgid "Click a field to insert its {token}"
+msgstr "Haga clic en un campo para insertar su {token}"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Bold"
+msgstr "Negrita"
+
+msgid "Italic"
+msgstr "Cursiva"
+
+msgid "Underline"
+msgstr "Subrayado"
+
+msgid "Insert Link"
+msgstr "Insertar enlace"
+
+msgid "Bulleted List"
+msgstr "Lista con viñetas"
+
+msgid "Numbered List"
+msgstr "Lista numerada"
+
+msgid "Edit source"
+msgstr "Editar fuente"
+
+msgid "No Campaigns"
+msgstr "Sin campañas"
+
+msgid "Create a campaign to send personalized messages."
+msgstr "Cree una campaña para enviar mensajes personalizados."
+
+msgid "New Campaign"
+msgstr "Nueva campaña"
+
+msgid "Create"
+msgstr "Crear"
+
+msgid "Campaign Name"
+msgstr "Nombre de la campaña"
+
+msgid "Source"
+msgstr "Origen"
+
+msgid "CSV Sheet"
+msgstr "Hoja CSV"
+
+msgid "Recipients"
+msgstr "Destinatarios"
+
+msgid "Optional addresses added to every message."
+msgstr "Direcciones opcionales añadidas a cada mensaje."
+
+msgid "Cc"
+msgstr "Cc"
+
+msgid "Bcc"
+msgstr "Cco"
+
+msgid "Campaign"
+msgstr "Campaña"
+
+msgid "Run"
+msgstr "Iniciar"
+
+msgid "Continue"
+msgstr "Continuar"
+
+msgid "Pause"
+msgstr "Pausar"
+
+msgid "Stop"
+msgstr "Detener"
+
+msgid "Retry Failed"
+msgstr "Reintentar los fallidos"
+
+msgid "Delete"
+msgstr "Eliminar"
+
+msgid "Send Test"
+msgstr "Enviar prueba"
+
+msgid "Details"
+msgstr "Detalles"
+
+msgid "Delay Between Messages"
+msgstr "Retraso entre mensajes"
+
+msgid "Stop on First Error"
+msgstr "Detener en el primer error"
+
+msgid "Help"
+msgstr "Ayuda"
+
+msgid "Sending a Campaign"
+msgstr "Enviar una campaña"
+
+msgid "Missive sends one personalized email per recipient through your own SMTP server, at a pace you choose."
+msgstr "Missive envía un correo personalizado por destinatario a través de su propio servidor SMTP, al ritmo que elija."
+
+msgid "1. Add a sender identity"
+msgstr "1. Añadir una identidad de remitente"
+
+msgid "In Sender Identities, click New and enter your SMTP server and login. The Connection row confirms the settings work."
+msgstr "En Identidades de remitente, haga clic en Nuevo e introduzca su servidor SMTP y credenciales. La fila Conexión confirma que los ajustes funcionan."
+
+msgid "2. Import an address sheet"
+msgstr "2. Importar una hoja de direcciones"
+
+msgid "In Address Sheets, click Import and choose a CSV file, then pick the column that holds the email addresses."
+msgstr "En Hojas de direcciones, haga clic en Importar y elija un archivo CSV, luego seleccione la columna con las direcciones de correo."
+
+msgid "3. Write a message template"
+msgstr "3. Escribir una plantilla de mensaje"
+
+msgid "In Message Templates, click New. Add a subject and body, and use “Insert Fields From” to drop {tokens} that are replaced for each recipient."
+msgstr "En Plantillas de mensaje, haga clic en Nuevo. Añada asunto y cuerpo, y use «Insertar campos desde» para insertar {tokens} que se reemplazan por cada destinatario."
+
+msgid "4. Create a mailing campaign"
+msgstr "4. Crear una campaña de envío"
+
+msgid "In Mailing Campaigns, click New Campaign and choose an identity, address sheet, template and recipient column."
+msgstr "En Campañas de envío, haga clic en Nueva campaña y elija una identidad, una hoja de direcciones, una plantilla y la columna de destinatario."
+
+msgid "5. Test, then send"
+msgstr "5. Probar y enviar"
+
+msgid "Open the campaign, click Send Test to check it, then Run. Progress is saved, so you can pause, stop and continue at any time."
+msgstr "Abra la campaña, haga clic en Enviar prueba para comprobarla y luego en Iniciar. El progreso se guarda: puede pausar, detener y continuar en cualquier momento."
+
+msgid "Good to Know"
+msgstr "Conviene saber"
+
+msgid "Placeholders"
+msgstr "Marcadores"
+
+msgid "Write {column_name} in the subject or body to insert a recipient's value. Use {{ and }} for literal braces."
+msgstr "Escriba {nombre_columna} en el asunto o el cuerpo para insertar el valor de un destinatario. Use {{ y }} para llaves literales."
+
+msgid "Privacy"
+msgstr "Privacidad"
+
+msgid "Passwords are kept in the system keyring. Nothing is sent anywhere except your SMTP server."
+msgstr "Las contraseñas se guardan en el llavero del sistema. No se envía nada salvo a su servidor SMTP."
+
+msgid "Run personalized email campaigns by mail merge over SMTP."
+msgstr "Envíe campañas de correo personalizadas mediante combinación de correspondencia por SMTP."
+
+msgid "translator-credits"
+msgstr "translator-credits"
+
+msgid "General"
+msgstr "General"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Takes effect after restart"
+msgstr "Surte efecto tras reiniciar"
+
+msgid "Same as System"
+msgstr "Igual que el sistema"
+
+msgid "Campaign Defaults"
+msgstr "Valores predeterminados de campaña"
+
+msgid "These values seed new campaigns and the test send."
+msgstr "Estos valores inicializan las nuevas campañas y el envío de prueba."
+
+msgid "Seconds to wait after each message"
+msgstr "Segundos de espera tras cada mensaje"
+
+msgid "Halt a campaign as soon as a message fails"
+msgstr "Detener una campaña en cuanto falle un mensaje"
+
+msgid "Test Recipient Address"
+msgstr "Dirección de destinatario de prueba"
+
+msgid "New Identity"
+msgstr "Nueva identidad"
+
+msgid "New Template"
+msgstr "Nueva plantilla"
+
+#, c-format
+msgid "(unlabeled)"
+msgstr "(sin etiqueta)"
+
+msgid "Duplicate"
+msgstr "Duplicar"
+
+#, c-format
+msgid "%s (copy)"
+msgstr "%s (copia)"
+
+msgid "Delete Identity?"
+msgstr "¿Eliminar la identidad?"
+
+#, c-format
+msgid "“%s” will be permanently removed."
+msgstr "«%s» se eliminará permanentemente."
+
+msgid "SMTPS (implicit TLS)"
+msgstr "SMTPS (TLS implícito)"
+
+msgid "STARTTLS"
+msgstr "STARTTLS"
+
+msgid "None (plaintext)"
+msgstr "Ninguno (texto sin cifrar)"
+
+msgid "Edit Identity"
+msgstr "Editar identidad"
+
+msgid "Enter host, username and password to test"
+msgstr "Introduzca servidor, usuario y contraseña para probar"
+
+msgid "Testing…"
+msgstr "Probando…"
+
+msgid "Connection OK"
+msgstr "Conexión correcta"
+
+#, c-format
+msgid "Failed: %s"
+msgstr "Error: %s"
+
+#, c-format
+msgid "%d columns · %d rows"
+msgstr "%d columnas · %d filas"
+
+msgid "Import CSV File"
+msgstr "Importar archivo CSV"
+
+msgid "CSV Files"
+msgstr "Archivos CSV"
+
+msgid "Could not read the file."
+msgstr "No se pudo leer el archivo."
+
+msgid "Imported sheet"
+msgstr "Hoja importada"
+
+msgid "The file is not valid UTF-8."
+msgstr "El archivo no es UTF-8 válido."
+
+msgid "The file is empty or has no header row."
+msgstr "El archivo está vacío o no tiene fila de encabezado."
+
+msgid "The file has a header but no data rows."
+msgstr "El archivo tiene encabezado pero no filas de datos."
+
+msgid "The file could not be read as CSV."
+msgstr "No se pudo leer el archivo como CSV."
+
+msgid "Delete CSV Sheet?"
+msgstr "¿Eliminar la hoja CSV?"
+
+#, c-format
+msgid "%d columns, %d rows"
+msgstr "%d columnas, %d filas"
+
+#, c-format
+msgid "Showing first %d of %d rows"
+msgstr "Mostrando las primeras %d de %d filas"
+
+#, c-format
+msgid "%d rows"
+msgstr "%d filas"
+
+msgid "Delete Template?"
+msgstr "¿Eliminar la plantilla?"
+
+msgid "Edit Template"
+msgstr "Editar plantilla"
+
+msgid "None"
+msgstr "Ninguno"
+
+msgid "Insert"
+msgstr "Insertar"
+
+msgid "Running"
+msgstr "En curso"
+
+msgid "Paused"
+msgstr "En pausa"
+
+msgid "Stopped"
+msgstr "Detenida"
+
+msgid "Completed"
+msgstr "Completada"
+
+msgid "Draft"
+msgstr "Borrador"
+
+msgid "Sent"
+msgstr "Enviado"
+
+msgid "Sending…"
+msgstr "Enviando…"
+
+#, c-format
+msgid "Skipped: %s"
+msgstr "Omitido: %s"
+
+msgid "Pending"
+msgstr "Pendiente"
+
+#, c-format
+msgid "%d / %d sent"
+msgstr "%d / %d enviados"
+
+msgid "(none)"
+msgstr "(ninguno)"
+
+msgid "Create an identity, a CSV sheet and a template first."
+msgstr "Cree primero una identidad, una hoja CSV y una plantilla."
+
+msgid "The selected sheet has no columns."
+msgstr "La hoja seleccionada no tiene columnas."
+
+msgid "No address in the recipient column"
+msgstr "No hay dirección en la columna de destinatario"
+
+msgid "Address does not look valid"
+msgstr "La dirección no parece válida"
+
+#, c-format
+msgid "Campaign created: %d recipients, %d skipped. Unmatched fields: %s"
+msgstr "Campaña creada: %d destinatarios, %d omitidos. Campos sin coincidencia: %s"
+
+#, c-format
+msgid "Campaign created: %d recipients, %d skipped"
+msgstr "Campaña creada: %d destinatarios, %d omitidos"
+
+msgid "Could not create the campaign."
+msgstr "No se pudo crear la campaña."
+
+msgid "(deleted)"
+msgstr "(eliminado)"
+
+#, c-format
+msgid "%d s"
+msgstr "%d s"
+
+msgid "Yes"
+msgstr "Sí"
+
+msgid "No"
+msgstr "No"
+
+#, c-format
+msgid "%d sent / %d"
+msgstr "%d enviados / %d"
+
+#, c-format
+msgid "%d failed · %d skipped · %d pending"
+msgstr "%d fallidos · %d omitidos · %d pendientes"
+
+msgid "(no address)"
+msgstr "(sin dirección)"
+
+msgid "Unmatched Fields"
+msgstr "Campos sin coincidencia"
+
+#, c-format
+msgid "These fields have no matching column and will appear literally: %s"
+msgstr "Estos campos no tienen columna correspondiente y aparecerán literalmente: %s"
+
+msgid "Run Anyway"
+msgstr "Ejecutar de todos modos"
+
+msgid "Another campaign is already running."
+msgstr "Ya hay otra campaña en curso."
+
+msgid "Set a test recipient address in Preferences first."
+msgstr "Defina primero una dirección de destinatario de prueba en Preferencias."
+
+msgid "The campaign's identity no longer exists."
+msgstr "La identidad de la campaña ya no existe."
+
+msgid "No password is stored for the identity."
+msgstr "No hay contraseña guardada para la identidad."
+
+msgid "Sending test message…"
+msgstr "Enviando mensaje de prueba…"
+
+#, c-format
+msgid "Test message sent to %s"
+msgstr "Mensaje de prueba enviado a %s"
+
+#, c-format
+msgid "Test send failed: %s"
+msgstr "Error en el envío de prueba: %s"
+
+msgid "Delete Campaign?"
+msgstr "¿Eliminar la campaña?"
+
+#, c-format
+msgid "“%s” and its recipients will be permanently removed."
+msgstr "«%s» y sus destinatarios se eliminarán permanentemente."
+
+#, c-format
+msgid "Database error: %s"
+msgstr "Error de base de datos: %s"
+
+msgid "The campaign no longer exists."
+msgstr "La campaña ya no existe."
+
+#, c-format
+msgid "Cannot connect: %s"
+msgstr "No se pudo conectar: %s"
+
+#, c-format
+msgid "Done: %d sent, %d failed, %d skipped"
+msgstr "Listo: %d enviados, %d fallidos, %d omitidos"
+
+msgid "Mail Merge"
+msgstr "Combinar correspondencia"
+
+msgid "Run personalized email campaigns over SMTP"
+msgstr "Enviar campañas de correo personalizadas por SMTP"
+
+msgid "mail;merge;email;campaign;newsletter;smtp;mailing;"
+msgstr "correo;combinar correspondencia;email;campaña;boletín;smtp;mailing;"
+
+msgid "Run personalized email campaigns"
+msgstr "Envíe campañas de correo personalizadas"
+
+msgid "Missive sends personalized email campaigns by mail merge over SMTPS. It manages several sender identities, CSV recipient sheets, message templates, and campaigns, sending one personalized message per recipient at a configurable pace."
+msgstr "Missive envía campañas de correo personalizadas mediante combinación de correspondencia por SMTPS. Gestiona varias identidades de remitente, hojas de destinatarios CSV, plantillas de mensaje y campañas, enviando un mensaje personalizado por destinatario a un ritmo configurable."
+
+msgid "Features:"
+msgstr "Funciones:"
+
+msgid "Multiple SMTP sender identities with credentials stored in the keyring"
+msgstr "Varias identidades de remitente SMTP con credenciales en el llavero"
+
+msgid "Import recipient lists from CSV files"
+msgstr "Importar listas de destinatarios desde archivos CSV"
+
+msgid "Reusable message templates with placeholder substitution"
+msgstr "Plantillas de mensaje reutilizables con sustitución de marcadores"
+
+msgid "Campaign progress is saved and can be resumed after a restart"
+msgstr "El progreso de la campaña se guarda y puede reanudarse tras reiniciar"
+
+msgid "The Missive main window"
+msgstr "La ventana principal de Missive"
+
+msgid "Benjamin Bellamy"
+msgstr "Benjamin Bellamy"
+
+msgid "Initial development release."
+msgstr "Primera versión de desarrollo."

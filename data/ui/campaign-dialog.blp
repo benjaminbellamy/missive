@@ -1,0 +1,71 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MissiveCampaignDialog: Adw.Dialog {
+  title: _("New Campaign");
+  content-width: 520;
+  content-height: 640;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      [start]
+      Button cancel_button {
+        label: _("Cancel");
+      }
+
+      [end]
+      Button create_button {
+        label: _("Create");
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      Adw.PreferencesGroup {
+        Adw.EntryRow name_row {
+          title: _("Campaign Name");
+        }
+      }
+
+      Adw.PreferencesGroup {
+        title: _("Source");
+
+        Adw.ComboRow identity_row {
+          title: _("Identity");
+        }
+
+        Adw.ComboRow sheet_row {
+          title: _("CSV Sheet");
+        }
+
+        Adw.ComboRow recipient_row {
+          title: _("Recipient Column");
+        }
+
+        Adw.ComboRow template_row {
+          title: _("Template");
+        }
+      }
+
+      Adw.PreferencesGroup {
+        title: _("Recipients");
+        description: _("Optional addresses added to every message.");
+
+        Adw.EntryRow cc_row {
+          title: _("Cc");
+        }
+
+        Adw.EntryRow bcc_row {
+          title: _("Bcc");
+        }
+      }
+    };
+  };
+}

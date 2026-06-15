@@ -1,0 +1,815 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-16 00:40+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/ui/window.blp:7
+msgid "_Help"
+msgstr ""
+
+#: data/ui/window.blp:12
+msgid "_Preferences"
+msgstr ""
+
+#: data/ui/window.blp:17
+msgid "_About Missive"
+msgstr ""
+
+#: data/ui/window.blp:24 data/ui/window.blp:34 src/window.vala:148
+#: data/fr.bellamy.missive.desktop.in:2
+#: data/fr.bellamy.missive.metainfo.xml.in:7
+msgid "Missive"
+msgstr ""
+
+#: data/ui/window.blp:66 src/window.vala:140
+msgid "Mailing Campaigns"
+msgstr ""
+
+#: data/ui/window.blp:87 src/window.vala:142
+msgid "Message Templates"
+msgstr ""
+
+#: data/ui/window.blp:108 src/window.vala:144
+msgid "Address Sheets"
+msgstr ""
+
+#: data/ui/window.blp:129 src/window.vala:146
+msgid "Sender Identities"
+msgstr ""
+
+#: data/ui/window.blp:140
+msgid "Campaigns"
+msgstr ""
+
+#: data/ui/window.blp:152 src/window.vala:85 src/window.vala:97
+msgid "New"
+msgstr ""
+
+#: data/ui/window.blp:160
+msgid "Main Menu"
+msgstr ""
+
+#: data/ui/identities-view.blp:11
+msgid "No Identities"
+msgstr ""
+
+#: data/ui/identities-view.blp:12
+msgid "Add a sender identity to start sending campaigns."
+msgstr ""
+
+#: data/ui/identity-editor.blp:5 data/ui/identity-editor.blp:32
+#: data/ui/campaign-dialog.blp:41 data/ui/campaign-detail.blp:92
+msgid "Identity"
+msgstr ""
+
+#: data/ui/identity-editor.blp:17 data/ui/csv-import-dialog.blp:16
+#: data/ui/template-editor.blp:22 data/ui/campaign-dialog.blp:17
+#: src/template-editor.vala:304 src/ui-util.vala:57
+#: src/campaign-detail.vala:225
+msgid "Cancel"
+msgstr ""
+
+#: data/ui/identity-editor.blp:22 data/ui/template-editor.blp:27
+msgid "Save"
+msgstr ""
+
+#: data/ui/identity-editor.blp:35 data/ui/template-editor.blp:45
+msgid "Label"
+msgstr ""
+
+#: data/ui/identity-editor.blp:39
+msgid "From Name"
+msgstr ""
+
+#: data/ui/identity-editor.blp:43
+msgid "From Email"
+msgstr ""
+
+#: data/ui/identity-editor.blp:48
+msgid "SMTP Server"
+msgstr ""
+
+#: data/ui/identity-editor.blp:52
+msgid "Verify Login"
+msgstr ""
+
+#: data/ui/identity-editor.blp:54
+msgid "Test the SMTP connection"
+msgstr ""
+
+#: data/ui/identity-editor.blp:62
+msgid "Host"
+msgstr ""
+
+#: data/ui/identity-editor.blp:66
+msgid "Port"
+msgstr ""
+
+#: data/ui/identity-editor.blp:77
+msgid "Encryption"
+msgstr ""
+
+#: data/ui/identity-editor.blp:81
+msgid "Username"
+msgstr ""
+
+#: data/ui/identity-editor.blp:85
+msgid "Password"
+msgstr ""
+
+#: data/ui/identity-editor.blp:89
+msgid "Connection"
+msgstr ""
+
+#: data/ui/identity-editor.blp:106
+msgid "Signature"
+msgstr ""
+
+#: data/ui/identity-editor.blp:107
+msgid "HTML appended to every message sent from this identity."
+msgstr ""
+
+#: data/ui/csv-sheets-view.blp:11
+msgid "No CSV Sheets"
+msgstr ""
+
+#: data/ui/csv-sheets-view.blp:12
+msgid "Import a CSV file of recipients to use in a campaign."
+msgstr ""
+
+#: data/ui/csv-import-dialog.blp:5 src/window.vala:89
+msgid "Import CSV"
+msgstr ""
+
+#: data/ui/csv-import-dialog.blp:21 src/window.vala:91
+msgid "Import"
+msgstr ""
+
+#: data/ui/csv-import-dialog.blp:32
+msgid "Name"
+msgstr ""
+
+#: data/ui/csv-import-dialog.blp:36 data/ui/campaign-dialog.blp:49
+#: data/ui/campaign-detail.blp:104
+msgid "Recipient Column"
+msgstr ""
+
+#: data/ui/csv-import-dialog.blp:37
+msgid "Column holding each recipient’s email address"
+msgstr ""
+
+#: data/ui/csv-import-dialog.blp:43
+msgid "Detected"
+msgstr ""
+
+#: data/ui/csv-preview-dialog.blp:5 data/ui/template-editor.blp:192
+msgid "Preview"
+msgstr ""
+
+#: data/ui/csv-preview-dialog.blp:17
+msgid "Recipient column:"
+msgstr ""
+
+#: data/ui/templates-view.blp:11
+msgid "No Templates"
+msgstr ""
+
+#: data/ui/templates-view.blp:12
+msgid "Create a message template to use in a campaign."
+msgstr ""
+
+#: data/ui/template-editor.blp:5 data/ui/campaign-dialog.blp:53
+msgid "Template"
+msgstr ""
+
+#: data/ui/template-editor.blp:49 data/ui/campaign-detail.blp:100
+msgid "Subject"
+msgstr ""
+
+#: data/ui/template-editor.blp:53
+msgid "Insert Fields From"
+msgstr ""
+
+#: data/ui/template-editor.blp:54
+msgid "Click a field to insert its {token}"
+msgstr ""
+
+#: data/ui/template-editor.blp:74
+msgid "Edit"
+msgstr ""
+
+#: data/ui/template-editor.blp:90
+msgid "Bold"
+msgstr ""
+
+#: data/ui/template-editor.blp:99
+msgid "Italic"
+msgstr ""
+
+#: data/ui/template-editor.blp:108
+msgid "Underline"
+msgstr ""
+
+#: data/ui/template-editor.blp:117 src/template-editor.vala:302
+msgid "Insert Link"
+msgstr ""
+
+#: data/ui/template-editor.blp:132
+msgid "Bulleted List"
+msgstr ""
+
+#: data/ui/template-editor.blp:141
+msgid "Numbered List"
+msgstr ""
+
+#: data/ui/template-editor.blp:169
+msgid "Edit source"
+msgstr ""
+
+#: data/ui/campaigns-view.blp:11
+msgid "No Campaigns"
+msgstr ""
+
+#: data/ui/campaigns-view.blp:12
+msgid "Create a campaign to send personalized messages."
+msgstr ""
+
+#: data/ui/campaign-dialog.blp:5 src/window.vala:77 src/window.vala:79
+msgid "New Campaign"
+msgstr ""
+
+#: data/ui/campaign-dialog.blp:22
+msgid "Create"
+msgstr ""
+
+#: data/ui/campaign-dialog.blp:33
+msgid "Campaign Name"
+msgstr ""
+
+#: data/ui/campaign-dialog.blp:38
+msgid "Source"
+msgstr ""
+
+#: data/ui/campaign-dialog.blp:45 data/ui/campaign-detail.blp:96
+msgid "CSV Sheet"
+msgstr ""
+
+#: data/ui/campaign-dialog.blp:58 data/ui/campaign-detail.blp:125
+msgid "Recipients"
+msgstr ""
+
+#: data/ui/campaign-dialog.blp:59
+msgid "Optional addresses added to every message."
+msgstr ""
+
+#: data/ui/campaign-dialog.blp:62 data/ui/campaign-detail.blp:116
+msgid "Cc"
+msgstr ""
+
+#: data/ui/campaign-dialog.blp:66 data/ui/campaign-detail.blp:120
+msgid "Bcc"
+msgstr ""
+
+#: data/ui/campaign-detail.blp:5
+msgid "Campaign"
+msgstr ""
+
+#: data/ui/campaign-detail.blp:14
+msgid "Run"
+msgstr ""
+
+#: data/ui/campaign-detail.blp:23
+msgid "Continue"
+msgstr ""
+
+#: data/ui/campaign-detail.blp:32
+msgid "Pause"
+msgstr ""
+
+#: data/ui/campaign-detail.blp:37
+msgid "Stop"
+msgstr ""
+
+#: data/ui/campaign-detail.blp:42
+msgid "Retry Failed"
+msgstr ""
+
+#: data/ui/campaign-detail.blp:48 src/identities-view.vala:56
+#: src/csv-sheets-view.vala:50 src/templates-view.vala:56 src/ui-util.vala:58
+msgid "Delete"
+msgstr ""
+
+#: data/ui/campaign-detail.blp:53
+msgid "Send Test"
+msgstr ""
+
+#: data/ui/campaign-detail.blp:89
+msgid "Details"
+msgstr ""
+
+#: data/ui/campaign-detail.blp:108 src/application.vala:143
+msgid "Delay Between Messages"
+msgstr ""
+
+#: data/ui/campaign-detail.blp:112 src/application.vala:152
+msgid "Stop on First Error"
+msgstr ""
+
+#: data/ui/help-dialog.blp:5
+msgid "Help"
+msgstr ""
+
+#: data/ui/help-dialog.blp:15
+msgid "Sending a Campaign"
+msgstr ""
+
+#: data/ui/help-dialog.blp:16
+msgid "Missive sends one personalized email per recipient through your own SMTP server, at a pace you choose."
+msgstr ""
+
+#: data/ui/help-dialog.blp:21
+msgid "1. Add a sender identity"
+msgstr ""
+
+#: data/ui/help-dialog.blp:22
+msgid "In Sender Identities, click New and enter your SMTP server and login. The Connection row confirms the settings work."
+msgstr ""
+
+#: data/ui/help-dialog.blp:27
+msgid "2. Import an address sheet"
+msgstr ""
+
+#: data/ui/help-dialog.blp:28
+msgid "In Address Sheets, click Import and choose a CSV file, then pick the column that holds the email addresses."
+msgstr ""
+
+#: data/ui/help-dialog.blp:33
+msgid "3. Write a message template"
+msgstr ""
+
+#: data/ui/help-dialog.blp:34
+msgid "In Message Templates, click New. Add a subject and body, and use “Insert Fields From” to drop {tokens} that are replaced for each recipient."
+msgstr ""
+
+#: data/ui/help-dialog.blp:39
+msgid "4. Create a mailing campaign"
+msgstr ""
+
+#: data/ui/help-dialog.blp:40
+msgid "In Mailing Campaigns, click New Campaign and choose an identity, address sheet, template and recipient column."
+msgstr ""
+
+#: data/ui/help-dialog.blp:45
+msgid "5. Test, then send"
+msgstr ""
+
+#: data/ui/help-dialog.blp:46
+msgid "Open the campaign, click Send Test to check it, then Run. Progress is saved, so you can pause, stop and continue at any time."
+msgstr ""
+
+#: data/ui/help-dialog.blp:52
+msgid "Good to Know"
+msgstr ""
+
+#: data/ui/help-dialog.blp:55
+msgid "Placeholders"
+msgstr ""
+
+#: data/ui/help-dialog.blp:56
+msgid "Write {column_name} in the subject or body to insert a recipient's value. Use {{ and }} for literal braces."
+msgstr ""
+
+#: data/ui/help-dialog.blp:61
+msgid "Privacy"
+msgstr ""
+
+#: data/ui/help-dialog.blp:62
+msgid "Passwords are kept in the system keyring. Nothing is sent anywhere except your SMTP server."
+msgstr ""
+
+#: src/application.vala:87
+msgid "Run personalized email campaigns by mail merge over SMTP."
+msgstr ""
+
+#: src/application.vala:90
+msgid "translator-credits"
+msgstr ""
+
+#: src/application.vala:108
+msgid "General"
+msgstr ""
+
+#: src/application.vala:116
+msgid "Language"
+msgstr ""
+
+#: src/application.vala:117
+msgid "Takes effect after restart"
+msgstr ""
+
+#: src/application.vala:119
+msgid "Same as System"
+msgstr ""
+
+#: src/application.vala:138
+msgid "Campaign Defaults"
+msgstr ""
+
+#: src/application.vala:139
+msgid "These values seed new campaigns and the test send."
+msgstr ""
+
+#: src/application.vala:144
+msgid "Seconds to wait after each message"
+msgstr ""
+
+#: src/application.vala:153
+msgid "Halt a campaign as soon as a message fails"
+msgstr ""
+
+#: src/application.vala:159
+msgid "Test Recipient Address"
+msgstr ""
+
+#: src/window.vala:83 src/identity-editor.vala:53
+msgid "New Identity"
+msgstr ""
+
+#: src/window.vala:95 src/template-editor.vala:81
+msgid "New Template"
+msgstr ""
+
+#: src/identities-view.vala:42 src/identities-view.vala:109
+#: src/templates-view.vala:42 src/templates-view.vala:102
+#: src/template-editor.vala:131
+#, c-format
+msgid "(unlabeled)"
+msgstr ""
+
+#: src/identities-view.vala:49 src/templates-view.vala:49
+msgid "Duplicate"
+msgstr ""
+
+#: src/identities-view.vala:83 src/templates-view.vala:84
+#, c-format
+msgid "%s (copy)"
+msgstr ""
+
+#: src/identities-view.vala:107
+msgid "Delete Identity?"
+msgstr ""
+
+#: src/identities-view.vala:108 src/csv-sheets-view.vala:136
+#: src/templates-view.vala:101
+#, c-format
+msgid "“%s” will be permanently removed."
+msgstr ""
+
+#: src/identity-editor.vala:48
+msgid "SMTPS (implicit TLS)"
+msgstr ""
+
+#: src/identity-editor.vala:49
+msgid "STARTTLS"
+msgstr ""
+
+#: src/identity-editor.vala:50
+msgid "None (plaintext)"
+msgstr ""
+
+#: src/identity-editor.vala:53
+msgid "Edit Identity"
+msgstr ""
+
+#: src/identity-editor.vala:169
+msgid "Enter host, username and password to test"
+msgstr ""
+
+#: src/identity-editor.vala:223
+msgid "Testing…"
+msgstr ""
+
+#: src/identity-editor.vala:227
+msgid "Connection OK"
+msgstr ""
+
+#: src/identity-editor.vala:232 src/ui-util.vala:39
+#, c-format
+msgid "Failed: %s"
+msgstr ""
+
+#: src/csv-sheets-view.vala:44
+#, c-format
+msgid "%d columns · %d rows"
+msgstr ""
+
+#: src/csv-sheets-view.vala:68
+msgid "Import CSV File"
+msgstr ""
+
+#: src/csv-sheets-view.vala:71
+msgid "CSV Files"
+msgstr ""
+
+#: src/csv-sheets-view.vala:95
+msgid "Could not read the file."
+msgstr ""
+
+#: src/csv-sheets-view.vala:114
+msgid "Imported sheet"
+msgstr ""
+
+#: src/csv-sheets-view.vala:124
+msgid "The file is not valid UTF-8."
+msgstr ""
+
+#: src/csv-sheets-view.vala:126
+msgid "The file is empty or has no header row."
+msgstr ""
+
+#: src/csv-sheets-view.vala:128
+msgid "The file has a header but no data rows."
+msgstr ""
+
+#: src/csv-sheets-view.vala:130
+msgid "The file could not be read as CSV."
+msgstr ""
+
+#: src/csv-sheets-view.vala:135
+msgid "Delete CSV Sheet?"
+msgstr ""
+
+#: src/csv-import-dialog.vala:30
+#, c-format
+msgid "%d columns, %d rows"
+msgstr ""
+
+#: src/csv-preview-dialog.vala:75
+#, c-format
+msgid "Showing first %d of %d rows"
+msgstr ""
+
+#: src/csv-preview-dialog.vala:78
+#, c-format
+msgid "%d rows"
+msgstr ""
+
+#: src/templates-view.vala:100
+msgid "Delete Template?"
+msgstr ""
+
+#: src/template-editor.vala:81
+msgid "Edit Template"
+msgstr ""
+
+#: src/template-editor.vala:129
+msgid "None"
+msgstr ""
+
+#: src/template-editor.vala:305
+msgid "Insert"
+msgstr ""
+
+#: src/ui-util.vala:18
+msgid "Running"
+msgstr ""
+
+#: src/ui-util.vala:19
+msgid "Paused"
+msgstr ""
+
+#: src/ui-util.vala:20
+msgid "Stopped"
+msgstr ""
+
+#: src/ui-util.vala:21
+msgid "Completed"
+msgstr ""
+
+#: src/ui-util.vala:22
+msgid "Draft"
+msgstr ""
+
+#: src/ui-util.vala:37
+msgid "Sent"
+msgstr ""
+
+#: src/ui-util.vala:38
+msgid "Sending…"
+msgstr ""
+
+#: src/ui-util.vala:40
+#, c-format
+msgid "Skipped: %s"
+msgstr ""
+
+#: src/ui-util.vala:41
+msgid "Pending"
+msgstr ""
+
+#: src/campaigns-view.vala:59
+#, c-format
+msgid "%d / %d sent"
+msgstr ""
+
+#: src/campaign-dialog.vala:57 src/campaign-dialog.vala:87
+msgid "(none)"
+msgstr ""
+
+#: src/campaign-dialog.vala:103
+msgid "Create an identity, a CSV sheet and a template first."
+msgstr ""
+
+#: src/campaign-dialog.vala:119
+msgid "The selected sheet has no columns."
+msgstr ""
+
+#: src/campaign-dialog.vala:155
+msgid "No address in the recipient column"
+msgstr ""
+
+#: src/campaign-dialog.vala:160
+msgid "Address does not look valid"
+msgstr ""
+
+#: src/campaign-dialog.vala:172
+#, c-format
+msgid "Campaign created: %d recipients, %d skipped. Unmatched fields: %s"
+msgstr ""
+
+#: src/campaign-dialog.vala:176
+#, c-format
+msgid "Campaign created: %d recipients, %d skipped"
+msgstr ""
+
+#: src/campaign-dialog.vala:181
+msgid "Could not create the campaign."
+msgstr ""
+
+#: src/campaign-detail.vala:116 src/campaign-detail.vala:124
+msgid "(deleted)"
+msgstr ""
+
+#: src/campaign-detail.vala:136
+#, c-format
+msgid "%d s"
+msgstr ""
+
+#: src/campaign-detail.vala:137
+msgid "Yes"
+msgstr ""
+
+#: src/campaign-detail.vala:137
+msgid "No"
+msgstr ""
+
+#: src/campaign-detail.vala:189
+#, c-format
+msgid "%d sent / %d"
+msgstr ""
+
+#: src/campaign-detail.vala:190
+#, c-format
+msgid "%d failed · %d skipped · %d pending"
+msgstr ""
+
+#: src/campaign-detail.vala:196
+msgid "(no address)"
+msgstr ""
+
+#: src/campaign-detail.vala:222
+msgid "Unmatched Fields"
+msgstr ""
+
+#: src/campaign-detail.vala:223
+#, c-format
+msgid "These fields have no matching column and will appear literally: %s"
+msgstr ""
+
+#: src/campaign-detail.vala:226
+msgid "Run Anyway"
+msgstr ""
+
+#: src/campaign-detail.vala:241
+msgid "Another campaign is already running."
+msgstr ""
+
+#: src/campaign-detail.vala:313
+msgid "Set a test recipient address in Preferences first."
+msgstr ""
+
+#: src/campaign-detail.vala:321 src/campaign-engine.vala:71
+msgid "The campaign's identity no longer exists."
+msgstr ""
+
+#: src/campaign-detail.vala:325 src/campaign-engine.vala:76
+msgid "No password is stored for the identity."
+msgstr ""
+
+#: src/campaign-detail.vala:344
+msgid "Sending test message…"
+msgstr ""
+
+#: src/campaign-detail.vala:349
+#, c-format
+msgid "Test message sent to %s"
+msgstr ""
+
+#: src/campaign-detail.vala:351
+#, c-format
+msgid "Test send failed: %s"
+msgstr ""
+
+#: src/campaign-detail.vala:360
+msgid "Delete Campaign?"
+msgstr ""
+
+#: src/campaign-detail.vala:361
+#, c-format
+msgid "“%s” and its recipients will be permanently removed."
+msgstr ""
+
+#: src/campaign-engine.vala:58
+#, c-format
+msgid "Database error: %s"
+msgstr ""
+
+#: src/campaign-engine.vala:66
+msgid "The campaign no longer exists."
+msgstr ""
+
+#: src/campaign-engine.vala:84
+#, c-format
+msgid "Cannot connect: %s"
+msgstr ""
+
+#: src/campaign-engine.vala:179
+#, c-format
+msgid "Done: %d sent, %d failed, %d skipped"
+msgstr ""
+
+#: data/fr.bellamy.missive.desktop.in:3
+msgid "Mail Merge"
+msgstr ""
+
+#: data/fr.bellamy.missive.desktop.in:4
+msgid "Run personalized email campaigns over SMTP"
+msgstr ""
+
+#: data/fr.bellamy.missive.desktop.in:6
+msgid "mail;merge;email;campaign;newsletter;smtp;mailing;"
+msgstr ""
+
+#: data/fr.bellamy.missive.metainfo.xml.in:8
+msgid "Run personalized email campaigns"
+msgstr ""
+
+#: data/fr.bellamy.missive.metainfo.xml.in:11
+msgid "Missive sends personalized email campaigns by mail merge over SMTPS. It manages several sender identities, CSV recipient sheets, message templates, and campaigns, sending one personalized message per recipient at a configurable pace."
+msgstr ""
+
+#: data/fr.bellamy.missive.metainfo.xml.in:17
+msgid "Features:"
+msgstr ""
+
+#: data/fr.bellamy.missive.metainfo.xml.in:19
+msgid "Multiple SMTP sender identities with credentials stored in the keyring"
+msgstr ""
+
+#: data/fr.bellamy.missive.metainfo.xml.in:20
+msgid "Import recipient lists from CSV files"
+msgstr ""
+
+#: data/fr.bellamy.missive.metainfo.xml.in:21
+msgid "Reusable message templates with placeholder substitution"
+msgstr ""
+
+#: data/fr.bellamy.missive.metainfo.xml.in:22
+msgid "Campaign progress is saved and can be resumed after a restart"
+msgstr ""
+
+#: data/fr.bellamy.missive.metainfo.xml.in:31
+msgid "The Missive main window"
+msgstr ""
+
+#: data/fr.bellamy.missive.metainfo.xml.in:39
+msgid "Benjamin Bellamy"
+msgstr ""
+
+#: data/fr.bellamy.missive.metainfo.xml.in:47
+msgid "Initial development release."
+msgstr ""

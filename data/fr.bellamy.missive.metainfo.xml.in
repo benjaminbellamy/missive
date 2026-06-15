@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<component type="desktop-application">
+  <id>fr.bellamy.missive</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Missive</name>
+  <summary>Run personalized email campaigns</summary>
+
+  <description>
+    <p>
+      Missive sends personalized email campaigns by mail merge over SMTPS. It
+      manages several sender identities, CSV recipient sheets, message
+      templates, and campaigns, sending one personalized message per recipient
+      at a configurable pace.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Multiple SMTP sender identities with credentials stored in the keyring</li>
+      <li>Import recipient lists from CSV files</li>
+      <li>Reusable message templates with placeholder substitution</li>
+      <li>Campaign progress is saved and can be resumed after a restart</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">fr.bellamy.missive.desktop</launchable>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/benjaminbellamy/missive/main/data/screenshots/main-window.png</image>
+      <caption>The Missive main window</caption>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://github.com/benjaminbellamy/missive</url>
+  <url type="bugtracker">https://github.com/benjaminbellamy/missive/issues</url>
+
+  <developer id="fr.bellamy">
+    <name>Benjamin Bellamy</name>
+  </developer>
+
+  <content_rating type="oars-1.1"/>
+
+  <releases>
+    <release version="0.1.0" date="2026-06-15">
+      <description>
+        <p>Initial development release.</p>
+      </description>
+    </release>
+  </releases>
+</component>

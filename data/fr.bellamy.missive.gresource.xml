@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/fr/bellamy/missive">
+    <file preprocess="xml-stripblanks">window.ui</file>
+    <file preprocess="xml-stripblanks">identities-view.ui</file>
+    <file preprocess="xml-stripblanks">identity-editor.ui</file>
+    <file preprocess="xml-stripblanks">csv-sheets-view.ui</file>
+    <file preprocess="xml-stripblanks">csv-import-dialog.ui</file>
+    <file preprocess="xml-stripblanks">csv-preview-dialog.ui</file>
+    <file preprocess="xml-stripblanks">templates-view.ui</file>
+    <file preprocess="xml-stripblanks">template-editor.ui</file>
+    <file preprocess="xml-stripblanks">campaigns-view.ui</file>
+    <file preprocess="xml-stripblanks">campaign-dialog.ui</file>
+    <file preprocess="xml-stripblanks">campaign-detail.ui</file>
+    <file preprocess="xml-stripblanks">help-dialog.ui</file>
+  </gresource>
+</gresources>

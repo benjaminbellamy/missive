@@ -1,0 +1,17 @@
+# Build directories
+/_build/
+/build/
+/builddir/
+/build-dir/
+
+# Flatpak
+/.flatpak-builder/
+/repo/
+
+# Editor / OS noise
+*.swp
+*~
+.DS_Store
+
+# Build prompt / agent instructions (local only)
+CLAUDE.md

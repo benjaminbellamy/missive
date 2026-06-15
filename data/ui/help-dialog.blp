@@ -1,0 +1,68 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MissiveHelpDialog: Adw.Dialog {
+  title: _("Help");
+  content-width: 560;
+  content-height: 680;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {}
+
+    content: Adw.PreferencesPage {
+      Adw.PreferencesGroup {
+        title: _("Sending a Campaign");
+        description: _("Missive sends one personalized email per recipient through your own SMTP server, at a pace you choose.");
+      }
+
+      Adw.PreferencesGroup {
+        Adw.ActionRow {
+          title: _("1. Add a sender identity");
+          subtitle: _("In Sender Identities, click New and enter your SMTP server and login. The Connection row confirms the settings work.");
+          subtitle-lines: 0;
+        }
+
+        Adw.ActionRow {
+          title: _("2. Import an address sheet");
+          subtitle: _("In Address Sheets, click Import and choose a CSV file, then pick the column that holds the email addresses.");
+          subtitle-lines: 0;
+        }
+
+        Adw.ActionRow {
+          title: _("3. Write a message template");
+          subtitle: _("In Message Templates, click New. Add a subject and body, and use “Insert Fields From” to drop {tokens} that are replaced for each recipient.");
+          subtitle-lines: 0;
+        }
+
+        Adw.ActionRow {
+          title: _("4. Create a mailing campaign");
+          subtitle: _("In Mailing Campaigns, click New Campaign and choose an identity, address sheet, template and recipient column.");
+          subtitle-lines: 0;
+        }
+
+        Adw.ActionRow {
+          title: _("5. Test, then send");
+          subtitle: _("Open the campaign, click Send Test to check it, then Run. Progress is saved, so you can pause, stop and continue at any time.");
+          subtitle-lines: 0;
+        }
+      }
+
+      Adw.PreferencesGroup {
+        title: _("Good to Know");
+
+        Adw.ActionRow {
+          title: _("Placeholders");
+          subtitle: _("Write {column_name} in the subject or body to insert a recipient's value. Use {{ and }} for literal braces.");
+          subtitle-lines: 0;
+        }
+
+        Adw.ActionRow {
+          title: _("Privacy");
+          subtitle: _("Passwords are kept in the system keyring. Nothing is sent anywhere except your SMTP server.");
+          subtitle-lines: 0;
+        }
+      }
+    };
+  };
+}

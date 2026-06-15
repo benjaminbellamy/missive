@@ -1,0 +1,41 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MissiveTemplatesView: Adw.Bin {
+  child: Stack view_stack {
+    StackPage {
+      name: "empty";
+
+      child: Adw.StatusPage {
+        icon-name: "text-x-generic-symbolic";
+        title: _("No Templates");
+        description: _("Create a message template to use in a campaign.");
+      };
+    }
+
+    StackPage {
+      name: "list";
+
+      child: ScrolledWindow {
+        hscrollbar-policy: never;
+
+        child: Adw.Clamp {
+          maximum-size: 700;
+          margin-top: 24;
+          margin-bottom: 24;
+          margin-start: 12;
+          margin-end: 12;
+
+          child: ListBox template_list {
+            selection-mode: none;
+            valign: start;
+
+            styles [
+              "boxed-list",
+            ]
+          };
+        };
+      };
+    }
+  };
+}

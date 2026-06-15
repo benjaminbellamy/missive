@@ -1,0 +1,137 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MissiveCampaignDetail: Adw.Dialog {
+  title: _("Campaign");
+  content-width: 600;
+  content-height: 720;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      [start]
+      Button run_button {
+        label: _("Run");
+
+        styles [
+          "suggested-action",
+        ]
+      }
+
+      [start]
+      Button continue_button {
+        label: _("Continue");
+
+        styles [
+          "suggested-action",
+        ]
+      }
+
+      [start]
+      Button pause_button {
+        label: _("Pause");
+      }
+
+      [start]
+      Button stop_button {
+        label: _("Stop");
+      }
+
+      [start]
+      Button retry_button {
+        label: _("Retry Failed");
+      }
+
+      [end]
+      Button delete_button {
+        icon-name: "user-trash-symbolic";
+        tooltip-text: _("Delete");
+      }
+
+      [end]
+      Button test_button {
+        label: _("Send Test");
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      Adw.PreferencesGroup {
+        Box {
+          orientation: vertical;
+          spacing: 10;
+
+          Box {
+            spacing: 8;
+
+            Label status_badge {
+              styles [
+                "status-badge",
+              ]
+            }
+
+            Label counts_label {
+              hexpand: true;
+              halign: end;
+
+              styles [
+                "dim-label",
+              ]
+            }
+          }
+
+          ProgressBar progress_bar {
+            show-text: true;
+          }
+        }
+      }
+
+      Adw.PreferencesGroup {
+        title: _("Details");
+
+        Adw.ActionRow identity_value {
+          title: _("Identity");
+        }
+
+        Adw.ActionRow sheet_value {
+          title: _("CSV Sheet");
+        }
+
+        Adw.ActionRow subject_value {
+          title: _("Subject");
+        }
+
+        Adw.ActionRow recipient_value {
+          title: _("Recipient Column");
+        }
+
+        Adw.ActionRow delay_value {
+          title: _("Delay Between Messages");
+        }
+
+        Adw.ActionRow stop_value {
+          title: _("Stop on First Error");
+        }
+
+        Adw.EntryRow cc_row {
+          title: _("Cc");
+        }
+
+        Adw.EntryRow bcc_row {
+          title: _("Bcc");
+        }
+      }
+
+      Adw.PreferencesGroup recipients_group {
+        title: _("Recipients");
+
+        ListBox recipient_list {
+          selection-mode: none;
+
+          styles [
+            "boxed-list",
+          ]
+        }
+      }
+    };
+  };
+}

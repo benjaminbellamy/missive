@@ -1,0 +1,195 @@
+using Gtk 4.0;
+using Adw 1;
+
+menu primary_menu {
+  section {
+    item {
+      label: _("_Help");
+      action: "app.help";
+    }
+
+    item {
+      label: _("_Preferences");
+      action: "app.preferences";
+    }
+
+    item {
+      label: _("_About Missive");
+      action: "app.about";
+    }
+  }
+}
+
+template $MissiveMainWindow: Adw.ApplicationWindow {
+  title: _("Missive");
+  default-width: 960;
+  default-height: 640;
+  width-request: 360;
+  height-request: 294;
+
+  content: Adw.NavigationSplitView split_view {
+    min-sidebar-width: 220;
+
+    sidebar: Adw.NavigationPage {
+      title: _("Missive");
+      tag: "sidebar";
+
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+
+        content: ScrolledWindow {
+          hscrollbar-policy: never;
+
+          child: ListBox sidebar_list {
+            selection-mode: single;
+
+            styles [
+              "navigation-sidebar",
+            ]
+
+            ListBoxRow {
+              name: "campaigns";
+
+              child: Box {
+                spacing: 12;
+                margin-start: 6;
+                margin-end: 6;
+                margin-top: 8;
+                margin-bottom: 8;
+
+                Image {
+                  icon-name: "mail-send-symbolic";
+                }
+
+                Label {
+                  label: _("Mailing Campaigns");
+                  halign: start;
+                }
+              };
+            }
+
+            ListBoxRow {
+              name: "templates";
+
+              child: Box {
+                spacing: 12;
+                margin-start: 6;
+                margin-end: 6;
+                margin-top: 8;
+                margin-bottom: 8;
+
+                Image {
+                  icon-name: "text-x-generic-symbolic";
+                }
+
+                Label {
+                  label: _("Message Templates");
+                  halign: start;
+                }
+              };
+            }
+
+            ListBoxRow {
+              name: "sheets";
+
+              child: Box {
+                spacing: 12;
+                margin-start: 6;
+                margin-end: 6;
+                margin-top: 8;
+                margin-bottom: 8;
+
+                Image {
+                  icon-name: "x-office-spreadsheet-symbolic";
+                }
+
+                Label {
+                  label: _("Address Sheets");
+                  halign: start;
+                }
+              };
+            }
+
+            ListBoxRow {
+              name: "identities";
+
+              child: Box {
+                spacing: 12;
+                margin-start: 6;
+                margin-end: 6;
+                margin-top: 8;
+                margin-bottom: 8;
+
+                Image {
+                  icon-name: "avatar-default-symbolic";
+                }
+
+                Label {
+                  label: _("Sender Identities");
+                  halign: start;
+                }
+              };
+            }
+          };
+        };
+      };
+    };
+
+    content: Adw.NavigationPage content_page {
+      title: _("Campaigns");
+      tag: "content";
+
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {
+          [start]
+          Button new_button {
+            visible: false;
+
+            child: Adw.ButtonContent new_button_content {
+              icon-name: "list-add-symbolic";
+              label: _("New");
+            };
+          }
+
+          [end]
+          MenuButton {
+            primary: true;
+            icon-name: "open-menu-symbolic";
+            tooltip-text: _("Main Menu");
+            menu-model: primary_menu;
+          }
+        }
+
+        content: Adw.ToastOverlay toast_overlay {
+          child: Stack content_stack {
+            StackPage {
+              name: "campaigns";
+
+              child: Adw.Bin campaigns_container {};
+            }
+
+            StackPage {
+              name: "templates";
+
+              child: Adw.Bin templates_container {};
+            }
+
+            StackPage {
+              name: "sheets";
+
+              child: Adw.Bin sheets_container {};
+            }
+
+            StackPage {
+              name: "identities";
+
+              child: Adw.Bin identities_container {};
+            }
+          };
+        };
+      };
+    };
+  };
+}

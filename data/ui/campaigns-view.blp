@@ -1,0 +1,41 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MissiveCampaignsView: Adw.Bin {
+  child: Stack view_stack {
+    StackPage {
+      name: "empty";
+
+      child: Adw.StatusPage {
+        icon-name: "mail-send-symbolic";
+        title: _("No Campaigns");
+        description: _("Create a campaign to send personalized messages.");
+      };
+    }
+
+    StackPage {
+      name: "list";
+
+      child: ScrolledWindow {
+        hscrollbar-policy: never;
+
+        child: Adw.Clamp {
+          maximum-size: 700;
+          margin-top: 24;
+          margin-bottom: 24;
+          margin-start: 12;
+          margin-end: 12;
+
+          child: ListBox campaign_list {
+            selection-mode: none;
+            valign: start;
+
+            styles [
+              "boxed-list",
+            ]
+          };
+        };
+      };
+    }
+  };
+}

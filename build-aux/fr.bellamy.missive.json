@@ -1,0 +1,66 @@
+{
+    "app-id": "fr.bellamy.missive",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "49",
+    "sdk": "org.gnome.Sdk",
+    "command": "missive",
+    "finish-args": [
+        "--share=network",
+        "--socket=wayland",
+        "--socket=fallback-x11",
+        "--device=dri",
+        "--talk-name=org.freedesktop.secrets",
+        "--talk-name=org.freedesktop.portal.Desktop",
+        "--talk-name=org.freedesktop.portal.Documents",
+        "--env=WEBKIT_DISABLE_DMABUF_RENDERER=1"
+    ],
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/man",
+        "/share/doc",
+        "/share/gtk-doc",
+        "/share/man",
+        "/share/pkgconfig",
+        "*.la",
+        "*.a"
+    ],
+    "modules": [
+        {
+            "name": "gmime",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--disable-crypto",
+                "--without-libidn",
+                "--enable-introspection=yes",
+                "--enable-vala=yes",
+                "--disable-gtk-doc",
+                "--disable-static"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gmime/3.2/gmime-3.2.7.tar.xz",
+                    "sha256": "2aea96647a468ba2160a64e17c6dc6afe674ed9ac86070624a3f584c10737d44"
+                }
+            ],
+            "cleanup": [
+                "/bin",
+                "/include",
+                "/lib/pkgconfig",
+                "/share/gir-1.0",
+                "/share/vala"
+            ]
+        },
+        {
+            "name": "missive",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": ".."
+                }
+            ]
+        }
+    ]
+}

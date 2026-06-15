@@ -1,0 +1,605 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: missive\n"
+"Report-Msgid-Bugs-To: https://github.com/benjaminbellamy/missive/issues\n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "_Help"
+msgstr "_Help"
+
+msgid "_Preferences"
+msgstr "_Voorkeuren"
+
+msgid "_About Missive"
+msgstr "_Over Missive"
+
+msgid "Missive"
+msgstr "Missive"
+
+msgid "Mailing Campaigns"
+msgstr "Mailingcampagnes"
+
+msgid "Message Templates"
+msgstr "Berichtsjablonen"
+
+msgid "Address Sheets"
+msgstr "Adresbladen"
+
+msgid "Sender Identities"
+msgstr "Afzenderidentiteiten"
+
+msgid "Campaigns"
+msgstr "Campagnes"
+
+msgid "New"
+msgstr "Nieuw"
+
+msgid "Main Menu"
+msgstr "Hoofdmenu"
+
+msgid "No Identities"
+msgstr "Geen identiteiten"
+
+msgid "Add a sender identity to start sending campaigns."
+msgstr "Voeg een afzenderidentiteit toe om campagnes te versturen."
+
+msgid "Identity"
+msgstr "Identiteit"
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgid "Save"
+msgstr "Opslaan"
+
+msgid "Label"
+msgstr "Label"
+
+msgid "From Name"
+msgstr "Afzendernaam"
+
+msgid "From Email"
+msgstr "Afzenderadres"
+
+msgid "SMTP Server"
+msgstr "SMTP-server"
+
+msgid "Verify Login"
+msgstr "Aanmelding controleren"
+
+msgid "Test the SMTP connection"
+msgstr "SMTP-verbinding testen"
+
+msgid "Host"
+msgstr "Host"
+
+msgid "Port"
+msgstr "Poort"
+
+msgid "Encryption"
+msgstr "Versleuteling"
+
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+msgid "Password"
+msgstr "Wachtwoord"
+
+msgid "Connection"
+msgstr "Verbinding"
+
+msgid "Signature"
+msgstr "Handtekening"
+
+msgid "HTML appended to every message sent from this identity."
+msgstr "HTML die aan elk bericht van deze identiteit wordt toegevoegd."
+
+msgid "No CSV Sheets"
+msgstr "Geen CSV-bladen"
+
+msgid "Import a CSV file of recipients to use in a campaign."
+msgstr "Importeer een CSV-bestand met ontvangers voor een campagne."
+
+msgid "Import CSV"
+msgstr "CSV importeren"
+
+msgid "Import"
+msgstr "Importeren"
+
+msgid "Name"
+msgstr "Naam"
+
+msgid "Recipient Column"
+msgstr "Ontvangerkolom"
+
+msgid "Column holding each recipient’s email address"
+msgstr "Kolom met het e-mailadres van elke ontvanger"
+
+msgid "Detected"
+msgstr "Gedetecteerd"
+
+msgid "Preview"
+msgstr "Voorbeeld"
+
+msgid "Recipient column:"
+msgstr "Ontvangerkolom:"
+
+msgid "No Templates"
+msgstr "Geen sjablonen"
+
+msgid "Create a message template to use in a campaign."
+msgstr "Maak een berichtsjabloon om in een campagne te gebruiken."
+
+msgid "Template"
+msgstr "Sjabloon"
+
+msgid "Subject"
+msgstr "Onderwerp"
+
+msgid "Insert Fields From"
+msgstr "Velden invoegen uit"
+
+msgid "Click a field to insert its {token}"
+msgstr "Klik op een veld om de {token} in te voegen"
+
+msgid "Edit"
+msgstr "Bewerken"
+
+msgid "Bold"
+msgstr "Vet"
+
+msgid "Italic"
+msgstr "Cursief"
+
+msgid "Underline"
+msgstr "Onderstreept"
+
+msgid "Insert Link"
+msgstr "Koppeling invoegen"
+
+msgid "Bulleted List"
+msgstr "Lijst met opsommingstekens"
+
+msgid "Numbered List"
+msgstr "Genummerde lijst"
+
+msgid "Edit source"
+msgstr "Bron bewerken"
+
+msgid "No Campaigns"
+msgstr "Geen campagnes"
+
+msgid "Create a campaign to send personalized messages."
+msgstr "Maak een campagne om gepersonaliseerde berichten te versturen."
+
+msgid "New Campaign"
+msgstr "Nieuwe campagne"
+
+msgid "Create"
+msgstr "Aanmaken"
+
+msgid "Campaign Name"
+msgstr "Campagnenaam"
+
+msgid "Source"
+msgstr "Bron"
+
+msgid "CSV Sheet"
+msgstr "CSV-blad"
+
+msgid "Recipients"
+msgstr "Ontvangers"
+
+msgid "Optional addresses added to every message."
+msgstr "Optionele adressen die aan elk bericht worden toegevoegd."
+
+msgid "Cc"
+msgstr "Cc"
+
+msgid "Bcc"
+msgstr "Bcc"
+
+msgid "Campaign"
+msgstr "Campagne"
+
+msgid "Run"
+msgstr "Starten"
+
+msgid "Continue"
+msgstr "Doorgaan"
+
+msgid "Pause"
+msgstr "Pauzeren"
+
+msgid "Stop"
+msgstr "Stoppen"
+
+msgid "Retry Failed"
+msgstr "Mislukte opnieuw proberen"
+
+msgid "Delete"
+msgstr "Verwijderen"
+
+msgid "Send Test"
+msgstr "Test verzenden"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "Delay Between Messages"
+msgstr "Vertraging tussen berichten"
+
+msgid "Stop on First Error"
+msgstr "Stoppen bij eerste fout"
+
+msgid "Help"
+msgstr "Help"
+
+msgid "Sending a Campaign"
+msgstr "Een campagne verzenden"
+
+msgid "Missive sends one personalized email per recipient through your own SMTP server, at a pace you choose."
+msgstr "Missive verstuurt één gepersonaliseerd bericht per ontvanger via je eigen SMTP-server, in het tempo dat je kiest."
+
+msgid "1. Add a sender identity"
+msgstr "1. Een afzenderidentiteit toevoegen"
+
+msgid "In Sender Identities, click New and enter your SMTP server and login. The Connection row confirms the settings work."
+msgstr "Klik in Afzenderidentiteiten op Nieuw en voer je SMTP-server en login in. De rij Verbinding bevestigt dat de instellingen werken."
+
+msgid "2. Import an address sheet"
+msgstr "2. Een adresblad importeren"
+
+msgid "In Address Sheets, click Import and choose a CSV file, then pick the column that holds the email addresses."
+msgstr "Klik in Adresbladen op Importeren en kies een CSV-bestand, kies daarna de kolom met de e-mailadressen."
+
+msgid "3. Write a message template"
+msgstr "3. Een berichtsjabloon schrijven"
+
+msgid "In Message Templates, click New. Add a subject and body, and use “Insert Fields From” to drop {tokens} that are replaced for each recipient."
+msgstr "Klik in Berichtsjablonen op Nieuw. Voeg een onderwerp en tekst toe en gebruik ‘Velden invoegen uit’ om {tokens} in te voegen die per ontvanger worden vervangen."
+
+msgid "4. Create a mailing campaign"
+msgstr "4. Een mailingcampagne aanmaken"
+
+msgid "In Mailing Campaigns, click New Campaign and choose an identity, address sheet, template and recipient column."
+msgstr "Klik in Mailingcampagnes op Nieuwe campagne en kies een identiteit, een adresblad, een sjabloon en de ontvangerkolom."
+
+msgid "5. Test, then send"
+msgstr "5. Testen, dan verzenden"
+
+msgid "Open the campaign, click Send Test to check it, then Run. Progress is saved, so you can pause, stop and continue at any time."
+msgstr "Open de campagne, klik op Test verzenden om te controleren, dan op Starten. De voortgang wordt bewaard: je kunt op elk moment pauzeren, stoppen en doorgaan."
+
+msgid "Good to Know"
+msgstr "Goed om te weten"
+
+msgid "Placeholders"
+msgstr "Plaatsaanduidingen"
+
+msgid "Write {column_name} in the subject or body to insert a recipient's value. Use {{ and }} for literal braces."
+msgstr "Schrijf {kolomnaam} in het onderwerp of de tekst om de waarde van een ontvanger in te voegen. Gebruik {{ en }} voor letterlijke accolades."
+
+msgid "Privacy"
+msgstr "Privacy"
+
+msgid "Passwords are kept in the system keyring. Nothing is sent anywhere except your SMTP server."
+msgstr "Wachtwoorden worden bewaard in de systeemsleutelbos. Er wordt niets verzonden behalve naar je SMTP-server."
+
+msgid "Run personalized email campaigns by mail merge over SMTP."
+msgstr "Verstuur gepersonaliseerde e-mailcampagnes via mail merge over SMTP."
+
+msgid "translator-credits"
+msgstr "translator-credits"
+
+msgid "General"
+msgstr "Algemeen"
+
+msgid "Language"
+msgstr "Taal"
+
+msgid "Takes effect after restart"
+msgstr "Wordt van kracht na herstart"
+
+msgid "Same as System"
+msgstr "Zoals systeem"
+
+msgid "Campaign Defaults"
+msgstr "Campagnestandaarden"
+
+msgid "These values seed new campaigns and the test send."
+msgstr "Deze waarden vormen de basis voor nieuwe campagnes en de testverzending."
+
+msgid "Seconds to wait after each message"
+msgstr "Aantal seconden wachten na elk bericht"
+
+msgid "Halt a campaign as soon as a message fails"
+msgstr "Een campagne stoppen zodra een bericht mislukt"
+
+msgid "Test Recipient Address"
+msgstr "Test-ontvangeradres"
+
+msgid "New Identity"
+msgstr "Nieuwe identiteit"
+
+msgid "New Template"
+msgstr "Nieuw sjabloon"
+
+#, c-format
+msgid "(unlabeled)"
+msgstr "(zonder label)"
+
+msgid "Duplicate"
+msgstr "Dupliceren"
+
+#, c-format
+msgid "%s (copy)"
+msgstr "%s (kopie)"
+
+msgid "Delete Identity?"
+msgstr "Identiteit verwijderen?"
+
+#, c-format
+msgid "“%s” will be permanently removed."
+msgstr "‘%s’ wordt permanent verwijderd."
+
+msgid "SMTPS (implicit TLS)"
+msgstr "SMTPS (impliciete TLS)"
+
+msgid "STARTTLS"
+msgstr "STARTTLS"
+
+msgid "None (plaintext)"
+msgstr "Geen (platte tekst)"
+
+msgid "Edit Identity"
+msgstr "Identiteit bewerken"
+
+msgid "Enter host, username and password to test"
+msgstr "Voer host, gebruikersnaam en wachtwoord in om te testen"
+
+msgid "Testing…"
+msgstr "Bezig met testen…"
+
+msgid "Connection OK"
+msgstr "Verbinding OK"
+
+#, c-format
+msgid "Failed: %s"
+msgstr "Mislukt: %s"
+
+#, c-format
+msgid "%d columns · %d rows"
+msgstr "%d kolommen · %d rijen"
+
+msgid "Import CSV File"
+msgstr "CSV-bestand importeren"
+
+msgid "CSV Files"
+msgstr "CSV-bestanden"
+
+msgid "Could not read the file."
+msgstr "Kan het bestand niet lezen."
+
+msgid "Imported sheet"
+msgstr "Geïmporteerd blad"
+
+msgid "The file is not valid UTF-8."
+msgstr "Het bestand is geen geldige UTF-8."
+
+msgid "The file is empty or has no header row."
+msgstr "Het bestand is leeg of heeft geen koprij."
+
+msgid "The file has a header but no data rows."
+msgstr "Het bestand heeft een koprij maar geen gegevensrijen."
+
+msgid "The file could not be read as CSV."
+msgstr "Het bestand kon niet als CSV worden gelezen."
+
+msgid "Delete CSV Sheet?"
+msgstr "CSV-blad verwijderen?"
+
+#, c-format
+msgid "%d columns, %d rows"
+msgstr "%d kolommen, %d rijen"
+
+#, c-format
+msgid "Showing first %d of %d rows"
+msgstr "Eerste %d van %d rijen worden getoond"
+
+#, c-format
+msgid "%d rows"
+msgstr "%d rijen"
+
+msgid "Delete Template?"
+msgstr "Sjabloon verwijderen?"
+
+msgid "Edit Template"
+msgstr "Sjabloon bewerken"
+
+msgid "None"
+msgstr "Geen"
+
+msgid "Insert"
+msgstr "Invoegen"
+
+msgid "Running"
+msgstr "Bezig"
+
+msgid "Paused"
+msgstr "Gepauzeerd"
+
+msgid "Stopped"
+msgstr "Gestopt"
+
+msgid "Completed"
+msgstr "Voltooid"
+
+msgid "Draft"
+msgstr "Concept"
+
+msgid "Sent"
+msgstr "Verzonden"
+
+msgid "Sending…"
+msgstr "Verzenden…"
+
+#, c-format
+msgid "Skipped: %s"
+msgstr "Overgeslagen: %s"
+
+msgid "Pending"
+msgstr "In wachtrij"
+
+#, c-format
+msgid "%d / %d sent"
+msgstr "%d / %d verzonden"
+
+msgid "(none)"
+msgstr "(geen)"
+
+msgid "Create an identity, a CSV sheet and a template first."
+msgstr "Maak eerst een identiteit, een CSV-blad en een sjabloon."
+
+msgid "The selected sheet has no columns."
+msgstr "Het geselecteerde blad heeft geen kolommen."
+
+msgid "No address in the recipient column"
+msgstr "Geen adres in de ontvangerkolom"
+
+msgid "Address does not look valid"
+msgstr "Het adres lijkt ongeldig"
+
+#, c-format
+msgid "Campaign created: %d recipients, %d skipped. Unmatched fields: %s"
+msgstr "Campagne aangemaakt: %d ontvangers, %d overgeslagen. Niet-overeenkomende velden: %s"
+
+#, c-format
+msgid "Campaign created: %d recipients, %d skipped"
+msgstr "Campagne aangemaakt: %d ontvangers, %d overgeslagen"
+
+msgid "Could not create the campaign."
+msgstr "Kan de campagne niet aanmaken."
+
+msgid "(deleted)"
+msgstr "(verwijderd)"
+
+#, c-format
+msgid "%d s"
+msgstr "%d s"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nee"
+
+#, c-format
+msgid "%d sent / %d"
+msgstr "%d verzonden / %d"
+
+#, c-format
+msgid "%d failed · %d skipped · %d pending"
+msgstr "%d mislukt · %d overgeslagen · %d in wachtrij"
+
+msgid "(no address)"
+msgstr "(geen adres)"
+
+msgid "Unmatched Fields"
+msgstr "Niet-overeenkomende velden"
+
+#, c-format
+msgid "These fields have no matching column and will appear literally: %s"
+msgstr "Deze velden hebben geen overeenkomende kolom en verschijnen letterlijk: %s"
+
+msgid "Run Anyway"
+msgstr "Toch uitvoeren"
+
+msgid "Another campaign is already running."
+msgstr "Er loopt al een andere campagne."
+
+msgid "Set a test recipient address in Preferences first."
+msgstr "Stel eerst een test-ontvangeradres in bij Voorkeuren."
+
+msgid "The campaign's identity no longer exists."
+msgstr "De identiteit van de campagne bestaat niet meer."
+
+msgid "No password is stored for the identity."
+msgstr "Er is geen wachtwoord opgeslagen voor de identiteit."
+
+msgid "Sending test message…"
+msgstr "Testbericht wordt verzonden…"
+
+#, c-format
+msgid "Test message sent to %s"
+msgstr "Testbericht verzonden naar %s"
+
+#, c-format
+msgid "Test send failed: %s"
+msgstr "Testverzending mislukt: %s"
+
+msgid "Delete Campaign?"
+msgstr "Campagne verwijderen?"
+
+#, c-format
+msgid "“%s” and its recipients will be permanently removed."
+msgstr "‘%s’ en de ontvangers worden permanent verwijderd."
+
+#, c-format
+msgid "Database error: %s"
+msgstr "Databasefout: %s"
+
+msgid "The campaign no longer exists."
+msgstr "De campagne bestaat niet meer."
+
+#, c-format
+msgid "Cannot connect: %s"
+msgstr "Kan geen verbinding maken: %s"
+
+#, c-format
+msgid "Done: %d sent, %d failed, %d skipped"
+msgstr "Klaar: %d verzonden, %d mislukt, %d overgeslagen"
+
+msgid "Mail Merge"
+msgstr "Standaardbrieven"
+
+msgid "Run personalized email campaigns over SMTP"
+msgstr "Gepersonaliseerde e-mailcampagnes versturen via SMTP"
+
+msgid "mail;merge;email;campaign;newsletter;smtp;mailing;"
+msgstr "post;mail merge;e-mail;email;campagne;nieuwsbrief;smtp;mailing;"
+
+msgid "Run personalized email campaigns"
+msgstr "Verstuur gepersonaliseerde e-mailcampagnes"
+
+msgid "Missive sends personalized email campaigns by mail merge over SMTPS. It manages several sender identities, CSV recipient sheets, message templates, and campaigns, sending one personalized message per recipient at a configurable pace."
+msgstr "Missive verstuurt gepersonaliseerde e-mailcampagnes via mail merge over SMTPS. Het beheert meerdere afzenderidentiteiten, CSV-ontvangerslijsten, berichtsjablonen en campagnes, en verstuurt één gepersonaliseerd bericht per ontvanger in een instelbaar tempo."
+
+msgid "Features:"
+msgstr "Functies:"
+
+msgid "Multiple SMTP sender identities with credentials stored in the keyring"
+msgstr "Meerdere SMTP-afzenderidentiteiten met inloggegevens in de sleutelbos"
+
+msgid "Import recipient lists from CSV files"
+msgstr "Ontvangerslijsten importeren uit CSV-bestanden"
+
+msgid "Reusable message templates with placeholder substitution"
+msgstr "Herbruikbare berichtsjablonen met tijdelijke aanduidingen"
+
+msgid "Campaign progress is saved and can be resumed after a restart"
+msgstr "De voortgang van de campagne wordt bewaard en kan na een herstart hervat worden"
+
+msgid "The Missive main window"
+msgstr "Het hoofdvenster van Missive"
+
+msgid "Benjamin Bellamy"
+msgstr "Benjamin Bellamy"
+
+msgid "Initial development release."
+msgstr "Eerste ontwikkelversie."

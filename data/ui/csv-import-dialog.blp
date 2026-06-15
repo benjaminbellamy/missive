@@ -1,0 +1,55 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MissiveCsvImportDialog: Adw.Dialog {
+  title: _("Import CSV");
+  content-width: 480;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      [start]
+      Button cancel_button {
+        label: _("Cancel");
+      }
+
+      [end]
+      Button import_button {
+        label: _("Import");
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      Adw.PreferencesGroup {
+        Adw.EntryRow name_row {
+          title: _("Name");
+        }
+
+        Adw.ComboRow recipient_row {
+          title: _("Recipient Column");
+          subtitle: _("Column holding each recipient’s email address");
+        }
+      }
+
+      Adw.PreferencesGroup {
+        Adw.ActionRow summary_row {
+          title: _("Detected");
+
+          [suffix]
+          Label summary_label {
+            styles [
+              "dim-label",
+            ]
+          }
+        }
+      }
+    };
+  };
+}

@@ -1,0 +1,206 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MissiveTemplateEditor: Adw.Dialog {
+  title: _("Template");
+  content-width: 760;
+  content-height: 720;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      title-widget: Adw.ViewSwitcher {
+        stack: edit_preview_stack;
+        policy: wide;
+      };
+
+      [start]
+      Button cancel_button {
+        label: _("Cancel");
+      }
+
+      [end]
+      Button save_button {
+        label: _("Save");
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Box {
+      orientation: vertical;
+      spacing: 6;
+      margin-top: 12;
+      margin-bottom: 12;
+      margin-start: 12;
+      margin-end: 12;
+
+      Adw.PreferencesGroup {
+        Adw.EntryRow name_row {
+          title: _("Label");
+        }
+
+        Adw.EntryRow subject_row {
+          title: _("Subject");
+        }
+
+        Adw.ComboRow csv_row {
+          title: _("Insert Fields From");
+          subtitle: _("Click a field to insert its {token}");
+        }
+      }
+
+      FlowBox field_box {
+        visible: false;
+        selection-mode: none;
+        homogeneous: false;
+        row-spacing: 4;
+        column-spacing: 4;
+        max-children-per-line: 100;
+        margin-top: 2;
+        margin-bottom: 2;
+      }
+
+      Adw.ViewStack edit_preview_stack {
+        vexpand: true;
+
+        Adw.ViewStackPage {
+          name: "edit";
+          title: _("Edit");
+          icon-name: "document-edit-symbolic";
+
+          child: Box {
+            orientation: vertical;
+            spacing: 6;
+
+            Box {
+              spacing: 2;
+
+              styles [
+                "toolbar",
+              ]
+
+              ToggleButton bold_button {
+                icon-name: "format-text-bold-symbolic";
+                tooltip-text: _("Bold");
+
+                styles [
+                  "flat",
+                ]
+              }
+
+              ToggleButton italic_button {
+                icon-name: "format-text-italic-symbolic";
+                tooltip-text: _("Italic");
+
+                styles [
+                  "flat",
+                ]
+              }
+
+              ToggleButton underline_button {
+                icon-name: "format-text-underline-symbolic";
+                tooltip-text: _("Underline");
+
+                styles [
+                  "flat",
+                ]
+              }
+
+              Button link_button {
+                icon-name: "insert-link-symbolic";
+                tooltip-text: _("Insert Link");
+
+                styles [
+                  "flat",
+                ]
+              }
+
+              Separator {
+                orientation: vertical;
+                margin-start: 4;
+                margin-end: 4;
+              }
+
+              Button bullet_button {
+                icon-name: "view-list-bullet-symbolic";
+                tooltip-text: _("Bulleted List");
+
+                styles [
+                  "flat",
+                ]
+              }
+
+              Button numbered_button {
+                icon-name: "view-list-ordered-symbolic";
+                tooltip-text: _("Numbered List");
+
+                styles [
+                  "flat",
+                ]
+              }
+            }
+
+            ScrolledWindow {
+              vexpand: true;
+
+              styles [
+                "card",
+              ]
+
+              child: TextView body_view {
+                wrap-mode: word_char;
+                top-margin: 8;
+                bottom-margin: 8;
+                left-margin: 8;
+                right-margin: 8;
+              };
+            }
+          };
+        }
+
+        Adw.ViewStackPage {
+          name: "source";
+          title: _("Edit source");
+          icon-name: "text-x-generic-symbolic";
+
+          child: ScrolledWindow {
+            vexpand: true;
+
+            styles [
+              "card",
+            ]
+
+            child: TextView source_view {
+              monospace: true;
+              wrap-mode: word_char;
+              top-margin: 8;
+              bottom-margin: 8;
+              left-margin: 8;
+              right-margin: 8;
+            };
+          };
+        }
+
+        Adw.ViewStackPage {
+          name: "preview";
+          title: _("Preview");
+          icon-name: "view-reveal-symbolic";
+
+          child: Box preview_box {
+            orientation: vertical;
+
+            styles [
+              "card",
+            ]
+          };
+        }
+      }
+    };
+  };
+}

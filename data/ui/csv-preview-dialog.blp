@@ -1,0 +1,44 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MissiveCsvPreviewDialog: Adw.Dialog {
+  title: _("Preview");
+  content-width: 860;
+  content-height: 620;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {}
+
+    [top]
+    ActionBar {
+      [start]
+      Label {
+        label: _("Recipient column:");
+      }
+
+      [start]
+      DropDown recipient_dropdown {
+        valign: center;
+      }
+
+      [end]
+      Label row_count_label {
+        styles [
+          "dim-label",
+        ]
+      }
+    }
+
+    content: ScrolledWindow {
+      child: Grid table_grid {
+        column-spacing: 0;
+        row-spacing: 0;
+        margin-top: 6;
+        margin-bottom: 6;
+        margin-start: 6;
+        margin-end: 6;
+      };
+    };
+  };
+}

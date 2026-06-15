@@ -1,0 +1,128 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MissiveIdentityEditor: Adw.Dialog {
+  title: _("Identity");
+  content-width: 540;
+  content-height: 720;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      [start]
+      Button cancel_button {
+        label: _("Cancel");
+      }
+
+      [end]
+      Button save_button {
+        label: _("Save");
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      Adw.PreferencesGroup {
+        title: _("Identity");
+
+        Adw.EntryRow name_row {
+          title: _("Label");
+        }
+
+        Adw.EntryRow from_name_row {
+          title: _("From Name");
+        }
+
+        Adw.EntryRow from_email_row {
+          title: _("From Email");
+        }
+      }
+
+      Adw.PreferencesGroup {
+        title: _("SMTP Server");
+
+        [header-suffix]
+        Button verify_button {
+          label: _("Verify Login");
+          valign: center;
+          tooltip-text: _("Test the SMTP connection");
+
+          styles [
+            "flat",
+          ]
+        }
+
+        Adw.EntryRow host_row {
+          title: _("Host");
+        }
+
+        Adw.SpinRow port_row {
+          title: _("Port");
+
+          adjustment: Adjustment {
+            lower: 1;
+            upper: 65535;
+            step-increment: 1;
+            value: 465;
+          };
+        }
+
+        Adw.ComboRow encryption_row {
+          title: _("Encryption");
+        }
+
+        Adw.EntryRow username_row {
+          title: _("Username");
+        }
+
+        Adw.PasswordEntryRow password_row {
+          title: _("Password");
+        }
+
+        Adw.ActionRow status_row {
+          title: _("Connection");
+
+          [suffix]
+          Box {
+            spacing: 8;
+            valign: center;
+
+            Spinner status_spinner {}
+
+            Image status_icon {
+              visible: false;
+            }
+          }
+        }
+      }
+
+      Adw.PreferencesGroup {
+        title: _("Signature");
+        description: _("HTML appended to every message sent from this identity.");
+
+        ScrolledWindow {
+          height-request: 150;
+
+          styles [
+            "card",
+          ]
+
+          child: TextView signature_view {
+            monospace: true;
+            top-margin: 8;
+            bottom-margin: 8;
+            left-margin: 8;
+            right-margin: 8;
+            wrap-mode: word_char;
+          };
+        }
+      }
+    };
+  };
+}

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Missive
+GenericName=Mail Merge
+Comment=Run personalized email campaigns over SMTP
+Categories=Office;Email;GTK;
+Keywords=mail;merge;email;campaign;newsletter;smtp;mailing;
+Exec=missive
+Icon=fr.bellamy.missive
+Terminal=false
+Type=Application
+StartupNotify=true

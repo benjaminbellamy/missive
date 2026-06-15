@@ -1,0 +1,41 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MissiveIdentitiesView: Adw.Bin {
+  child: Stack view_stack {
+    StackPage {
+      name: "empty";
+
+      child: Adw.StatusPage {
+        icon-name: "avatar-default-symbolic";
+        title: _("No Identities");
+        description: _("Add a sender identity to start sending campaigns.");
+      };
+    }
+
+    StackPage {
+      name: "list";
+
+      child: ScrolledWindow {
+        hscrollbar-policy: never;
+
+        child: Adw.Clamp {
+          maximum-size: 700;
+          margin-top: 24;
+          margin-bottom: 24;
+          margin-start: 12;
+          margin-end: 12;
+
+          child: ListBox identity_list {
+            selection-mode: none;
+            valign: start;
+
+            styles [
+              "boxed-list",
+            ]
+          };
+        };
+      };
+    }
+  };
+}
