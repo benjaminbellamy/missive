@@ -37,12 +37,13 @@ Missive runs as a sandboxed Flatpak against the GNOME 49 runtime.
 
 ### From a release
 
-Install the prebuilt bundle from the [latest
-release](https://github.com/benjaminbellamy/missive/releases/latest) — it will
-offer to pull the GNOME 49 runtime from Flathub if needed:
+Download the bundle from the [latest
+release](https://github.com/benjaminbellamy/missive/releases/latest) and install
+it (it will offer to pull the GNOME 49 runtime from Flathub if needed):
 
 ```sh
-flatpak install --user https://github.com/benjaminbellamy/missive/releases/download/v0.1.0/missive-0.1.0-x86_64.flatpak
+curl -LO https://github.com/benjaminbellamy/missive/releases/download/v0.1.0/missive-0.1.0-x86_64.flatpak
+flatpak install --user missive-0.1.0-x86_64.flatpak
 flatpak run fr.bellamy.missive
 ```
 
