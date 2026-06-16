@@ -386,11 +386,39 @@ msgstr "CSV-bestanden"
 msgid "Could not read the file."
 msgstr "Kan het bestand niet lezen."
 
+msgid "Western European (ISO-8859-1)"
+msgstr "West-Europees (ISO-8859-1)"
+
+msgid "Western European (ISO-8859-15)"
+msgstr "West-Europees (ISO-8859-15)"
+
+msgid "Western European (Windows-1252)"
+msgstr "West-Europees (Windows-1252)"
+
+msgid "Central European (ISO-8859-2)"
+msgstr "Centraal-Europees (ISO-8859-2)"
+
+msgid "Cyrillic (Windows-1251)"
+msgstr "Cyrillisch (Windows-1251)"
+
+msgid "Greek (ISO-8859-7)"
+msgstr "Grieks (ISO-8859-7)"
+
+msgid "Turkish (ISO-8859-9)"
+msgstr "Turks (ISO-8859-9)"
+
+msgid "Select File Encoding"
+msgstr "Bestandscodering selecteren"
+
+msgid "This file is not valid UTF-8. Choose the encoding it was saved in."
+msgstr "Dit bestand is geen geldige UTF-8. Kies de codering waarin het is opgeslagen."
+
+#, c-format
+msgid "Could not decode the file as %s."
+msgstr "Kan het bestand niet decoderen als %s."
+
 msgid "Imported sheet"
 msgstr "Geïmporteerd blad"
-
-msgid "The file is not valid UTF-8."
-msgstr "Het bestand is geen geldige UTF-8."
 
 msgid "The file is empty or has no header row."
 msgstr "Het bestand is leeg of heeft geen koprij."

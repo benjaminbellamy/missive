@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-16 11:57+0200\n"
+"POT-Creation-Date: 2026-06-16 12:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,8 +78,8 @@ msgstr ""
 
 #: data/ui/identity-editor.blp:17 data/ui/csv-import-dialog.blp:16
 #: data/ui/template-editor.blp:22 data/ui/campaign-dialog.blp:17
-#: src/template-editor.vala:339 src/ui-util.vala:62
-#: src/campaign-detail.vala:225
+#: src/csv-sheets-view.vala:135 src/template-editor.vala:339
+#: src/ui-util.vala:62 src/campaign-detail.vala:225
 msgid "Cancel"
 msgstr ""
 
@@ -157,6 +157,7 @@ msgid "Import CSV"
 msgstr ""
 
 #: data/ui/csv-import-dialog.blp:21 src/window.vala:91
+#: src/csv-sheets-view.vala:136
 msgid "Import"
 msgstr ""
 
@@ -477,7 +478,7 @@ msgstr ""
 msgid "Delete Identity?"
 msgstr ""
 
-#: src/identities-view.vala:108 src/csv-sheets-view.vala:136
+#: src/identities-view.vala:108 src/csv-sheets-view.vala:190
 #: src/templates-view.vala:101
 #, c-format
 msgid "“%s” will be permanently removed."
@@ -533,27 +534,64 @@ msgstr ""
 msgid "Could not read the file."
 msgstr ""
 
-#: src/csv-sheets-view.vala:114
+#: src/csv-sheets-view.vala:115
+msgid "Western European (ISO-8859-1)"
+msgstr ""
+
+#: src/csv-sheets-view.vala:116
+msgid "Western European (ISO-8859-15)"
+msgstr ""
+
+#: src/csv-sheets-view.vala:117
+msgid "Western European (Windows-1252)"
+msgstr ""
+
+#: src/csv-sheets-view.vala:118
+msgid "Central European (ISO-8859-2)"
+msgstr ""
+
+#: src/csv-sheets-view.vala:119
+msgid "Cyrillic (Windows-1251)"
+msgstr ""
+
+#: src/csv-sheets-view.vala:120
+msgid "Greek (ISO-8859-7)"
+msgstr ""
+
+#: src/csv-sheets-view.vala:121
+msgid "Turkish (ISO-8859-9)"
+msgstr ""
+
+#: src/csv-sheets-view.vala:132
+msgid "Select File Encoding"
+msgstr ""
+
+#: src/csv-sheets-view.vala:133
+msgid "This file is not valid UTF-8. Choose the encoding it was saved in."
+msgstr ""
+
+#: src/csv-sheets-view.vala:150
+#, c-format
+msgid "Could not decode the file as %s."
+msgstr ""
+
+#: src/csv-sheets-view.vala:170
 msgid "Imported sheet"
 msgstr ""
 
-#: src/csv-sheets-view.vala:124
-msgid "The file is not valid UTF-8."
-msgstr ""
-
-#: src/csv-sheets-view.vala:126
+#: src/csv-sheets-view.vala:180
 msgid "The file is empty or has no header row."
 msgstr ""
 
-#: src/csv-sheets-view.vala:128
+#: src/csv-sheets-view.vala:182
 msgid "The file has a header but no data rows."
 msgstr ""
 
-#: src/csv-sheets-view.vala:130
+#: src/csv-sheets-view.vala:184
 msgid "The file could not be read as CSV."
 msgstr ""
 
-#: src/csv-sheets-view.vala:135
+#: src/csv-sheets-view.vala:189
 msgid "Delete CSV Sheet?"
 msgstr ""
 

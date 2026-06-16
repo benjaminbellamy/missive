@@ -386,11 +386,39 @@ msgstr "Fichiers CSV"
 msgid "Could not read the file."
 msgstr "Impossible de lire le fichier."
 
+msgid "Western European (ISO-8859-1)"
+msgstr "Européen occidental (ISO-8859-1)"
+
+msgid "Western European (ISO-8859-15)"
+msgstr "Européen occidental (ISO-8859-15)"
+
+msgid "Western European (Windows-1252)"
+msgstr "Européen occidental (Windows-1252)"
+
+msgid "Central European (ISO-8859-2)"
+msgstr "Européen central (ISO-8859-2)"
+
+msgid "Cyrillic (Windows-1251)"
+msgstr "Cyrillique (Windows-1251)"
+
+msgid "Greek (ISO-8859-7)"
+msgstr "Grec (ISO-8859-7)"
+
+msgid "Turkish (ISO-8859-9)"
+msgstr "Turc (ISO-8859-9)"
+
+msgid "Select File Encoding"
+msgstr "Sélectionner l’encodage du fichier"
+
+msgid "This file is not valid UTF-8. Choose the encoding it was saved in."
+msgstr "Ce fichier n’est pas un UTF-8 valide. Choisissez l’encodage utilisé pour l’enregistrer."
+
+#, c-format
+msgid "Could not decode the file as %s."
+msgstr "Impossible de décoder le fichier en %s."
+
 msgid "Imported sheet"
 msgstr "Feuille importée"
-
-msgid "The file is not valid UTF-8."
-msgstr "Le fichier n’est pas en UTF-8 valide."
 
 msgid "The file is empty or has no header row."
 msgstr "Le fichier est vide ou n’a pas de ligne d’en-tête."

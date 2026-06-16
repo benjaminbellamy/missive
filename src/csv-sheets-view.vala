@@ -96,14 +96,70 @@ namespace Missive {
                 return;
             }
 
-            CsvData data;
             try {
-                data = CsvParser.parse ((string) contents);
+                open_import (file, CsvParser.parse ((string) contents));
             } catch (CsvError e) {
-                toast (csv_error_message (e));
-                return;
+                // Not UTF-8: let the user name the encoding and re-decode.
+                if (e is CsvError.NOT_UTF8) {
+                    ask_encoding (file, contents);
+                } else {
+                    toast (csv_error_message (e));
+                }
             }
+        }
 
+        // Offer a list of common single-byte encodings, decode the raw bytes
+        // with the chosen one, and parse the result.
+        private void ask_encoding (File file, uint8[] contents) {
+            string[] labels = {
+                _("Western European (ISO-8859-1)"),
+                _("Western European (ISO-8859-15)"),
+                _("Western European (Windows-1252)"),
+                _("Central European (ISO-8859-2)"),
+                _("Cyrillic (Windows-1251)"),
+                _("Greek (ISO-8859-7)"),
+                _("Turkish (ISO-8859-9)")
+            };
+            string[] charsets = {
+                "ISO-8859-1", "ISO-8859-15", "WINDOWS-1252",
+                "ISO-8859-2", "WINDOWS-1251", "ISO-8859-7", "ISO-8859-9"
+            };
+
+            var dropdown = new Gtk.DropDown (new Gtk.StringList (labels), null) {
+                hexpand = true
+            };
+
+            var dialog = new Adw.AlertDialog (_("Select File Encoding"),
+                _("This file is not valid UTF-8. Choose the encoding it was saved in."));
+            dialog.set_extra_child (dropdown);
+            dialog.add_response ("cancel", _("Cancel"));
+            dialog.add_response ("open", _("Import"));
+            dialog.set_response_appearance ("open", Adw.ResponseAppearance.SUGGESTED);
+            dialog.default_response = "open";
+            dialog.close_response = "cancel";
+            dialog.response.connect ((response) => {
+                if (response != "open") {
+                    return;
+                }
+                var charset = charsets[dropdown.selected];
+                string utf8;
+                try {
+                    utf8 = GLib.convert ((string) contents, contents.length,
+                                         "UTF-8", charset);
+                } catch (ConvertError ce) {
+                    toast (_("Could not decode the file as %s.").printf (charset));
+                    return;
+                }
+                try {
+                    open_import (file, CsvParser.parse (utf8));
+                } catch (CsvError pe) {
+                    toast (csv_error_message (pe));
+                }
+            });
+            dialog.present (get_root () as Gtk.Widget);
+        }
+
+        private void open_import (File file, CsvData data) {
             var dialog = new CsvImportDialog (db, data, derive_name (file),
                                               file.get_basename () ?? "");
             dialog.imported.connect (refresh);
@@ -120,8 +176,6 @@ namespace Missive {
 
         private string csv_error_message (CsvError e) {
             switch (e.code) {
-                case CsvError.NOT_UTF8:
-                    return _("The file is not valid UTF-8.");
                 case CsvError.NO_HEADER:
                     return _("The file is empty or has no header row.");
                 case CsvError.NO_DATA:
