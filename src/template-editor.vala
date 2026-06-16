@@ -65,8 +65,11 @@ namespace Missive {
                 "style", Pango.Style.ITALIC);
             underline_tag = buffer.create_tag (HtmlSerializer.TAG_UNDERLINE,
                 "underline", Pango.Underline.SINGLE);
-            ul_tag = buffer.create_tag (HtmlSerializer.TAG_UL, "left-margin", 28);
-            ol_tag = buffer.create_tag (HtmlSerializer.TAG_OL, "left-margin", 28);
+            // List lines override the paragraph spacing so items stay tight.
+            ul_tag = buffer.create_tag (HtmlSerializer.TAG_UL,
+                "left-margin", 28, "pixels-below-lines", 0);
+            ol_tag = buffer.create_tag (HtmlSerializer.TAG_OL,
+                "left-margin", 28, "pixels-below-lines", 0);
             // Non-editable visual prefix ("• " / "1. ") for list items.
             marker_tag = buffer.create_tag (HtmlSerializer.TAG_MARKER,
                 "editable", false, "foreground", "#9a9996");
