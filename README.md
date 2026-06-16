@@ -11,6 +11,22 @@ message templates and campaigns, and sends one personalized email per
 recipient, one at a time, at a pace you choose — through **your own SMTP
 server**. No telemetry, no third-party services.
 
+## Install
+
+Missive runs as a sandboxed Flatpak against the GNOME 49 runtime. Download and
+install the latest release (it will offer to pull the runtime from Flathub if
+needed):
+
+```sh
+curl -L -o /tmp/missive-1.0.0-x86_64.flatpak https://github.com/benjaminbellamy/missive/releases/download/v1.0.0/missive-1.0.0-x86_64.flatpak && flatpak install --user /tmp/missive-1.0.0-x86_64.flatpak
+```
+
+Run:
+
+```sh
+flatpak run fr.bellamy.missive
+```
+
 ![Missive main window](data/screenshots/main-window.png)
 
 ## Features
@@ -31,23 +47,7 @@ server**. No telemetry, no third-party services.
 - **Send test** to a configurable test address before a real run.
 - Localized in English, French, German, Italian, Spanish and Dutch.
 
-## Install (Flatpak)
-
-Missive runs as a sandboxed Flatpak against the GNOME 49 runtime.
-
-### From a release
-
-Download the bundle from the [latest
-release](https://github.com/benjaminbellamy/missive/releases/latest) and install
-it (it will offer to pull the GNOME 49 runtime from Flathub if needed):
-
-```sh
-curl -LO https://github.com/benjaminbellamy/missive/releases/download/v1.0.0/missive-1.0.0-x86_64.flatpak
-flatpak install --user missive-1.0.0-x86_64.flatpak
-flatpak run fr.bellamy.missive
-```
-
-### Build from source
+## Build from source
 
 **Prerequisites** — `flatpak` and `flatpak-builder`, plus the GNOME 49 runtime
 and SDK:
