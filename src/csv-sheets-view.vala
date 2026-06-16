@@ -96,21 +96,77 @@ namespace Missive {
                 return;
             }
 
+            // UTF-16/UTF-32 files (e.g. some spreadsheet exports) contain NUL
+            // bytes that would truncate the byte string; decode them first.
+            string? decoded = decode_unicode (contents);
+            if (decoded != null) {
+                parse_and_import (file, decoded);
+                return;
+            }
+
+            // Plain UTF-8 (checked on the raw bytes, so a stray NUL can't pass).
+            if (((string) contents).validate (contents.length)) {
+                parse_and_import (file, (string) contents);
+                return;
+            }
+
+            // Otherwise ask which single-byte encoding it was saved in.
+            ask_encoding (file, contents);
+        }
+
+        private void parse_and_import (File file, string text) {
             try {
-                open_import (file, CsvParser.parse ((string) contents));
+                open_import (file, CsvParser.parse (text));
             } catch (CsvError e) {
-                // Not UTF-8: let the user name the encoding and re-decode.
-                if (e is CsvError.NOT_UTF8) {
-                    ask_encoding (file, contents);
-                } else {
-                    toast (csv_error_message (e));
+                toast (csv_error_message (e));
+            }
+        }
+
+        // Decode a UTF-16/UTF-32 file to UTF-8, or return null when the bytes
+        // are not Unicode-with-NULs. Endianness comes from a BOM when present,
+        // otherwise from which half of each byte pair tends to be zero.
+        private static string? decode_unicode (uint8[] c) {
+            string? from = null;
+            if (c.length >= 4 && c[0] == 0xFF && c[1] == 0xFE
+                && c[2] == 0x00 && c[3] == 0x00) {
+                from = "UTF-32LE";
+            } else if (c.length >= 4 && c[0] == 0x00 && c[1] == 0x00
+                && c[2] == 0xFE && c[3] == 0xFF) {
+                from = "UTF-32BE";
+            } else if (c.length >= 2 && c[0] == 0xFF && c[1] == 0xFE) {
+                from = "UTF-16LE";
+            } else if (c.length >= 2 && c[0] == 0xFE && c[1] == 0xFF) {
+                from = "UTF-16BE";
+            } else {
+                // BOM-less UTF-16: only when NULs are frequent enough to be the
+                // padding bytes of two-byte code units, not stray bytes.
+                int even = 0, odd = 0;
+                int sample = int.min (c.length, 4096);
+                for (int i = 0; i < sample; i++) {
+                    if (c[i] == 0x00) {
+                        if (i % 2 == 0) {
+                            even++;
+                        } else {
+                            odd++;
+                        }
+                    }
                 }
+                if (even + odd <= sample / 4) {
+                    return null;
+                }
+                from = odd >= even ? "UTF-16LE" : "UTF-16BE";
+            }
+            try {
+                return GLib.convert ((string) c, c.length, "UTF-8", from);
+            } catch (ConvertError e) {
+                return null;
             }
         }
 
         // Offer a list of common single-byte encodings, decode the raw bytes
-        // with the chosen one, and parse the result.
-        private void ask_encoding (File file, uint8[] contents) {
+        // with the chosen one, and parse the result. Takes ownership of the
+        // bytes so they stay alive until the (deferred) dialog response fires.
+        private void ask_encoding (File file, owned uint8[] contents) {
             string[] labels = {
                 _("Western European (ISO-8859-1)"),
                 _("Western European (ISO-8859-15)"),
@@ -150,11 +206,7 @@ namespace Missive {
                     toast (_("Could not decode the file as %s.").printf (charset));
                     return;
                 }
-                try {
-                    open_import (file, CsvParser.parse (utf8));
-                } catch (CsvError pe) {
-                    toast (csv_error_message (pe));
-                }
+                parse_and_import (file, utf8);
             });
             dialog.present (get_root () as Gtk.Widget);
         }
