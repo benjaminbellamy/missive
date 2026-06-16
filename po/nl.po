@@ -324,6 +324,12 @@ msgstr "Een campagne stoppen zodra een bericht mislukt"
 msgid "Test Recipient Address"
 msgstr "Test-ontvangeradres"
 
+msgid "Default Cc"
+msgstr "Standaard-Cc"
+
+msgid "Default Bcc"
+msgstr "Standaard-Bcc"
+
 msgid "New Identity"
 msgstr "Nieuwe identiteit"
 

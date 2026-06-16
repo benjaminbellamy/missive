@@ -48,6 +48,10 @@ namespace Missive {
             sheet_row.notify["selected"].connect (on_sheet_changed);
             on_sheet_changed ();
 
+            // Pre-fill Cc/Bcc with the global defaults.
+            cc_row.text = settings.get_string ("default-cc");
+            bcc_row.text = settings.get_string ("default-bcc");
+
             cancel_button.clicked.connect (() => close ());
             create_button.clicked.connect (on_create);
         }

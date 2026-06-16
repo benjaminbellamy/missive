@@ -324,6 +324,12 @@ msgstr "Arrêter une campagne dès qu’un message échoue"
 msgid "Test Recipient Address"
 msgstr "Adresse du destinataire de test"
 
+msgid "Default Cc"
+msgstr "Cc par défaut"
+
+msgid "Default Bcc"
+msgstr "Cci par défaut"
+
 msgid "New Identity"
 msgstr "Nouvelle identité"
 

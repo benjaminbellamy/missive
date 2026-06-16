@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-16 12:21+0200\n"
+"POT-Creation-Date: 2026-06-16 12:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -448,6 +448,14 @@ msgstr ""
 msgid "Test Recipient Address"
 msgstr ""
 
+#: src/application.vala:165
+msgid "Default Cc"
+msgstr ""
+
+#: src/application.vala:170
+msgid "Default Bcc"
+msgstr ""
+
 #: src/window.vala:83 src/identity-editor.vala:53
 msgid "New Identity"
 msgstr ""
@@ -698,37 +706,37 @@ msgstr ""
 msgid "“%s” and its recipients will be permanently removed."
 msgstr ""
 
-#: src/campaign-dialog.vala:57 src/campaign-dialog.vala:87
+#: src/campaign-dialog.vala:61 src/campaign-dialog.vala:91
 msgid "(none)"
 msgstr ""
 
-#: src/campaign-dialog.vala:103
+#: src/campaign-dialog.vala:107
 msgid "Create an identity, a CSV sheet and a template first."
 msgstr ""
 
-#: src/campaign-dialog.vala:119
+#: src/campaign-dialog.vala:123
 msgid "The selected sheet has no columns."
 msgstr ""
 
-#: src/campaign-dialog.vala:155
+#: src/campaign-dialog.vala:159
 msgid "No address in the recipient column"
 msgstr ""
 
-#: src/campaign-dialog.vala:160
+#: src/campaign-dialog.vala:164
 msgid "Address does not look valid"
-msgstr ""
-
-#: src/campaign-dialog.vala:172
-#, c-format
-msgid "Campaign created: %d recipients, %d skipped. Unmatched fields: %s"
 msgstr ""
 
 #: src/campaign-dialog.vala:176
 #, c-format
+msgid "Campaign created: %d recipients, %d skipped. Unmatched fields: %s"
+msgstr ""
+
+#: src/campaign-dialog.vala:180
+#, c-format
 msgid "Campaign created: %d recipients, %d skipped"
 msgstr ""
 
-#: src/campaign-dialog.vala:181
+#: src/campaign-dialog.vala:185
 msgid "Could not create the campaign."
 msgstr ""
 

@@ -324,6 +324,12 @@ msgstr "Eine Kampagne anhalten, sobald eine Nachricht fehlschlägt"
 msgid "Test Recipient Address"
 msgstr "Test-Empfängeradresse"
 
+msgid "Default Cc"
+msgstr "Standard-Cc"
+
+msgid "Default Bcc"
+msgstr "Standard-Bcc"
+
 msgid "New Identity"
 msgstr "Neue Identität"
 

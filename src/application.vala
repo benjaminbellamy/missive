@@ -161,9 +161,21 @@ namespace Missive {
             settings.bind ("test-recipient", test, "text",
                            SettingsBindFlags.DEFAULT);
 
+            var cc = new Adw.EntryRow () {
+                title = _("Default Cc")
+            };
+            settings.bind ("default-cc", cc, "text", SettingsBindFlags.DEFAULT);
+
+            var bcc = new Adw.EntryRow () {
+                title = _("Default Bcc")
+            };
+            settings.bind ("default-bcc", bcc, "text", SettingsBindFlags.DEFAULT);
+
             group.add (delay);
             group.add (stop);
             group.add (test);
+            group.add (cc);
+            group.add (bcc);
             page.add (group);
             dialog.add (page);
             dialog.present (active_window);

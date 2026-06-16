@@ -324,6 +324,12 @@ msgstr "Halt a campaign as soon as a message fails"
 msgid "Test Recipient Address"
 msgstr "Test Recipient Address"
 
+msgid "Default Cc"
+msgstr "Default Cc"
+
+msgid "Default Bcc"
+msgstr "Default Bcc"
+
 msgid "New Identity"
 msgstr "New Identity"
 

@@ -22,5 +22,15 @@
       <summary>Test recipient address</summary>
       <description>The email address used by the Send test action.</description>
     </key>
+    <key name="default-cc" type="s">
+      <default>''</default>
+      <summary>Default Cc addresses</summary>
+      <description>Comma-separated Cc addresses pre-filled when creating a new campaign.</description>
+    </key>
+    <key name="default-bcc" type="s">
+      <default>''</default>
+      <summary>Default Bcc addresses</summary>
+      <description>Comma-separated Bcc addresses pre-filled when creating a new campaign.</description>
+    </key>
   </schema>
 </schemalist>

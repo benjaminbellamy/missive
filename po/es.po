@@ -324,6 +324,12 @@ msgstr "Detener una campaña en cuanto falle un mensaje"
 msgid "Test Recipient Address"
 msgstr "Dirección de destinatario de prueba"
 
+msgid "Default Cc"
+msgstr "Cc predeterminado"
+
+msgid "Default Bcc"
+msgstr "Cco predeterminado"
+
 msgid "New Identity"
 msgstr "Nueva identidad"
 
