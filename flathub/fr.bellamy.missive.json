@@ -10,8 +10,7 @@
         "--socket=wayland",
         "--socket=fallback-x11",
         "--device=dri",
-        "--talk-name=org.freedesktop.secrets",
-        "--env=WEBKIT_DISABLE_DMABUF_RENDERER=1"
+        "--talk-name=org.freedesktop.secrets"
     ],
     "cleanup": [
         "/include",
@@ -56,8 +55,10 @@
             "buildsystem": "meson",
             "sources": [
                 {
-                    "type": "dir",
-                    "path": ".."
+                    "type": "git",
+                    "url": "https://github.com/benjaminbellamy/missive.git",
+                    "tag": "v0.1.0",
+                    "commit": "ab1094fec607b4df1bb51a35e7d3dc3e0a097b6f"
                 }
             ]
         }
