@@ -57,8 +57,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/benjaminbellamy/missive.git",
-                    "tag": "v0.1.0",
-                    "commit": "ab1094fec607b4df1bb51a35e7d3dc3e0a097b6f"
+                    "tag": "v1.0.0",
+                    "commit": "eb1517b538814362e4b2c6588211891fe4a4c86d"
                 }
             ]
         }
