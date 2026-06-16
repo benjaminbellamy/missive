@@ -42,8 +42,8 @@ release](https://github.com/benjaminbellamy/missive/releases/latest) and install
 it (it will offer to pull the GNOME 49 runtime from Flathub if needed):
 
 ```sh
-curl -LO https://github.com/benjaminbellamy/missive/releases/download/v0.1.0/missive-0.1.0-x86_64.flatpak
-flatpak install --user missive-0.1.0-x86_64.flatpak
+curl -LO https://github.com/benjaminbellamy/missive/releases/download/v1.0.0/missive-1.0.0-x86_64.flatpak
+flatpak install --user missive-1.0.0-x86_64.flatpak
 flatpak run fr.bellamy.missive
 ```
 

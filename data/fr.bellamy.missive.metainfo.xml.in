@@ -42,6 +42,19 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.0.0" date="2026-06-16">
+      <description>
+        <p>First stable release.</p>
+        <ul>
+          <li>Manage sender identities, address sheets, message templates and mailing campaigns</li>
+          <li>Personalized mail merge over SMTP with per-recipient progress and resume after restart</li>
+          <li>Rich-text template editor with live preview and one-click field insertion</li>
+          <li>Import CSV address sheets, including non-UTF-8 and UTF-16 files</li>
+          <li>Default Cc and Bcc for new campaigns</li>
+          <li>Available in English, French, German, Italian, Spanish and Dutch</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.1.0" date="2026-06-15">
       <description>
         <p>Initial development release.</p>
