@@ -505,9 +505,9 @@ namespace Missive {
             update_spacing ();
         }
 
-        // Give each line a blank line below it, except when the next line is a
-        // list item: that keeps list items tight, with no gap before a list and
-        // exactly one after it. Cheap enough to run on every edit.
+        // Give each line a blank line below it, except between two consecutive
+        // list items: that keeps items tight while still leaving one blank line
+        // before a list and one after it. Cheap enough to run on every edit.
         private void update_spacing () {
             int lines = buffer.get_line_count ();
             for (int ln = 0; ln < lines; ln++) {
@@ -518,13 +518,14 @@ namespace Missive {
                 if (!le.forward_line ()) {
                     buffer.get_end_iter (out le);
                 }
+                bool is_list = ls.has_tag (ul_tag) || ls.has_tag (ol_tag);
                 bool next_is_list = false;
                 if (ln + 1 < lines) {
                     Gtk.TextIter ns;
                     buffer.get_iter_at_line (out ns, ln + 1);
                     next_is_list = ns.has_tag (ul_tag) || ns.has_tag (ol_tag);
                 }
-                if (next_is_list) {
+                if (is_list && next_is_list) {
                     buffer.remove_tag (spaced_tag, ls, le);
                 } else {
                     buffer.apply_tag (spaced_tag, ls, le);
