@@ -75,8 +75,35 @@ namespace Missive {
             duplicate.clicked.connect (() => duplicate_campaign (campaign));
             row.add_suffix (duplicate);
 
+            // Deletable only when not actively running/paused.
+            if (campaign.status == CAMPAIGN_DRAFT || campaign.status == CAMPAIGN_STOPPED
+                || campaign.status == CAMPAIGN_COMPLETED) {
+                var delete = new Gtk.Button.from_icon_name ("user-trash-symbolic") {
+                    valign = Gtk.Align.CENTER,
+                    tooltip_text = _("Delete")
+                };
+                delete.add_css_class ("flat");
+                delete.clicked.connect (() => confirm_delete (campaign));
+                row.add_suffix (delete);
+            }
+
             row.activated.connect (() => open_detail (campaign));
             return row;
+        }
+
+        private void confirm_delete (Campaign campaign) {
+            Ui.confirm_delete (this, _("Delete Campaign?"),
+                _("“%s” and its recipients will be permanently removed.").printf (
+                    campaign.name),
+                () => {
+                    try {
+                        db.delete_campaign (campaign.id);
+                    } catch (DatabaseError e) {
+                        warning ("Could not delete campaign: %s", e.message);
+                        return;
+                    }
+                    refresh ();
+                });
         }
 
         // Duplicate a campaign as a fresh draft: copy the snapshot and the
