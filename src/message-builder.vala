@@ -24,6 +24,13 @@ namespace Missive {
             }
             string plain = HtmlSerializer.html_to_plain (full_html);
 
+            // Webmail clients reset <p> margins (and strip <head>/<style>), so
+            // paragraphs render with no gap. Force spacing with an inline style
+            // on each paragraph, which survives. Our serializer always emits a
+            // bare "<p>" and substituted values are HTML-escaped, so this only
+            // matches structural paragraphs.
+            string html = full_html.replace ("<p>", "<p style=\"margin:0 0 1em 0;\">");
+
             var message = new GMime.Message (true);
             message.add_mailbox (GMime.AddressType.FROM,
                                  identity.from_name, identity.from_email);
@@ -47,7 +54,7 @@ namespace Missive {
             // text/plain first, text/html last (preferred alternative).
             var alternative = new GMime.Multipart.with_subtype ("alternative");
             alternative.add (make_utf8_part ("plain", plain));
-            alternative.add (make_utf8_part ("html", full_html));
+            alternative.add (make_utf8_part ("html", html));
             message.set_mime_part (alternative);
 
             return message;
