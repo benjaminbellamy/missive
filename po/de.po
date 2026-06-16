@@ -150,17 +150,17 @@ msgstr "Auf ein Feld klicken, um sein {Token} einzufügen"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-msgid "Bold"
-msgstr "Fett"
+msgid "Bold (Ctrl+B)"
+msgstr "Fett (Strg+B)"
 
-msgid "Italic"
-msgstr "Kursiv"
+msgid "Italic (Ctrl+I)"
+msgstr "Kursiv (Strg+I)"
 
-msgid "Underline"
-msgstr "Unterstrichen"
+msgid "Underline (Ctrl+U)"
+msgstr "Unterstrichen (Strg+U)"
 
-msgid "Insert Link"
-msgstr "Link einfügen"
+msgid "Insert Link (Ctrl+K)"
+msgstr "Link einfügen (Strg+K)"
 
 msgid "Bulleted List"
 msgstr "Aufzählungsliste"
@@ -425,6 +425,9 @@ msgstr "Vorlage bearbeiten"
 msgid "None"
 msgstr "Keine"
 
+msgid "Insert Link"
+msgstr "Link einfügen"
+
 msgid "Insert"
 msgstr "Einfügen"
 
@@ -442,6 +445,10 @@ msgstr "Abgeschlossen"
 
 msgid "Draft"
 msgstr "Entwurf"
+
+#, c-format
+msgid "Sent · %s"
+msgstr "Gesendet · %s"
 
 msgid "Sent"
 msgstr "Gesendet"

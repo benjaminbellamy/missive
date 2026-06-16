@@ -111,6 +111,24 @@ namespace Missive {
                     buffer.insert_at_cursor (HtmlSerializer.soft_break (), -1);
                     return true;
                 }
+                if ((state & Gdk.ModifierType.CONTROL_MASK) != 0) {
+                    switch (Gdk.keyval_to_lower (keyval)) {
+                        case Gdk.Key.b:
+                            bold_button.active = !bold_button.active;
+                            return true;
+                        case Gdk.Key.i:
+                            italic_button.active = !italic_button.active;
+                            return true;
+                        case Gdk.Key.u:
+                            underline_button.active = !underline_button.active;
+                            return true;
+                        case Gdk.Key.k:
+                            on_link ();
+                            return true;
+                        default:
+                            break;
+                    }
+                }
                 return false;
             });
             body_view.add_controller (keys);

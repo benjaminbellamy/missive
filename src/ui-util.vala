@@ -34,7 +34,12 @@ namespace Missive {
 
         public string recipient_status_text (CampaignRecipient r) {
             switch (r.status) {
-                case RECIPIENT_SENT: return _("Sent");
+                case RECIPIENT_SENT:
+                    if (r.sent_at > 0) {
+                        var when = new DateTime.from_unix_local (r.sent_at);
+                        return _("Sent · %s").printf (when.format ("%x %H:%M"));
+                    }
+                    return _("Sent");
                 case RECIPIENT_SENDING: return _("Sending…");
                 case RECIPIENT_FAILED: return _("Failed: %s").printf (r.error_text);
                 case RECIPIENT_SKIPPED: return _("Skipped: %s").printf (r.error_text);

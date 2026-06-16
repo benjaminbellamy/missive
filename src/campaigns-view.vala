@@ -67,8 +67,55 @@ namespace Missive {
             Ui.apply_status_badge (badge, campaign.status);
             row.add_suffix (badge);
 
+            var duplicate = new Gtk.Button.from_icon_name ("edit-copy-symbolic") {
+                valign = Gtk.Align.CENTER,
+                tooltip_text = _("Duplicate")
+            };
+            duplicate.add_css_class ("flat");
+            duplicate.clicked.connect (() => duplicate_campaign (campaign));
+            row.add_suffix (duplicate);
+
             row.activated.connect (() => open_detail (campaign));
             return row;
+        }
+
+        // Duplicate a campaign as a fresh draft: copy the snapshot and the
+        // recipients, resetting send progress (skipped rows stay skipped).
+        private void duplicate_campaign (Campaign campaign) {
+            var now = new DateTime.now_utc ().to_unix ();
+            var copy = new Campaign () {
+                name = _("%s (copy)").printf (campaign.name),
+                status = CAMPAIGN_DRAFT,
+                identity_id = campaign.identity_id,
+                csv_sheet_id = campaign.csv_sheet_id,
+                recipient_column = campaign.recipient_column,
+                cc = campaign.cc,
+                bcc = campaign.bcc,
+                subject_snapshot = campaign.subject_snapshot,
+                body_html_snapshot = campaign.body_html_snapshot,
+                delay_seconds = campaign.delay_seconds,
+                stop_on_error = campaign.stop_on_error,
+                created_at = now
+            };
+            try {
+                db.insert_campaign (copy);
+                CampaignRecipient[] recipients = {};
+                foreach (var r in db.recipients_for_campaign (campaign.id)) {
+                    bool skipped = r.status == RECIPIENT_SKIPPED;
+                    recipients += new CampaignRecipient () {
+                        idx = r.idx,
+                        to_address = r.to_address,
+                        row_data_json = r.row_data_json,
+                        status = skipped ? RECIPIENT_SKIPPED : RECIPIENT_PENDING,
+                        error_text = skipped ? r.error_text : ""
+                    };
+                }
+                db.insert_recipients (copy.id, recipients);
+            } catch (DatabaseError e) {
+                warning ("Could not duplicate campaign: %s", e.message);
+                return;
+            }
+            refresh ();
         }
 
         public void new_campaign () {

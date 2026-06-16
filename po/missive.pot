@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-16 00:40+0200\n"
+"POT-Creation-Date: 2026-06-16 11:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,7 @@ msgstr ""
 
 #: data/ui/identity-editor.blp:17 data/ui/csv-import-dialog.blp:16
 #: data/ui/template-editor.blp:22 data/ui/campaign-dialog.blp:17
-#: src/template-editor.vala:304 src/ui-util.vala:57
+#: src/template-editor.vala:322 src/ui-util.vala:62
 #: src/campaign-detail.vala:225
 msgid "Cancel"
 msgstr ""
@@ -176,7 +176,7 @@ msgstr ""
 msgid "Detected"
 msgstr ""
 
-#: data/ui/csv-preview-dialog.blp:5 data/ui/template-editor.blp:192
+#: data/ui/csv-preview-dialog.blp:5 data/ui/template-editor.blp:193
 msgid "Preview"
 msgstr ""
 
@@ -213,19 +213,19 @@ msgid "Edit"
 msgstr ""
 
 #: data/ui/template-editor.blp:90
-msgid "Bold"
+msgid "Bold (Ctrl+B)"
 msgstr ""
 
 #: data/ui/template-editor.blp:99
-msgid "Italic"
+msgid "Italic (Ctrl+I)"
 msgstr ""
 
 #: data/ui/template-editor.blp:108
-msgid "Underline"
+msgid "Underline (Ctrl+U)"
 msgstr ""
 
-#: data/ui/template-editor.blp:117 src/template-editor.vala:302
-msgid "Insert Link"
+#: data/ui/template-editor.blp:117
+msgid "Insert Link (Ctrl+K)"
 msgstr ""
 
 #: data/ui/template-editor.blp:132
@@ -236,7 +236,7 @@ msgstr ""
 msgid "Numbered List"
 msgstr ""
 
-#: data/ui/template-editor.blp:169
+#: data/ui/template-editor.blp:170
 msgid "Edit source"
 msgstr ""
 
@@ -309,7 +309,7 @@ msgid "Retry Failed"
 msgstr ""
 
 #: data/ui/campaign-detail.blp:48 src/identities-view.vala:56
-#: src/csv-sheets-view.vala:50 src/templates-view.vala:56 src/ui-util.vala:58
+#: src/csv-sheets-view.vala:50 src/templates-view.vala:56 src/ui-util.vala:63
 msgid "Delete"
 msgstr ""
 
@@ -455,16 +455,18 @@ msgstr ""
 
 #: src/identities-view.vala:42 src/identities-view.vala:109
 #: src/templates-view.vala:42 src/templates-view.vala:102
-#: src/template-editor.vala:131
+#: src/template-editor.vala:149
 #, c-format
 msgid "(unlabeled)"
 msgstr ""
 
 #: src/identities-view.vala:49 src/templates-view.vala:49
+#: src/campaigns-view.vala:72
 msgid "Duplicate"
 msgstr ""
 
 #: src/identities-view.vala:83 src/templates-view.vala:84
+#: src/campaigns-view.vala:87
 #, c-format
 msgid "%s (copy)"
 msgstr ""
@@ -507,7 +509,7 @@ msgstr ""
 msgid "Connection OK"
 msgstr ""
 
-#: src/identity-editor.vala:232 src/ui-util.vala:39
+#: src/identity-editor.vala:232 src/ui-util.vala:44
 #, c-format
 msgid "Failed: %s"
 msgstr ""
@@ -576,11 +578,15 @@ msgstr ""
 msgid "Edit Template"
 msgstr ""
 
-#: src/template-editor.vala:129
+#: src/template-editor.vala:147
 msgid "None"
 msgstr ""
 
-#: src/template-editor.vala:305
+#: src/template-editor.vala:320
+msgid "Insert Link"
+msgstr ""
+
+#: src/template-editor.vala:323
 msgid "Insert"
 msgstr ""
 
@@ -604,20 +610,25 @@ msgstr ""
 msgid "Draft"
 msgstr ""
 
-#: src/ui-util.vala:37
+#: src/ui-util.vala:40
+#, c-format
+msgid "Sent · %s"
+msgstr ""
+
+#: src/ui-util.vala:42
 msgid "Sent"
 msgstr ""
 
-#: src/ui-util.vala:38
+#: src/ui-util.vala:43
 msgid "Sending…"
 msgstr ""
 
-#: src/ui-util.vala:40
+#: src/ui-util.vala:45
 #, c-format
 msgid "Skipped: %s"
 msgstr ""
 
-#: src/ui-util.vala:41
+#: src/ui-util.vala:46
 msgid "Pending"
 msgstr ""
 

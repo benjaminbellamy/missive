@@ -150,17 +150,17 @@ msgstr "Click a field to insert its {token}"
 msgid "Edit"
 msgstr "Edit"
 
-msgid "Bold"
-msgstr "Bold"
+msgid "Bold (Ctrl+B)"
+msgstr "Bold (Ctrl+B)"
 
-msgid "Italic"
-msgstr "Italic"
+msgid "Italic (Ctrl+I)"
+msgstr "Italic (Ctrl+I)"
 
-msgid "Underline"
-msgstr "Underline"
+msgid "Underline (Ctrl+U)"
+msgstr "Underline (Ctrl+U)"
 
-msgid "Insert Link"
-msgstr "Insert Link"
+msgid "Insert Link (Ctrl+K)"
+msgstr "Insert Link (Ctrl+K)"
 
 msgid "Bulleted List"
 msgstr "Bulleted List"
@@ -425,6 +425,9 @@ msgstr "Edit Template"
 msgid "None"
 msgstr "None"
 
+msgid "Insert Link"
+msgstr "Insert Link"
+
 msgid "Insert"
 msgstr "Insert"
 
@@ -442,6 +445,10 @@ msgstr "Completed"
 
 msgid "Draft"
 msgstr "Draft"
+
+#, c-format
+msgid "Sent · %s"
+msgstr "Sent · %s"
 
 msgid "Sent"
 msgstr "Sent"

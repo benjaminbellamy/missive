@@ -87,7 +87,7 @@ template $MissiveTemplateEditor: Adw.Dialog {
 
               ToggleButton bold_button {
                 icon-name: "format-text-bold-symbolic";
-                tooltip-text: _("Bold");
+                tooltip-text: _("Bold (Ctrl+B)");
 
                 styles [
                   "flat",
@@ -96,7 +96,7 @@ template $MissiveTemplateEditor: Adw.Dialog {
 
               ToggleButton italic_button {
                 icon-name: "format-text-italic-symbolic";
-                tooltip-text: _("Italic");
+                tooltip-text: _("Italic (Ctrl+I)");
 
                 styles [
                   "flat",
@@ -105,7 +105,7 @@ template $MissiveTemplateEditor: Adw.Dialog {
 
               ToggleButton underline_button {
                 icon-name: "format-text-underline-symbolic";
-                tooltip-text: _("Underline");
+                tooltip-text: _("Underline (Ctrl+U)");
 
                 styles [
                   "flat",
@@ -114,7 +114,7 @@ template $MissiveTemplateEditor: Adw.Dialog {
 
               Button link_button {
                 icon-name: "insert-link-symbolic";
-                tooltip-text: _("Insert Link");
+                tooltip-text: _("Insert Link (Ctrl+K)");
 
                 styles [
                   "flat",
@@ -159,6 +159,7 @@ template $MissiveTemplateEditor: Adw.Dialog {
                 bottom-margin: 8;
                 left-margin: 8;
                 right-margin: 8;
+                pixels-below-lines: 12;
               };
             }
           };

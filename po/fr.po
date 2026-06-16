@@ -150,17 +150,17 @@ msgstr "Cliquez sur un champ pour insérer son {token}"
 msgid "Edit"
 msgstr "Modifier"
 
-msgid "Bold"
-msgstr "Gras"
+msgid "Bold (Ctrl+B)"
+msgstr "Gras (Ctrl+B)"
 
-msgid "Italic"
-msgstr "Italique"
+msgid "Italic (Ctrl+I)"
+msgstr "Italique (Ctrl+I)"
 
-msgid "Underline"
-msgstr "Souligné"
+msgid "Underline (Ctrl+U)"
+msgstr "Souligné (Ctrl+U)"
 
-msgid "Insert Link"
-msgstr "Insérer un lien"
+msgid "Insert Link (Ctrl+K)"
+msgstr "Insérer un lien (Ctrl+K)"
 
 msgid "Bulleted List"
 msgstr "Liste à puces"
@@ -425,6 +425,9 @@ msgstr "Modifier le modèle"
 msgid "None"
 msgstr "Aucun"
 
+msgid "Insert Link"
+msgstr "Insérer un lien"
+
 msgid "Insert"
 msgstr "Insérer"
 
@@ -442,6 +445,10 @@ msgstr "Terminée"
 
 msgid "Draft"
 msgstr "Brouillon"
+
+#, c-format
+msgid "Sent · %s"
+msgstr "Envoyé · %s"
 
 msgid "Sent"
 msgstr "Envoyé"

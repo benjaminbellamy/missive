@@ -150,17 +150,17 @@ msgstr "Klik op een veld om de {token} in te voegen"
 msgid "Edit"
 msgstr "Bewerken"
 
-msgid "Bold"
-msgstr "Vet"
+msgid "Bold (Ctrl+B)"
+msgstr "Vet (Ctrl+B)"
 
-msgid "Italic"
-msgstr "Cursief"
+msgid "Italic (Ctrl+I)"
+msgstr "Cursief (Ctrl+I)"
 
-msgid "Underline"
-msgstr "Onderstreept"
+msgid "Underline (Ctrl+U)"
+msgstr "Onderstreept (Ctrl+U)"
 
-msgid "Insert Link"
-msgstr "Koppeling invoegen"
+msgid "Insert Link (Ctrl+K)"
+msgstr "Koppeling invoegen (Ctrl+K)"
 
 msgid "Bulleted List"
 msgstr "Lijst met opsommingstekens"
@@ -425,6 +425,9 @@ msgstr "Sjabloon bewerken"
 msgid "None"
 msgstr "Geen"
 
+msgid "Insert Link"
+msgstr "Koppeling invoegen"
+
 msgid "Insert"
 msgstr "Invoegen"
 
@@ -442,6 +445,10 @@ msgstr "Voltooid"
 
 msgid "Draft"
 msgstr "Concept"
+
+#, c-format
+msgid "Sent · %s"
+msgstr "Verzonden · %s"
 
 msgid "Sent"
 msgstr "Verzonden"
