@@ -37,6 +37,7 @@ namespace Missive {
         private Gtk.TextTag ul_tag;
         private Gtk.TextTag ol_tag;
         private Gtk.TextTag marker_tag;
+        private Gtk.TextTag spaced_tag;
         private HashTable<unowned Gtk.TextTag, string> links;
         private WebKit.WebView web_view;
 
@@ -65,11 +66,12 @@ namespace Missive {
                 "style", Pango.Style.ITALIC);
             underline_tag = buffer.create_tag (HtmlSerializer.TAG_UNDERLINE,
                 "underline", Pango.Underline.SINGLE);
-            // List lines override the paragraph spacing so items stay tight.
-            ul_tag = buffer.create_tag (HtmlSerializer.TAG_UL,
-                "left-margin", 28, "pixels-below-lines", 0);
-            ol_tag = buffer.create_tag (HtmlSerializer.TAG_OL,
-                "left-margin", 28, "pixels-below-lines", 0);
+            ul_tag = buffer.create_tag (HtmlSerializer.TAG_UL, "left-margin", 28);
+            ol_tag = buffer.create_tag (HtmlSerializer.TAG_OL, "left-margin", 28);
+            // Paragraph spacing: a line gets a blank line below it only when the
+            // next line is not a list item, so list items stay tight (none
+            // between, none before a list, one after it). Recomputed on edits.
+            spaced_tag = buffer.create_tag (null, "pixels-below-lines", 12);
             // Non-editable visual prefix ("• " / "1. ") for list items.
             marker_tag = buffer.create_tag (HtmlSerializer.TAG_MARKER,
                 "editable", false, "foreground", "#9a9996");
@@ -100,6 +102,11 @@ namespace Missive {
 
             buffer.insert_text.connect_after (on_insert_after);
             buffer.notify["cursor-position"].connect (sync_buttons);
+            buffer.changed.connect (() => {
+                if (!updating_markers) {
+                    update_spacing ();
+                }
+            });
 
             edit_preview_stack.notify["visible-child-name"].connect (on_tab_changed);
 
@@ -315,29 +322,78 @@ namespace Missive {
         // --- links ------------------------------------------------------------
 
         private void on_link () {
+            // If the cursor sits on an existing link, edit it (and offer to
+            // remove it); otherwise insert a new one over the selection.
+            Gtk.TextIter span_start, span_end;
+            Gtk.TextTag? existing = link_tag_at_cursor (out span_start, out span_end);
+
             var entry = new Gtk.Entry () {
+                text = existing != null ? links.lookup (existing) : "",
                 placeholder_text = "https://",
                 hexpand = true,
                 activates_default = true
             };
-            var dialog = new Adw.AlertDialog (_("Insert Link"), null);
+            var dialog = new Adw.AlertDialog (
+                existing != null ? _("Edit Link") : _("Insert Link"), null);
             dialog.set_extra_child (entry);
             dialog.add_response ("cancel", _("Cancel"));
-            dialog.add_response ("insert", _("Insert"));
+            if (existing != null) {
+                dialog.add_response ("remove", _("Remove Link"));
+                dialog.set_response_appearance ("remove",
+                                                Adw.ResponseAppearance.DESTRUCTIVE);
+            }
+            dialog.add_response ("insert", existing != null ? _("Save") : _("Insert"));
             dialog.set_response_appearance ("insert", Adw.ResponseAppearance.SUGGESTED);
             dialog.default_response = "insert";
             dialog.close_response = "cancel";
             dialog.response.connect ((response) => {
+                if (response == "remove" && existing != null) {
+                    buffer.remove_tag (existing, span_start, span_end);
+                    links.remove (existing);
+                    return;
+                }
                 if (response != "insert") {
                     return;
                 }
                 var url = entry.text.strip ();
-                if (url != "") {
+                if (url == "") {
+                    return;
+                }
+                if (existing != null) {
+                    // Same span and styling, just point it at the new URL.
+                    links.replace (existing, url);
+                } else {
                     apply_link (url);
                 }
             });
             dialog.present (this);
             entry.grab_focus ();
+        }
+
+        // The link tag (if any) covering the cursor, with its full run in
+        // start/end. Returns null when the cursor is not on a link.
+        private Gtk.TextTag? link_tag_at_cursor (out Gtk.TextIter start,
+                                                 out Gtk.TextIter end) {
+            Gtk.TextIter at;
+            buffer.get_iter_at_mark (out at, buffer.get_insert ());
+            start = at;
+            end = at;
+            Gtk.TextTag? found = null;
+            foreach (var tag in at.get_tags ()) {
+                if (links.contains (tag)) {
+                    found = tag;
+                    break;
+                }
+            }
+            if (found != null) {
+                if (!start.starts_tag (found)) {
+                    start.backward_to_tag_toggle (found);
+                }
+                if (!end.ends_tag (found)) {
+                    end.forward_to_tag_toggle (found);
+                }
+            }
+            return found;
         }
 
         private void apply_link (string url) {
@@ -446,6 +502,34 @@ namespace Missive {
             }
 
             updating_markers = false;
+            update_spacing ();
+        }
+
+        // Give each line a blank line below it, except when the next line is a
+        // list item: that keeps list items tight, with no gap before a list and
+        // exactly one after it. Cheap enough to run on every edit.
+        private void update_spacing () {
+            int lines = buffer.get_line_count ();
+            for (int ln = 0; ln < lines; ln++) {
+                Gtk.TextIter ls;
+                buffer.get_iter_at_line (out ls, ln);
+                Gtk.TextIter le;
+                buffer.get_iter_at_line (out le, ln);
+                if (!le.forward_line ()) {
+                    buffer.get_end_iter (out le);
+                }
+                bool next_is_list = false;
+                if (ln + 1 < lines) {
+                    Gtk.TextIter ns;
+                    buffer.get_iter_at_line (out ns, ln + 1);
+                    next_is_list = ns.has_tag (ul_tag) || ns.has_tag (ol_tag);
+                }
+                if (next_is_list) {
+                    buffer.remove_tag (spaced_tag, ls, le);
+                } else {
+                    buffer.apply_tag (spaced_tag, ls, le);
+                }
+            }
         }
 
         // --- preview ----------------------------------------------------------

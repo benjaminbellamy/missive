@@ -425,8 +425,14 @@ msgstr "Editar plantilla"
 msgid "None"
 msgstr "Ninguno"
 
+msgid "Edit Link"
+msgstr "Editar enlace"
+
 msgid "Insert Link"
 msgstr "Insertar enlace"
+
+msgid "Remove Link"
+msgstr "Quitar enlace"
 
 msgid "Insert"
 msgstr "Insertar"
@@ -466,6 +472,13 @@ msgstr "Pendiente"
 #, c-format
 msgid "%d / %d sent"
 msgstr "%d / %d enviados"
+
+msgid "Delete Campaign?"
+msgstr "¿Eliminar la campaña?"
+
+#, c-format
+msgid "“%s” and its recipients will be permanently removed."
+msgstr "«%s» y sus destinatarios se eliminarán permanentemente."
 
 msgid "(none)"
 msgstr "(ninguno)"
@@ -549,13 +562,6 @@ msgstr "Mensaje de prueba enviado a %s"
 #, c-format
 msgid "Test send failed: %s"
 msgstr "Error en el envío de prueba: %s"
-
-msgid "Delete Campaign?"
-msgstr "¿Eliminar la campaña?"
-
-#, c-format
-msgid "“%s” and its recipients will be permanently removed."
-msgstr "«%s» y sus destinatarios se eliminarán permanentemente."
 
 #, c-format
 msgid "Database error: %s"

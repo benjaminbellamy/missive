@@ -425,8 +425,14 @@ msgstr "Vorlage bearbeiten"
 msgid "None"
 msgstr "Keine"
 
+msgid "Edit Link"
+msgstr "Link bearbeiten"
+
 msgid "Insert Link"
 msgstr "Link einfügen"
+
+msgid "Remove Link"
+msgstr "Link entfernen"
 
 msgid "Insert"
 msgstr "Einfügen"
@@ -466,6 +472,13 @@ msgstr "Ausstehend"
 #, c-format
 msgid "%d / %d sent"
 msgstr "%d / %d gesendet"
+
+msgid "Delete Campaign?"
+msgstr "Kampagne löschen?"
+
+#, c-format
+msgid "“%s” and its recipients will be permanently removed."
+msgstr "„%s“ und seine Empfänger werden dauerhaft entfernt."
 
 msgid "(none)"
 msgstr "(keine)"
@@ -549,13 +562,6 @@ msgstr "Testnachricht an %s gesendet"
 #, c-format
 msgid "Test send failed: %s"
 msgstr "Testversand fehlgeschlagen: %s"
-
-msgid "Delete Campaign?"
-msgstr "Kampagne löschen?"
-
-#, c-format
-msgid "“%s” and its recipients will be permanently removed."
-msgstr "„%s“ und seine Empfänger werden dauerhaft entfernt."
 
 #, c-format
 msgid "Database error: %s"

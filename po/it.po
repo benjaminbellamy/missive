@@ -425,8 +425,14 @@ msgstr "Modifica modello"
 msgid "None"
 msgstr "Nessuno"
 
+msgid "Edit Link"
+msgstr "Modifica collegamento"
+
 msgid "Insert Link"
 msgstr "Inserisci collegamento"
+
+msgid "Remove Link"
+msgstr "Rimuovi collegamento"
 
 msgid "Insert"
 msgstr "Inserisci"
@@ -466,6 +472,13 @@ msgstr "In attesa"
 #, c-format
 msgid "%d / %d sent"
 msgstr "%d / %d inviati"
+
+msgid "Delete Campaign?"
+msgstr "Eliminare la campagna?"
+
+#, c-format
+msgid "“%s” and its recipients will be permanently removed."
+msgstr "«%s» e i suoi destinatari saranno rimossi definitivamente."
 
 msgid "(none)"
 msgstr "(nessuno)"
@@ -549,13 +562,6 @@ msgstr "Messaggio di prova inviato a %s"
 #, c-format
 msgid "Test send failed: %s"
 msgstr "Invio di prova non riuscito: %s"
-
-msgid "Delete Campaign?"
-msgstr "Eliminare la campagna?"
-
-#, c-format
-msgid "“%s” and its recipients will be permanently removed."
-msgstr "«%s» e i suoi destinatari saranno rimossi definitivamente."
 
 #, c-format
 msgid "Database error: %s"

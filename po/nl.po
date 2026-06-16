@@ -425,8 +425,14 @@ msgstr "Sjabloon bewerken"
 msgid "None"
 msgstr "Geen"
 
+msgid "Edit Link"
+msgstr "Koppeling bewerken"
+
 msgid "Insert Link"
 msgstr "Koppeling invoegen"
+
+msgid "Remove Link"
+msgstr "Koppeling verwijderen"
 
 msgid "Insert"
 msgstr "Invoegen"
@@ -466,6 +472,13 @@ msgstr "In wachtrij"
 #, c-format
 msgid "%d / %d sent"
 msgstr "%d / %d verzonden"
+
+msgid "Delete Campaign?"
+msgstr "Campagne verwijderen?"
+
+#, c-format
+msgid "“%s” and its recipients will be permanently removed."
+msgstr "‘%s’ en de ontvangers worden permanent verwijderd."
 
 msgid "(none)"
 msgstr "(geen)"
@@ -549,13 +562,6 @@ msgstr "Testbericht verzonden naar %s"
 #, c-format
 msgid "Test send failed: %s"
 msgstr "Testverzending mislukt: %s"
-
-msgid "Delete Campaign?"
-msgstr "Campagne verwijderen?"
-
-#, c-format
-msgid "“%s” and its recipients will be permanently removed."
-msgstr "‘%s’ en de ontvangers worden permanent verwijderd."
 
 #, c-format
 msgid "Database error: %s"

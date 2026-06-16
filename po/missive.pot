@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-16 11:36+0200\n"
+"POT-Creation-Date: 2026-06-16 11:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,12 +78,13 @@ msgstr ""
 
 #: data/ui/identity-editor.blp:17 data/ui/csv-import-dialog.blp:16
 #: data/ui/template-editor.blp:22 data/ui/campaign-dialog.blp:17
-#: src/template-editor.vala:322 src/ui-util.vala:62
+#: src/template-editor.vala:339 src/ui-util.vala:62
 #: src/campaign-detail.vala:225
 msgid "Cancel"
 msgstr ""
 
 #: data/ui/identity-editor.blp:22 data/ui/template-editor.blp:27
+#: src/template-editor.vala:345
 msgid "Save"
 msgstr ""
 
@@ -176,7 +177,7 @@ msgstr ""
 msgid "Detected"
 msgstr ""
 
-#: data/ui/csv-preview-dialog.blp:5 data/ui/template-editor.blp:193
+#: data/ui/csv-preview-dialog.blp:5 data/ui/template-editor.blp:192
 msgid "Preview"
 msgstr ""
 
@@ -236,7 +237,7 @@ msgstr ""
 msgid "Numbered List"
 msgstr ""
 
-#: data/ui/template-editor.blp:170
+#: data/ui/template-editor.blp:169
 msgid "Edit source"
 msgstr ""
 
@@ -310,6 +311,7 @@ msgstr ""
 
 #: data/ui/campaign-detail.blp:48 src/identities-view.vala:56
 #: src/csv-sheets-view.vala:50 src/templates-view.vala:56 src/ui-util.vala:63
+#: src/campaigns-view.vala:83
 msgid "Delete"
 msgstr ""
 
@@ -449,13 +451,13 @@ msgstr ""
 msgid "New Identity"
 msgstr ""
 
-#: src/window.vala:95 src/template-editor.vala:81
+#: src/window.vala:95 src/template-editor.vala:86
 msgid "New Template"
 msgstr ""
 
 #: src/identities-view.vala:42 src/identities-view.vala:109
 #: src/templates-view.vala:42 src/templates-view.vala:102
-#: src/template-editor.vala:149
+#: src/template-editor.vala:159
 #, c-format
 msgid "(unlabeled)"
 msgstr ""
@@ -466,7 +468,7 @@ msgid "Duplicate"
 msgstr ""
 
 #: src/identities-view.vala:83 src/templates-view.vala:84
-#: src/campaigns-view.vala:87
+#: src/campaigns-view.vala:114
 #, c-format
 msgid "%s (copy)"
 msgstr ""
@@ -574,19 +576,27 @@ msgstr ""
 msgid "Delete Template?"
 msgstr ""
 
-#: src/template-editor.vala:81
+#: src/template-editor.vala:86
 msgid "Edit Template"
 msgstr ""
 
-#: src/template-editor.vala:147
+#: src/template-editor.vala:157
 msgid "None"
 msgstr ""
 
-#: src/template-editor.vala:320
+#: src/template-editor.vala:337
+msgid "Edit Link"
+msgstr ""
+
+#: src/template-editor.vala:337
 msgid "Insert Link"
 msgstr ""
 
-#: src/template-editor.vala:323
+#: src/template-editor.vala:341
+msgid "Remove Link"
+msgstr ""
+
+#: src/template-editor.vala:345
 msgid "Insert"
 msgstr ""
 
@@ -635,6 +645,15 @@ msgstr ""
 #: src/campaigns-view.vala:59
 #, c-format
 msgid "%d / %d sent"
+msgstr ""
+
+#: src/campaigns-view.vala:95 src/campaign-detail.vala:360
+msgid "Delete Campaign?"
+msgstr ""
+
+#: src/campaigns-view.vala:96 src/campaign-detail.vala:361
+#, c-format
+msgid "“%s” and its recipients will be permanently removed."
 msgstr ""
 
 #: src/campaign-dialog.vala:57 src/campaign-dialog.vala:87
@@ -743,15 +762,6 @@ msgstr ""
 #: src/campaign-detail.vala:351
 #, c-format
 msgid "Test send failed: %s"
-msgstr ""
-
-#: src/campaign-detail.vala:360
-msgid "Delete Campaign?"
-msgstr ""
-
-#: src/campaign-detail.vala:361
-#, c-format
-msgid "“%s” and its recipients will be permanently removed."
 msgstr ""
 
 #: src/campaign-engine.vala:58
