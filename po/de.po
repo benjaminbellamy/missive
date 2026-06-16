@@ -465,6 +465,9 @@ msgstr "Link entfernen"
 msgid "Insert"
 msgstr "Einfügen"
 
+msgid "A subject is required."
+msgstr "Ein Betreff ist erforderlich."
+
 msgid "Running"
 msgstr "Läuft"
 

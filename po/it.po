@@ -465,6 +465,9 @@ msgstr "Rimuovi collegamento"
 msgid "Insert"
 msgstr "Inserisci"
 
+msgid "A subject is required."
+msgstr "È richiesto un oggetto."
+
 msgid "Running"
 msgstr "In corso"
 

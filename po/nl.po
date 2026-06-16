@@ -465,6 +465,9 @@ msgstr "Koppeling verwijderen"
 msgid "Insert"
 msgstr "Invoegen"
 
+msgid "A subject is required."
+msgstr "Een onderwerp is vereist."
+
 msgid "Running"
 msgstr "Bezig"
 

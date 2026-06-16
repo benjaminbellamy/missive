@@ -554,6 +554,15 @@ namespace Missive {
             }
             name_row.remove_css_class ("error");
 
+            var subject = subject_row.text.strip ();
+            if (subject == "") {
+                subject_row.add_css_class ("error");
+                subject_row.grab_focus ();
+                Ui.toast (this, _("A subject is required."));
+                return;
+            }
+            subject_row.remove_css_class ("error");
+
             // If the user is on the source tab, commit their HTML edits first.
             if (current_tab == "source") {
                 HtmlSerializer.html_to_buffer (source_view.buffer.text, buffer, links);
