@@ -42,6 +42,14 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.0.2" date="2026-06-27">
+      <description>
+        <p>Maintenance release.</p>
+        <ul>
+          <li>Hand-edited HTML in the template source view is now kept exactly as typed, instead of being reformatted when saving or switching tabs</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.1" date="2026-06-26">
       <description>
         <p>Maintenance release.</p>

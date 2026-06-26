@@ -48,6 +48,15 @@ namespace Missive {
         private bool updating_markers = false;
         private string current_tab = "edit";
 
+        // Which representation holds the user's latest edits. The raw HTML source
+        // and the rich buffer can each express things the other can't, so we
+        // never overwrite the one the user touched most recently: hand-edited
+        // HTML is saved verbatim and is never rewritten by the serializer.
+        private enum Representation { BUFFER, SOURCE }
+        private Representation last_edited = Representation.BUFFER;
+        // Guards programmatic cross-view updates so they don't look like edits.
+        private bool sync_in_progress = false;
+
         // Where an inserted {field} token should go (the last text widget used).
         private enum FocusTarget { SUBJECT, BODY, SOURCE }
         private FocusTarget last_focus = FocusTarget.BODY;
@@ -89,6 +98,11 @@ namespace Missive {
             if (template.body_html != "") {
                 HtmlSerializer.html_to_buffer (template.body_html, buffer, links);
                 refresh_list_markers ();
+                // The stored HTML is the user's own; keep it as the canonical
+                // copy so reopening and saving never rewrites it. It only gets
+                // re-serialized if the user actually edits the rich buffer.
+                source_view.buffer.text = template.body_html;
+                last_edited = Representation.SOURCE;
             }
 
             cancel_button.clicked.connect (() => close ());
@@ -105,6 +119,16 @@ namespace Missive {
             buffer.changed.connect (() => {
                 if (!updating_markers) {
                     update_spacing ();
+                }
+                if (!sync_in_progress && !updating_markers) {
+                    last_edited = Representation.BUFFER;
+                }
+            });
+
+            // A direct edit in the HTML source tab makes the source canonical.
+            source_view.buffer.changed.connect (() => {
+                if (!sync_in_progress) {
+                    last_edited = Representation.SOURCE;
                 }
             });
 
@@ -232,12 +256,23 @@ namespace Missive {
             if (target == current_tab) {
                 return;
             }
-            if (current_tab == "source") {
-                HtmlSerializer.html_to_buffer (source_view.buffer.text, buffer, links);
-                refresh_list_markers ();
-            }
             if (target == "source") {
-                source_view.buffer.text = HtmlSerializer.buffer_to_html (buffer, links);
+                // Only regenerate the HTML source from the rich buffer when the
+                // buffer holds the newer edits. If the user last edited the
+                // source by hand, leave it exactly as they typed it.
+                if (last_edited == Representation.BUFFER) {
+                    sync_in_progress = true;
+                    source_view.buffer.text = HtmlSerializer.buffer_to_html (buffer, links);
+                    sync_in_progress = false;
+                }
+            } else if (target == "edit") {
+                // Bring the rich editor up to date with hand-edited HTML.
+                if (last_edited == Representation.SOURCE) {
+                    sync_in_progress = true;
+                    HtmlSerializer.html_to_buffer (source_view.buffer.text, buffer, links);
+                    refresh_list_markers ();
+                    sync_in_progress = false;
+                }
             } else if (target == "preview") {
                 update_preview ();
             }
@@ -284,6 +319,7 @@ namespace Missive {
             if (!buffer.get_selection_bounds (out s, out e)) {
                 return;
             }
+            last_edited = Representation.BUFFER;
             if (active) {
                 buffer.apply_tag (tag, s, e);
             } else {
@@ -348,6 +384,7 @@ namespace Missive {
             dialog.close_response = "cancel";
             dialog.response.connect ((response) => {
                 if (response == "remove" && existing != null) {
+                    last_edited = Representation.BUFFER;
                     buffer.remove_tag (existing, span_start, span_end);
                     links.remove (existing);
                     return;
@@ -355,6 +392,7 @@ namespace Missive {
                 if (response != "insert") {
                     return;
                 }
+                last_edited = Representation.BUFFER;
                 var url = entry.text.strip ();
                 if (url == "") {
                     return;
@@ -418,6 +456,7 @@ namespace Missive {
         // --- lists ------------------------------------------------------------
 
         private void toggle_list (Gtk.TextTag list_tag, Gtk.TextTag other_tag) {
+            last_edited = Representation.BUFFER;
             Gtk.TextIter s, e;
             buffer.get_selection_bounds (out s, out e);
             int first = s.get_line ();
@@ -536,7 +575,9 @@ namespace Missive {
         // --- preview ----------------------------------------------------------
 
         private void update_preview () {
-            var body = HtmlSerializer.buffer_to_html (buffer, links);
+            var body = last_edited == Representation.SOURCE
+                ? source_view.buffer.text
+                : HtmlSerializer.buffer_to_html (buffer, links);
             var doc = "<!DOCTYPE html><html><head><meta charset=\"utf-8\">"
                 + "<style>body{font-family:sans-serif;font-size:14px;margin:12px;}"
                 + "a{color:#1c71d8;}</style></head><body>" + body + "</body></html>";
@@ -563,15 +604,13 @@ namespace Missive {
             }
             subject_row.remove_css_class ("error");
 
-            // If the user is on the source tab, commit their HTML edits first.
-            if (current_tab == "source") {
-                HtmlSerializer.html_to_buffer (source_view.buffer.text, buffer, links);
-                refresh_list_markers ();
-            }
-
             template.name = name;
             template.subject = subject_row.text;
-            template.body_html = HtmlSerializer.buffer_to_html (buffer, links);
+            // Save whichever representation the user last edited. Hand-edited
+            // HTML is stored exactly as typed — the serializer never touches it.
+            template.body_html = last_edited == Representation.SOURCE
+                ? source_view.buffer.text
+                : HtmlSerializer.buffer_to_html (buffer, links);
             var now = new DateTime.now_utc ().to_unix ();
             template.updated_at = now;
 
