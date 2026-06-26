@@ -18,7 +18,7 @@ install the latest release (it will offer to pull the runtime from Flathub if
 needed):
 
 ```sh
-curl -L -o /tmp/missive-1.0.0-x86_64.flatpak https://github.com/benjaminbellamy/missive/releases/download/v1.0.0/missive-1.0.0-x86_64.flatpak && flatpak install --user /tmp/missive-1.0.0-x86_64.flatpak
+curl -L -o /tmp/missive-1.0.1-x86_64.flatpak https://github.com/benjaminbellamy/missive/releases/download/v1.0.1/missive-1.0.1-x86_64.flatpak && flatpak install --user /tmp/missive-1.0.1-x86_64.flatpak
 ```
 
 Run:
@@ -63,14 +63,8 @@ flatpak-builder --user --install --force-clean build-dir build-aux/fr.bellamy.mi
 flatpak run fr.bellamy.missive
 ```
 
-To see the interface in another language, install the extra locales once:
-
-```sh
-flatpak config --user --set extra-languages "en;fr;de;it;es;nl"
-flatpak update --user fr.bellamy.missive.Locale
-```
-
-then pick a language in **☰ → Preferences → Language** (takes effect after
+All translations are bundled in the app, so to see the interface in another
+language just pick one in **☰ → Preferences → Language** (takes effect after
 restart).
 
 ## Getting started
