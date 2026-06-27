@@ -38,8 +38,13 @@ namespace Missive {
         private Gtk.TextTag ol_tag;
         private Gtk.TextTag marker_tag;
         private Gtk.TextTag spaced_tag;
+        private Gtk.TextTag field_tag;
         private HashTable<unowned Gtk.TextTag, string> links;
         private WebKit.WebView web_view;
+        private Adw.ViewStackPage edit_page;
+        private GtkSource.Buffer source_buffer;
+        private Gtk.TextTag source_markup_tag;
+        private Gtk.TextTag source_field_tag;
 
         private bool syncing = false;
         private bool pending_bold = false;
@@ -62,11 +67,19 @@ namespace Missive {
         private FocusTarget last_focus = FocusTarget.BODY;
         private CsvSheet[] sheets = {};
 
-        public TemplateEditor (Database db, Template? existing) {
+        public TemplateEditor (Database db, Template? existing,
+                               string imported_name = "", string imported_html = "") {
             Object ();
             this.db = db;
             this.is_new = existing == null;
             this.template = existing ?? new Template ();
+
+            // Imported HTML seeds a brand-new template; it is treated exactly
+            // like hand-edited source so the serializer never rewrites it.
+            if (existing == null && imported_html != "") {
+                template.name = imported_name;
+                template.body_html = imported_html;
+            }
 
             buffer = body_view.buffer;
             bold_tag = buffer.create_tag (HtmlSerializer.TAG_BOLD,
@@ -84,6 +97,9 @@ namespace Missive {
             // Non-editable visual prefix ("• " / "1. ") for list items.
             marker_tag = buffer.create_tag (HtmlSerializer.TAG_MARKER,
                 "editable", false, "foreground", "#9a9996");
+            // Highlight {field} tokens with a translucent yellow background; the
+            // alpha keeps it legible over the white/grey/dark editor backgrounds.
+            field_tag = make_field_tag (buffer);
             links = new HashTable<unowned Gtk.TextTag, string> (direct_hash, direct_equal);
 
             web_view = new WebKit.WebView () {
@@ -92,16 +108,39 @@ namespace Missive {
             };
             preview_box.append (web_view);
 
+            edit_page = edit_preview_stack.get_page (
+                edit_preview_stack.get_child_by_name ("edit"));
+
+            // Give the HTML source view a GtkSourceView buffer with HTML syntax
+            // highlighting, following the light/dark theme. The buffer is a
+            // Gtk.TextBuffer subclass, so all existing source_view.buffer uses
+            // (load, sync, preview, save, token insertion) keep working.
+            source_buffer = new GtkSource.Buffer (null);
+            source_view.buffer = source_buffer;
+            source_buffer.language =
+                GtkSource.LanguageManager.get_default ().get_language ("html");
+            apply_source_style_scheme ();
+            Adw.StyleManager.get_default ().notify["dark"]
+                .connect (apply_source_style_scheme);
+            // Source highlighting: grey behind the HTML markup (<…>) and yellow
+            // behind {field} tokens, leaving the actual text on the plain (white)
+            // background. The field tag is created last so it wins where a token
+            // sits inside a tag (e.g. an attribute value).
+            source_markup_tag = make_markup_tag (source_buffer);
+            source_field_tag = make_field_tag (source_buffer);
+
             title = is_new ? _("New Template") : _("Edit Template");
             name_row.text = template.name;
             subject_row.text = template.subject;
             if (template.body_html != "") {
                 HtmlSerializer.html_to_buffer (template.body_html, buffer, links);
                 refresh_list_markers ();
+                highlight_fields (buffer, field_tag);
                 // The stored HTML is the user's own; keep it as the canonical
                 // copy so reopening and saving never rewrites it. It only gets
                 // re-serialized if the user actually edits the rich buffer.
                 source_view.buffer.text = template.body_html;
+                highlight_source ();
                 last_edited = Representation.SOURCE;
             }
 
@@ -122,6 +161,7 @@ namespace Missive {
                 }
                 if (!sync_in_progress && !updating_markers) {
                     last_edited = Representation.BUFFER;
+                    highlight_fields (buffer, field_tag);
                 }
             });
 
@@ -129,6 +169,8 @@ namespace Missive {
             source_view.buffer.changed.connect (() => {
                 if (!sync_in_progress) {
                     last_edited = Representation.SOURCE;
+                    refresh_edit_availability ();
+                    highlight_source ();
                 }
             });
 
@@ -184,6 +226,114 @@ namespace Missive {
             }
             csv_row.model = new Gtk.StringList (names);
             csv_row.notify["selected"].connect (on_sheet_selected);
+
+            // Imported/loaded HTML may be richer than the rich editor can hold
+            // (tables, divs, inline styles); hide the "Edit" tab in that case so
+            // it never shows a buffer that silently dropped most of the content.
+            refresh_edit_availability ();
+        }
+
+        // A {field}-token background tag (translucent yellow) for the given
+        // buffer. A tag belongs to one buffer, so the rich and source buffers
+        // each get their own. Alpha keeps it legible on light and dark themes.
+        private Gtk.TextTag make_field_tag (Gtk.TextBuffer buf) {
+            var tag = buf.create_tag ("field");
+            var yellow = Gdk.RGBA ();
+            yellow.parse ("rgba(247,224,70,0.40)");
+            tag.background_rgba = yellow;
+            return tag;
+        }
+
+        // A background tag (translucent grey) for HTML markup spans (<…>).
+        private Gtk.TextTag make_markup_tag (Gtk.TextBuffer buf) {
+            var tag = buf.create_tag ("markup");
+            var grey = Gdk.RGBA ();
+            grey.parse ("rgba(128,128,128,0.18)");
+            tag.background_rgba = grey;
+            return tag;
+        }
+
+        // Apply a tag over each (char-offset) span. Tag changes don't emit
+        // "changed", so this is safe to call from change handlers.
+        private void apply_ranges (Gtk.TextBuffer buf, Gtk.TextTag tag,
+                                   Substitution.TokenSpan[] spans) {
+            foreach (var s in spans) {
+                Gtk.TextIter si, ei;
+                buf.get_iter_at_offset (out si, s.start);
+                buf.get_iter_at_offset (out ei, s.end);
+                buf.apply_tag (tag, si, ei);
+            }
+        }
+
+        // Rich editor: highlight {field} tokens only (no markup is shown there).
+        private void highlight_fields (Gtk.TextBuffer buf, Gtk.TextTag tag) {
+            Gtk.TextIter a, b;
+            buf.get_bounds (out a, out b);
+            buf.remove_tag (tag, a, b);
+            apply_ranges (buf, tag, Substitution.token_ranges (buf.get_text (a, b, true)));
+        }
+
+        // Source editor: grey behind markup, yellow behind {field} tokens.
+        private void highlight_source () {
+            Gtk.TextIter a, b;
+            source_buffer.get_bounds (out a, out b);
+            source_buffer.remove_tag (source_markup_tag, a, b);
+            source_buffer.remove_tag (source_field_tag, a, b);
+            string text = source_buffer.get_text (a, b, true);
+            apply_ranges (source_buffer, source_markup_tag, markup_ranges (text));
+            apply_ranges (source_buffer, source_field_tag, Substitution.token_ranges (text));
+        }
+
+        // Character offsets (end exclusive) of every <…> markup span.
+        private static Substitution.TokenSpan[] markup_ranges (string text) {
+            Substitution.TokenSpan[] result = {};
+            unichar[] chars = {};
+            int idx = 0;
+            unichar c;
+            while (text.get_next_char (ref idx, out c)) {
+                chars += c;
+            }
+            int n = chars.length;
+            int i = 0;
+            while (i < n) {
+                if (chars[i] == '<') {
+                    int j = -1;
+                    for (int k = i + 1; k < n; k++) {
+                        if (chars[k] == '>') { j = k; break; }
+                    }
+                    if (j < 0) {
+                        break; // no closing '>': leave the rest unmarked
+                    }
+                    result += Substitution.TokenSpan () { start = i, end = j + 1 };
+                    i = j + 1;
+                } else {
+                    i++;
+                }
+            }
+            return result;
+        }
+
+        // Pick the source-view colour scheme that matches the current theme.
+        private void apply_source_style_scheme () {
+            var mgr = GtkSource.StyleSchemeManager.get_default ();
+            bool dark = Adw.StyleManager.get_default ().dark;
+            var scheme = mgr.get_scheme (dark ? "Adwaita-dark" : "Adwaita");
+            if (scheme == null) {
+                scheme = mgr.get_scheme (dark ? "classic-dark" : "classic");
+            }
+            source_buffer.style_scheme = scheme;
+        }
+
+        // Show the rich "Edit" tab only while the canonical content can be
+        // round-tripped through the buffer. When the source is canonical and not
+        // representable, hide the tab and fall back to the source view.
+        private void refresh_edit_availability () {
+            bool ok = last_edited != Representation.SOURCE
+                || HtmlSerializer.is_rich_representable (source_view.buffer.text);
+            edit_page.visible = ok;
+            if (!ok && edit_preview_stack.visible_child_name == "edit") {
+                edit_preview_stack.visible_child_name = "source";
+            }
         }
 
         private void track_focus (Gtk.Widget widget, FocusTarget target) {
@@ -264,6 +414,7 @@ namespace Missive {
                     sync_in_progress = true;
                     source_view.buffer.text = HtmlSerializer.buffer_to_html (buffer, links);
                     sync_in_progress = false;
+                    highlight_source ();
                 }
             } else if (target == "edit") {
                 // Bring the rich editor up to date with hand-edited HTML.
@@ -272,6 +423,7 @@ namespace Missive {
                     HtmlSerializer.html_to_buffer (source_view.buffer.text, buffer, links);
                     refresh_list_markers ();
                     sync_in_progress = false;
+                    highlight_fields (buffer, field_tag);
                 }
             } else if (target == "preview") {
                 update_preview ();

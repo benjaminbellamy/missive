@@ -154,6 +154,65 @@ namespace Missive {
             }
         }
 
+        // Elements the rich editor can faithfully round-trip.
+        private const string[] RICH_TAGS = {
+            "p", "br", "strong", "b", "em", "i", "u", "a", "ul", "ol", "li"
+        };
+
+        // Whether `html` can be edited losslessly in the rich text editor: every
+        // element must be one the editor understands, and no element may carry
+        // styling the editor would silently drop (only <a> may have attributes,
+        // i.e. its href). Imported newsletters (tables, divs, inline styles) and
+        // comments fail this, so the caller can hide the rich "Edit" tab rather
+        // than show a buffer that lost most of the content.
+        public static bool is_rich_representable (string html) {
+            int i = 0;
+            int n = html.length;
+            while (i < n) {
+                if (html[i] != '<') {
+                    int k = html.index_of_char ('<', i);
+                    i = k < 0 ? n : k;
+                    continue;
+                }
+                int j = html.index_of_char ('>', i);
+                if (j < 0) {
+                    break;
+                }
+                string raw = html.substring (i + 1, j - i - 1).strip ();
+                i = j + 1;
+                if (raw == "") {
+                    continue;
+                }
+                if (raw.has_prefix ("!")) {
+                    return false; // comment, CDATA or doctype
+                }
+                bool closing = raw.has_prefix ("/");
+                if (closing) {
+                    raw = raw.substring (1).strip ();
+                }
+                if (raw.has_suffix ("/")) {
+                    raw = raw.substring (0, raw.length - 1).strip ();
+                }
+                string name = raw;
+                string attrs = "";
+                int sp = raw.index_of_char (' ');
+                if (sp >= 0) {
+                    name = raw.substring (0, sp);
+                    attrs = raw.substring (sp + 1).strip ();
+                }
+                name = name.down ();
+                if (!(name in RICH_TAGS)) {
+                    return false;
+                }
+                // Any attribute on a non-anchor element is styling the editor
+                // cannot keep; anchors legitimately carry their href.
+                if (!closing && attrs != "" && name != "a") {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         // --- HTML -> buffer ---------------------------------------------------
 
         public static void html_to_buffer (

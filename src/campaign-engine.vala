@@ -121,7 +121,8 @@ namespace Missive {
                 var unknown = new HashTable<string, bool> (str_hash, str_equal);
                 var message = MessageBuilder.compose (identity,
                     campaign.subject_snapshot, campaign.body_html_snapshot,
-                    values, r.to_address, cc, unknown);
+                    values, r.to_address, cc, unknown, campaign.include_signature,
+                    campaign.unsubscribe_lang);
                 var data = SmtpSender.normalize (MessageBuilder.to_mime_string (message));
 
                 string[] envelope = { r.to_address };

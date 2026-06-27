@@ -68,6 +68,72 @@ namespace Missive {
             open_editor (null);
         }
 
+        // Pick a local HTML file, inline its CSS and keep only the <body>
+        // content, then open the editor on a new template prefilled with it.
+        public void import_html () {
+            var dialog = new Gtk.FileDialog () {
+                title = _("Import HTML File")
+            };
+            var filter = new Gtk.FileFilter () {
+                name = _("HTML Files")
+            };
+            filter.add_mime_type ("text/html");
+            filter.add_suffix ("html");
+            filter.add_suffix ("htm");
+            var filters = new GLib.ListStore (typeof (Gtk.FileFilter));
+            filters.append (filter);
+            dialog.filters = filters;
+
+            dialog.open.begin (get_root () as Gtk.Window, null, (obj, res) => {
+                File file;
+                try {
+                    file = dialog.open.end (res);
+                } catch (Error e) {
+                    return; // dismissed
+                }
+                load_html.begin (file);
+            });
+        }
+
+        private async void load_html (File file) {
+            uint8[] contents;
+            try {
+                yield file.load_contents_async (null, out contents, null);
+            } catch (Error e) {
+                Ui.toast (this, _("Could not read the file."));
+                return;
+            }
+
+            string text;
+            if (((string) contents).validate (contents.length)) {
+                text = (string) contents;
+            } else {
+                // Not UTF-8: assume the common Windows-1252 fallback. libxml2
+                // still honours any <meta charset> it finds inside.
+                try {
+                    text = GLib.convert ((string) contents, contents.length,
+                                         "UTF-8", "WINDOWS-1252");
+                } catch (ConvertError e) {
+                    Ui.toast (this, _("Could not decode the file as text."));
+                    return;
+                }
+            }
+
+            var body = HtmlImport.process (text);
+            var editor = new TemplateEditor (db, null, derive_name (file), body);
+            editor.saved.connect (refresh);
+            editor.present (get_root () as Gtk.Widget);
+        }
+
+        private string derive_name (File file) {
+            var stem = file.get_basename () ?? _("Imported template");
+            int dot = stem.last_index_of (".");
+            if (dot > 0) {
+                stem = stem.substring (0, dot);
+            }
+            return stem;
+        }
+
         private void edit (Template template) {
             open_editor (template);
         }

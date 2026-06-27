@@ -111,6 +111,54 @@ namespace Missive {
             return result;
         }
 
+        // Character offsets (end exclusive) of every real {token}, following the
+        // same rules as the substitution scan above ({{/}} escapes, a '{' with no
+        // '}' before the next '{' is not a token). Offsets are in characters, not
+        // bytes, so they map straight onto Gtk.TextBuffer iters for highlighting.
+        public struct TokenSpan {
+            public int start;
+            public int end;
+        }
+
+        public static TokenSpan[] token_ranges (string text) {
+            TokenSpan[] result = {};
+            unichar[] chars = {};
+            int idx = 0;
+            unichar c;
+            while (text.get_next_char (ref idx, out c)) {
+                chars += c;
+            }
+
+            int n = chars.length;
+            int i = 0;
+            while (i < n) {
+                if (chars[i] == '{') {
+                    if (i + 1 < n && chars[i + 1] == '{') {
+                        i += 2;
+                        continue;
+                    }
+                    int j = -1;
+                    for (int k = i + 1; k < n; k++) {
+                        if (chars[k] == '}') { j = k; break; }
+                        if (chars[k] == '{') { break; }
+                    }
+                    if (j < 0) {
+                        i++;
+                        continue;
+                    }
+                    if (j > i + 1) { // non-empty name
+                        result += TokenSpan () { start = i, end = j + 1 };
+                    }
+                    i = j + 1;
+                } else if (chars[i] == '}') {
+                    i += (i + 1 < n && chars[i + 1] == '}') ? 2 : 1;
+                } else {
+                    i++;
+                }
+            }
+            return result;
+        }
+
         private static string escape_value (string s) {
             return s.replace ("&", "&amp;")
                     .replace ("<", "&lt;")

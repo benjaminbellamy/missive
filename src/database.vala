@@ -14,7 +14,7 @@ namespace Missive {
     public class Database : Object {
         // Bump this and add an `if (version < N)` block in migrate() to evolve
         // the schema without losing user data.
-        public const int SCHEMA_VERSION = 1;
+        public const int SCHEMA_VERSION = 3;
 
         private Sqlite.Database db;
 
@@ -76,7 +76,18 @@ namespace Missive {
                 exec (SCHEMA_V1);
                 version = 1;
             }
-            // Future: if (version < 2) { exec (SCHEMA_V2); version = 2; }
+            if (version < 2) {
+                // Per-campaign toggle for appending the identity signature.
+                exec ("ALTER TABLE campaign ADD COLUMN "
+                    + "include_signature INTEGER NOT NULL DEFAULT 1;");
+                version = 2;
+            }
+            if (version < 3) {
+                // Per-campaign unsubscribe link language ('' = none).
+                exec ("ALTER TABLE campaign ADD COLUMN "
+                    + "unsubscribe_lang TEXT NOT NULL DEFAULT '';");
+                version = 3;
+            }
             exec ("PRAGMA user_version = %d;".printf (SCHEMA_VERSION));
         }
 
@@ -425,9 +436,9 @@ namespace Missive {
                 INSERT INTO campaign
                     (name, status, identity_id, csv_sheet_id, recipient_column,
                      cc, bcc, subject_snapshot, body_html_snapshot,
-                     delay_seconds, stop_on_error, created_at, started_at,
-                     finished_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+                     delay_seconds, stop_on_error, include_signature,
+                     unsubscribe_lang, created_at, started_at, finished_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
             """);
             stmt.bind_text (1, c.name);
             stmt.bind_text (2, c.status);
@@ -440,9 +451,11 @@ namespace Missive {
             stmt.bind_text (9, c.body_html_snapshot);
             stmt.bind_int (10, c.delay_seconds);
             stmt.bind_int (11, c.stop_on_error ? 1 : 0);
-            stmt.bind_int64 (12, c.created_at);
-            stmt.bind_int64 (13, c.started_at);
-            stmt.bind_int64 (14, c.finished_at);
+            stmt.bind_int (12, c.include_signature ? 1 : 0);
+            stmt.bind_text (13, c.unsubscribe_lang);
+            stmt.bind_int64 (14, c.created_at);
+            stmt.bind_int64 (15, c.started_at);
+            stmt.bind_int64 (16, c.finished_at);
             run (stmt, "Insert campaign");
             c.id = db.last_insert_rowid ();
             return c.id;
@@ -501,7 +514,8 @@ namespace Missive {
         private const string CAMPAIGN_SELECT = """
             SELECT id, name, status, identity_id, csv_sheet_id, recipient_column,
                    cc, bcc, subject_snapshot, body_html_snapshot, delay_seconds,
-                   stop_on_error, created_at, started_at, finished_at
+                   stop_on_error, created_at, started_at, finished_at,
+                   include_signature, unsubscribe_lang
             FROM campaign""";
 
         private Campaign row_to_campaign (Sqlite.Statement s) {
@@ -521,6 +535,8 @@ namespace Missive {
             c.created_at = s.column_int64 (12);
             c.started_at = s.column_int64 (13);
             c.finished_at = s.column_int64 (14);
+            c.include_signature = s.column_int (15) != 0;
+            c.unsubscribe_lang = s.column_text (16) ?? "";
             return c;
         }
 

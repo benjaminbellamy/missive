@@ -153,6 +153,17 @@ template $MissiveMainWindow: Adw.ApplicationWindow {
             };
           }
 
+          [start]
+          Button import_html_button {
+            visible: false;
+            tooltip-text: _("Import HTML");
+
+            child: Adw.ButtonContent {
+              icon-name: "document-open-symbolic";
+              label: _("Import HTML");
+            };
+          }
+
           [end]
           MenuButton {
             primary: true;

@@ -110,16 +110,14 @@ namespace Missive {
             };
 
             var lang_group = new Adw.PreferencesGroup ();
-            // Endonyms are shown in their own language and are not translated.
-            string[] lang_codes = { "", "en", "fr", "de", "it", "es", "nl" };
+            // "Same as System" plus one entry per shipped language. Endonyms are
+            // shown in their own language and are not translated.
+            string[] lang_codes;
+            var lang_names = Lang.picker_labels (_("Same as System"), out lang_codes);
             var lang_row = new Adw.ComboRow () {
                 title = _("Language"),
                 subtitle = _("Takes effect after restart"),
-                model = new Gtk.StringList ({
-                    _("Same as System"),
-                    "English", "Français", "Deutsch",
-                    "Italiano", "Español", "Nederlands"
-                })
+                model = new Gtk.StringList (lang_names)
             };
             var current_lang = settings.get_string ("language");
             for (uint i = 0; i < lang_codes.length; i++) {

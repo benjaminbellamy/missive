@@ -1,5 +1,6 @@
 using Gtk 4.0;
 using Adw 1;
+using GtkSource 5;
 
 template $MissiveTemplateEditor: Adw.Dialog {
   title: _("Template");
@@ -176,8 +177,9 @@ template $MissiveTemplateEditor: Adw.Dialog {
               "card",
             ]
 
-            child: TextView source_view {
+            child: GtkSource.View source_view {
               monospace: true;
+              show-line-numbers: true;
               wrap-mode: word_char;
               top-margin: 8;
               bottom-margin: 8;

@@ -16,6 +16,8 @@ namespace Missive {
         [GtkChild] private unowned Adw.ActionRow recipient_value;
         [GtkChild] private unowned Adw.ActionRow delay_value;
         [GtkChild] private unowned Adw.ActionRow stop_value;
+        [GtkChild] private unowned Adw.ActionRow signature_value;
+        [GtkChild] private unowned Adw.ActionRow unsubscribe_value;
         [GtkChild] private unowned Adw.EntryRow cc_row;
         [GtkChild] private unowned Adw.EntryRow bcc_row;
         [GtkChild] private unowned Gtk.ListBox recipient_list;
@@ -135,6 +137,9 @@ namespace Missive {
             recipient_value.subtitle = campaign.recipient_column;
             delay_value.subtitle = _("%d s").printf (campaign.delay_seconds);
             stop_value.subtitle = campaign.stop_on_error ? _("Yes") : _("No");
+            signature_value.subtitle = campaign.include_signature ? _("Yes") : _("No");
+            unsubscribe_value.subtitle = campaign.unsubscribe_lang == ""
+                ? _("None") : Lang.endonym (campaign.unsubscribe_lang);
 
             cc_row.text = campaign.cc;
             bcc_row.text = campaign.bcc;
@@ -337,7 +342,8 @@ namespace Missive {
             var unknown = new HashTable<string, bool> (str_hash, str_equal);
             var message = MessageBuilder.compose (identity,
                 campaign.subject_snapshot, campaign.body_html_snapshot,
-                values, test_to, {}, unknown);
+                values, test_to, {}, unknown, campaign.include_signature,
+                campaign.unsubscribe_lang);
             var mime = MessageBuilder.to_mime_string (message);
             var owned_identity = identity;
 

@@ -14,13 +14,25 @@ namespace Missive {
                                              HashTable<string, string> values,
                                              string to_address,
                                              string[] cc,
-                                             HashTable<string, bool> unknown) {
+                                             HashTable<string, bool> unknown,
+                                             bool include_signature = true,
+                                             string unsubscribe_lang = "") {
             string subject = Substitution.apply (subject_template, values, false, unknown);
             string body = Substitution.apply (body_html_template, values, true, unknown);
 
             string full_html = body;
-            if (identity.signature_html != "") {
+            if (include_signature && identity.signature_html != "") {
                 full_html += "\n" + identity.signature_html;
+            }
+            // A localized "unsubscribe" link to the sender, when requested. The
+            // language is the campaign's choice, not the running UI locale.
+            if (unsubscribe_lang != "" && identity.from_email != "") {
+                string subj = GLib.Uri.escape_string (
+                    Lang.unsubscribe_subject (unsubscribe_lang), null, false);
+                string label = Lang.unsubscribe_label (unsubscribe_lang)
+                    .replace ("&", "&amp;").replace ("<", "&lt;").replace (">", "&gt;");
+                full_html += "\n<p><a href=\"mailto:" + identity.from_email
+                    + "?subject=" + subj + "\">" + label + "</a></p>";
             }
             string plain = HtmlSerializer.html_to_plain (full_html);
 

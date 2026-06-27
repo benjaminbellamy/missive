@@ -52,6 +52,17 @@ template $MissiveCampaignDialog: Adw.Dialog {
         Adw.ComboRow template_row {
           title: _("Template");
         }
+
+        Adw.SwitchRow signature_row {
+          title: _("Append Signature");
+          subtitle: _("Add the identity's signature to each message.");
+          active: true;
+        }
+
+        Adw.ComboRow unsubscribe_row {
+          title: _("Unsubscribe Link");
+          subtitle: _("Append a localized unsubscribe link to each message.");
+        }
       }
 
       Adw.PreferencesGroup {

@@ -41,6 +41,9 @@ namespace Missive {
         public string body_html_snapshot { get; set; default = ""; }
         public int delay_seconds { get; set; default = 5; }
         public bool stop_on_error { get; set; default = false; }
+        public bool include_signature { get; set; default = true; }
+        // Empty means no unsubscribe link; otherwise a language code (see Lang).
+        public string unsubscribe_lang { get; set; default = ""; }
         public int64 created_at { get; set; default = 0; }
         public int64 started_at { get; set; default = 0; }
         public int64 finished_at { get; set; default = 0; }

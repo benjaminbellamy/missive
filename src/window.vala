@@ -9,6 +9,7 @@ namespace Missive {
         [GtkChild] private unowned Adw.NavigationPage content_page;
         [GtkChild] private unowned Gtk.Button new_button;
         [GtkChild] private unowned Adw.ButtonContent new_button_content;
+        [GtkChild] private unowned Gtk.Button import_html_button;
         [GtkChild] private unowned Adw.Bin campaigns_container;
         [GtkChild] private unowned Adw.Bin identities_container;
         [GtkChild] private unowned Adw.Bin sheets_container;
@@ -42,6 +43,11 @@ namespace Missive {
 
             sidebar_list.row_selected.connect (on_row_selected);
             new_button.clicked.connect (on_new_clicked);
+            import_html_button.clicked.connect (() => {
+                if (templates_view != null) {
+                    templates_view.import_html ();
+                }
+            });
 
             var first = sidebar_list.get_row_at_index (0);
             if (first != null) {
@@ -71,6 +77,8 @@ namespace Missive {
 
         // The header's primary button changes per section (create vs import).
         private void configure_action_button (string section) {
+            // The "Import HTML" action only applies to templates.
+            import_html_button.visible = section == "templates";
             switch (section) {
                 case "campaigns":
                     new_button.visible = true;

@@ -17,11 +17,13 @@ missive_sources = files(
   'identities-view.vala',
   'identity-editor.vala',
   'json-util.vala',
+  'lang.vala',
   'csv-parser.vala',
   'csv-sheets-view.vala',
   'csv-import-dialog.vala',
   'csv-preview-dialog.vala',
   'html-serializer.vala',
+  'html-import.vala',
   'templates-view.vala',
   'template-editor.vala',
   'substitution.vala',
@@ -58,6 +60,8 @@ missive_deps = [
   dependency('json-glib-1.0'),
   dependency('webkitgtk-6.0'),
   dependency('gmime-3.0'),
+  dependency('libxml-2.0'),
+  dependency('gtksourceview-5'),
 ]
 
 executable('missive',
