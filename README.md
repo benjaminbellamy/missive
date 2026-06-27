@@ -18,7 +18,7 @@ install the latest release (it will offer to pull the runtime from Flathub if
 needed):
 
 ```sh
-curl -L -o /tmp/missive-1.1.0-x86_64.flatpak https://github.com/benjaminbellamy/missive/releases/download/v1.1.0/missive-1.1.0-x86_64.flatpak && flatpak install --user /tmp/missive-1.1.0-x86_64.flatpak
+curl -L -o /tmp/missive-1.2.0-x86_64.flatpak https://github.com/benjaminbellamy/missive/releases/download/v1.2.0/missive-1.2.0-x86_64.flatpak && flatpak install --user /tmp/missive-1.2.0-x86_64.flatpak
 ```
 
 Run:
