@@ -14,7 +14,7 @@ namespace Missive {
     public class Database : Object {
         // Bump this and add an `if (version < N)` block in migrate() to evolve
         // the schema without losing user data.
-        public const int SCHEMA_VERSION = 3;
+        public const int SCHEMA_VERSION = 4;
 
         private Sqlite.Database db;
 
@@ -87,6 +87,13 @@ namespace Missive {
                 exec ("ALTER TABLE campaign ADD COLUMN "
                     + "unsubscribe_lang TEXT NOT NULL DEFAULT '';");
                 version = 3;
+            }
+            if (version < 4) {
+                // Unsubscribe link language now lives on the template (snapshot
+                // into the campaign at creation, as before).
+                exec ("ALTER TABLE template ADD COLUMN "
+                    + "unsubscribe_lang TEXT NOT NULL DEFAULT '';");
+                version = 4;
             }
             exec ("PRAGMA user_version = %d;".printf (SCHEMA_VERSION));
         }
@@ -253,14 +260,16 @@ namespace Missive {
 
         public int64 insert_template (Template t) throws DatabaseError {
             var stmt = prepare ("""
-                INSERT INTO template (name, subject, body_html, created_at, updated_at)
-                VALUES (?, ?, ?, ?, ?);
+                INSERT INTO template
+                    (name, subject, body_html, unsubscribe_lang, created_at, updated_at)
+                VALUES (?, ?, ?, ?, ?, ?);
             """);
             stmt.bind_text (1, t.name);
             stmt.bind_text (2, t.subject);
             stmt.bind_text (3, t.body_html);
-            stmt.bind_int64 (4, t.created_at);
-            stmt.bind_int64 (5, t.updated_at);
+            stmt.bind_text (4, t.unsubscribe_lang);
+            stmt.bind_int64 (5, t.created_at);
+            stmt.bind_int64 (6, t.updated_at);
             run (stmt, "Insert template");
             t.id = db.last_insert_rowid ();
             return t.id;
@@ -269,13 +278,14 @@ namespace Missive {
         public void update_template (Template t) throws DatabaseError {
             var stmt = prepare ("""
                 UPDATE template SET name = ?, subject = ?, body_html = ?,
-                    updated_at = ? WHERE id = ?;
+                    unsubscribe_lang = ?, updated_at = ? WHERE id = ?;
             """);
             stmt.bind_text (1, t.name);
             stmt.bind_text (2, t.subject);
             stmt.bind_text (3, t.body_html);
-            stmt.bind_int64 (4, t.updated_at);
-            stmt.bind_int64 (5, t.id);
+            stmt.bind_text (4, t.unsubscribe_lang);
+            stmt.bind_int64 (5, t.updated_at);
+            stmt.bind_int64 (6, t.id);
             run (stmt, "Update template");
         }
 
@@ -287,7 +297,8 @@ namespace Missive {
 
         public Template? get_template (int64 id) throws DatabaseError {
             var stmt = prepare ("""
-                SELECT id, name, subject, body_html, created_at, updated_at
+                SELECT id, name, subject, body_html, created_at, updated_at,
+                       unsubscribe_lang
                 FROM template WHERE id = ?;
             """);
             stmt.bind_int64 (1, id);
@@ -296,7 +307,8 @@ namespace Missive {
 
         public Template[] all_templates () throws DatabaseError {
             var stmt = prepare ("""
-                SELECT id, name, subject, body_html, created_at, updated_at
+                SELECT id, name, subject, body_html, created_at, updated_at,
+                       unsubscribe_lang
                 FROM template ORDER BY name COLLATE NOCASE;
             """);
             Template[] result = {};
@@ -314,6 +326,7 @@ namespace Missive {
             t.body_html = s.column_text (3) ?? "";
             t.created_at = s.column_int64 (4);
             t.updated_at = s.column_int64 (5);
+            t.unsubscribe_lang = s.column_text (6) ?? "";
             return t;
         }
 

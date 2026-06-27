@@ -13,7 +13,6 @@ namespace Missive {
         [GtkChild] private unowned Adw.ComboRow recipient_row;
         [GtkChild] private unowned Adw.ComboRow template_row;
         [GtkChild] private unowned Adw.SwitchRow signature_row;
-        [GtkChild] private unowned Adw.ComboRow unsubscribe_row;
         [GtkChild] private unowned Adw.EntryRow cc_row;
         [GtkChild] private unowned Adw.EntryRow bcc_row;
         [GtkChild] private unowned Gtk.Button cancel_button;
@@ -26,8 +25,6 @@ namespace Missive {
         private Identity[] identities;
         private CsvSheet[] sheets;
         private Template[] templates;
-        // Parallel to the unsubscribe combo: index 0 is "" (none).
-        private string[] unsubscribe_codes;
 
         public CampaignDialog (Database db, GLib.Settings settings) {
             Object ();
@@ -51,18 +48,6 @@ namespace Missive {
 
             sheet_row.notify["selected"].connect (on_sheet_changed);
             on_sheet_changed ();
-
-            // Unsubscribe-link language: None plus one entry per shipped
-            // language, defaulting to the current UI language.
-            unsubscribe_row.model = new Gtk.StringList (
-                Lang.picker_labels (_("None"), out unsubscribe_codes));
-            string current = Lang.current (settings);
-            for (uint i = 0; i < unsubscribe_codes.length; i++) {
-                if (unsubscribe_codes[i] == current) {
-                    unsubscribe_row.selected = i;
-                    break;
-                }
-            }
 
             // Pre-fill Cc/Bcc with the global defaults.
             cc_row.text = settings.get_string ("default-cc");
@@ -155,7 +140,7 @@ namespace Missive {
                 delay_seconds = settings.get_int ("default-delay-seconds"),
                 stop_on_error = settings.get_boolean ("default-stop-on-error"),
                 include_signature = signature_row.active,
-                unsubscribe_lang = unsubscribe_codes[unsubscribe_row.selected],
+                unsubscribe_lang = template.unsubscribe_lang,
                 created_at = now
             };
 
@@ -214,6 +199,8 @@ namespace Missive {
             foreach (var col in columns) {
                 available.set (col, true);
             }
+            // {unsubscribe} is a reserved token resolved at send time, not a column.
+            available.set ("unsubscribe", true);
             var seen = new HashTable<string, bool> (str_hash, str_equal);
             string[] unknown = {};
             foreach (var t in Substitution.find_tokens (template.subject)) {

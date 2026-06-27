@@ -159,6 +159,62 @@ namespace Missive {
             return result;
         }
 
+        // Replace a single reserved {name} token with raw text (not escaped),
+        // honouring {{ }} escapes and leaving every other token verbatim so a
+        // later apply() pass still resolves the recipient fields. Used for
+        // {unsubscribe}, whose replacement is HTML that must not be escaped.
+        public static string replace_reserved (string text, string name,
+                                               string replacement) {
+            var sb = new StringBuilder ();
+            unowned uint8[] data = text.data;
+            int n = text.length;
+            int i = 0;
+            while (i < n) {
+                uint8 c = data[i];
+                if (c == '{') {
+                    if (i + 1 < n && data[i + 1] == '{') {
+                        sb.append ("{{");
+                        i += 2;
+                        continue;
+                    }
+                    int j = -1;
+                    for (int k = i + 1; k < n; k++) {
+                        if (data[k] == '}') { j = k; break; }
+                        if (data[k] == '{') { break; }
+                    }
+                    if (j < 0) {
+                        sb.append_c ('{');
+                        i++;
+                        continue;
+                    }
+                    var nb = new StringBuilder ();
+                    for (int k = i + 1; k < j; k++) {
+                        nb.append_c ((char) data[k]);
+                    }
+                    if (nb.str == name) {
+                        sb.append (replacement);
+                    } else {
+                        for (int k = i; k <= j; k++) {
+                            sb.append_c ((char) data[k]);
+                        }
+                    }
+                    i = j + 1;
+                } else if (c == '}') {
+                    if (i + 1 < n && data[i + 1] == '}') {
+                        sb.append ("}}");
+                        i += 2;
+                        continue;
+                    }
+                    sb.append_c ('}');
+                    i++;
+                } else {
+                    sb.append_c ((char) c);
+                    i++;
+                }
+            }
+            return sb.str;
+        }
+
         private static string escape_value (string s) {
             return s.replace ("&", "&amp;")
                     .replace ("<", "&lt;")

@@ -2,14 +2,18 @@ using Gtk 4.0;
 using Adw 1;
 using GtkSource 5;
 
-template $MissiveTemplateEditor: Adw.Dialog {
+template $MissiveTemplateEditor: Adw.Window {
   title: _("Template");
-  content-width: 760;
-  content-height: 720;
+  modal: true;
+  default-width: 760;
+  default-height: 720;
+  width-request: 360;
+  height-request: 400;
 
-  child: Adw.ToolbarView {
-    [top]
-    Adw.HeaderBar {
+  content: Adw.ToastOverlay toast_overlay {
+    child: Adw.ToolbarView {
+      [top]
+      Adw.HeaderBar {
       show-start-title-buttons: false;
       show-end-title-buttons: false;
 
@@ -53,6 +57,11 @@ template $MissiveTemplateEditor: Adw.Dialog {
         Adw.ComboRow csv_row {
           title: _("Insert Fields From");
           subtitle: _("Click a field to insert its {token}");
+        }
+
+        Adw.ComboRow unsubscribe_row {
+          title: _("Unsubscribe Link");
+          subtitle: _("Insert the {unsubscribe} field where the link should appear.");
         }
       }
 
@@ -203,6 +212,7 @@ template $MissiveTemplateEditor: Adw.Dialog {
           };
         }
       }
+    };
     };
   };
 }

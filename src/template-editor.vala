@@ -6,15 +6,17 @@ namespace Missive {
     // a live read-only WebKit preview of the serialized HTML. Editing happens in
     // GTK widgets; WebKit only renders the preview.
     [GtkTemplate (ui = "/fr/bellamy/missive/template-editor.ui")]
-    public class TemplateEditor : Adw.Dialog {
+    public class TemplateEditor : Adw.Window {
         [GtkChild] private unowned Adw.EntryRow name_row;
         [GtkChild] private unowned Adw.EntryRow subject_row;
         [GtkChild] private unowned Adw.ComboRow csv_row;
+        [GtkChild] private unowned Adw.ComboRow unsubscribe_row;
         [GtkChild] private unowned Gtk.FlowBox field_box;
         [GtkChild] private unowned Gtk.TextView body_view;
         [GtkChild] private unowned Gtk.TextView source_view;
         [GtkChild] private unowned Gtk.Box preview_box;
         [GtkChild] private unowned Adw.ViewStack edit_preview_stack;
+        [GtkChild] private unowned Adw.ToastOverlay toast_overlay;
         [GtkChild] private unowned Gtk.Button cancel_button;
         [GtkChild] private unowned Gtk.Button save_button;
         [GtkChild] private unowned Gtk.ToggleButton bold_button;
@@ -66,6 +68,8 @@ namespace Missive {
         private enum FocusTarget { SUBJECT, BODY, SOURCE }
         private FocusTarget last_focus = FocusTarget.BODY;
         private CsvSheet[] sheets = {};
+        // Parallel to the unsubscribe combo: index 0 is "" (none).
+        private string[] unsubscribe_codes;
 
         public TemplateEditor (Database db, Template? existing,
                                string imported_name = "", string imported_html = "") {
@@ -146,6 +150,17 @@ namespace Missive {
 
             cancel_button.clicked.connect (() => close ());
             save_button.clicked.connect (on_save);
+
+            // Adw.Window (unlike Adw.Dialog) doesn't close on Escape; restore it.
+            var esc = new Gtk.EventControllerKey ();
+            esc.key_pressed.connect ((keyval) => {
+                if (keyval == Gdk.Key.Escape) {
+                    close ();
+                    return true;
+                }
+                return false;
+            });
+            ((Gtk.Widget) this).add_controller (esc);
             bold_button.toggled.connect (on_bold);
             italic_button.toggled.connect (on_italic);
             underline_button.toggled.connect (on_underline);
@@ -225,7 +240,19 @@ namespace Missive {
                 names += sheet.name != "" ? sheet.name : _("(unlabeled)");
             }
             csv_row.model = new Gtk.StringList (names);
-            csv_row.notify["selected"].connect (on_sheet_selected);
+            csv_row.notify["selected"].connect (populate_field_chips);
+
+            // Unsubscribe-link language: None plus one entry per shipped language.
+            unsubscribe_row.model = new Gtk.StringList (
+                Lang.picker_labels (_("None"), out unsubscribe_codes));
+            for (uint i = 0; i < unsubscribe_codes.length; i++) {
+                if (unsubscribe_codes[i] == template.unsubscribe_lang) {
+                    unsubscribe_row.selected = i;
+                    break;
+                }
+            }
+            unsubscribe_row.notify["selected"].connect (populate_field_chips);
+            populate_field_chips ();
 
             // Imported/loaded HTML may be richer than the rich editor can hold
             // (tables, divs, inline styles); hide the "Edit" tab in that case so
@@ -346,27 +373,48 @@ namespace Missive {
 
         // --- CSV field picker -------------------------------------------------
 
-        private void on_sheet_selected () {
+        private void populate_field_chips () {
             Gtk.Widget? child;
             while ((child = field_box.get_first_child ()) != null) {
                 field_box.remove (child);
             }
 
+            bool any = false;
+            // The reserved {unsubscribe} field, shown only once a language is set.
+            if (unsubscribe_enabled ()) {
+                field_box.append (make_field_button ("unsubscribe"));
+                any = true;
+            }
+            // CSV columns of the selected sheet.
             uint selected = csv_row.selected;
-            if (selected == 0 || selected > sheets.length) {
-                field_box.visible = false;
-                return;
+            if (selected != 0 && selected <= sheets.length) {
+                foreach (var column in
+                         JsonUtil.string_to_array (sheets[selected - 1].columns_json)) {
+                    field_box.append (make_field_button (column));
+                    any = true;
+                }
             }
+            field_box.visible = any;
+        }
 
-            var columns = JsonUtil.string_to_array (sheets[selected - 1].columns_json);
-            if (columns.length == 0) {
-                field_box.visible = false;
-                return;
+        private bool unsubscribe_enabled () {
+            return unsubscribe_row.selected != 0;
+        }
+
+        // The editor is its own Adw.Window, so it shows toasts in its own overlay
+        // rather than the main window's.
+        private void toast (string text) {
+            toast_overlay.add_toast (new Adw.Toast (text));
+        }
+
+        // Whether a {name} token appears in the text (respecting {{ }} escapes).
+        private static bool has_token (string text, string name) {
+            foreach (var t in Substitution.find_tokens (text)) {
+                if (t == name) {
+                    return true;
+                }
             }
-            foreach (var column in columns) {
-                field_box.append (make_field_button (column));
-            }
-            field_box.visible = true;
+            return false;
         }
 
         private Gtk.Button make_field_button (string column) {
@@ -751,18 +799,32 @@ namespace Missive {
             if (subject == "") {
                 subject_row.add_css_class ("error");
                 subject_row.grab_focus ();
-                Ui.toast (this, _("A subject is required."));
+                toast (_("A subject is required."));
                 return;
             }
             subject_row.remove_css_class ("error");
 
-            template.name = name;
-            template.subject = subject_row.text;
             // Save whichever representation the user last edited. Hand-edited
             // HTML is stored exactly as typed — the serializer never touches it.
-            template.body_html = last_edited == Representation.SOURCE
+            var body_html = last_edited == Representation.SOURCE
                 ? source_view.buffer.text
                 : HtmlSerializer.buffer_to_html (buffer, links);
+
+            // If an unsubscribe link is enabled, the {unsubscribe} placeholder
+            // must be present somewhere in the body, or the link would never
+            // appear in the sent message.
+            if (unsubscribe_enabled () && !has_token (body_html, "unsubscribe")) {
+                edit_preview_stack.visible_child_name =
+                    last_edited == Representation.SOURCE ? "source" : "edit";
+                toast (_("Insert the {unsubscribe} field into the body, "
+                    + "or set Unsubscribe Link to None."));
+                return;
+            }
+
+            template.name = name;
+            template.subject = subject_row.text;
+            template.body_html = body_html;
+            template.unsubscribe_lang = unsubscribe_codes[unsubscribe_row.selected];
             var now = new DateTime.now_utc ().to_unix ();
             template.updated_at = now;
 

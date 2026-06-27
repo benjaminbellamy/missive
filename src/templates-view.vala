@@ -122,7 +122,8 @@ namespace Missive {
             var body = HtmlImport.process (text);
             var editor = new TemplateEditor (db, null, derive_name (file), body);
             editor.saved.connect (refresh);
-            editor.present (get_root () as Gtk.Widget);
+            editor.transient_for = get_root () as Gtk.Window;
+            editor.present ();
         }
 
         private string derive_name (File file) {
@@ -141,7 +142,8 @@ namespace Missive {
         private void open_editor (Template? template) {
             var editor = new TemplateEditor (db, template);
             editor.saved.connect (refresh);
-            editor.present (get_root () as Gtk.Widget);
+            editor.transient_for = get_root () as Gtk.Window;
+            editor.present ();
         }
 
         private void duplicate_template (Template template) {
@@ -150,6 +152,7 @@ namespace Missive {
                 name = _("%s (copy)").printf (template.name),
                 subject = template.subject,
                 body_html = template.body_html,
+                unsubscribe_lang = template.unsubscribe_lang,
                 created_at = now,
                 updated_at = now
             };
