@@ -3,7 +3,7 @@
 namespace Missive {
     // The CSV Sheets section: an empty state or a boxed list of sheets. The
     // header Import action drives the file chooser; activating a row previews it.
-    [GtkTemplate (ui = "/fr/bellamy/missive/csv-sheets-view.ui")]
+    [GtkTemplate (ui = "/fr/benjaminbellamy/missive/csv-sheets-view.ui")]
     public class CsvSheetsView : Adw.Bin {
         [GtkChild] private unowned Gtk.Stack view_stack;
         [GtkChild] private unowned Gtk.ListBox sheet_list;

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 namespace Missive {
-    [GtkTemplate (ui = "/fr/bellamy/missive/window.ui")]
+    [GtkTemplate (ui = "/fr/benjaminbellamy/missive/window.ui")]
     public class MainWindow : Adw.ApplicationWindow {
         [GtkChild] private unowned Gtk.ListBox sidebar_list;
         [GtkChild] private unowned Gtk.Stack content_stack;

@@ -5,7 +5,7 @@ namespace Missive {
     // (bold/italic/underline/link/bullet/numbered) backed by GtkTextTags, plus
     // a live read-only WebKit preview of the serialized HTML. Editing happens in
     // GTK widgets; WebKit only renders the preview.
-    [GtkTemplate (ui = "/fr/bellamy/missive/template-editor.ui")]
+    [GtkTemplate (ui = "/fr/benjaminbellamy/missive/template-editor.ui")]
     public class TemplateEditor : Adw.Window {
         [GtkChild] private unowned Adw.EntryRow name_row;
         [GtkChild] private unowned Adw.EntryRow subject_row;

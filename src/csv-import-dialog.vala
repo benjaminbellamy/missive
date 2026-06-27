@@ -3,7 +3,7 @@
 namespace Missive {
     // After a CSV file is parsed, this dialog names the sheet, picks the default
     // recipient column, and stores the sheet plus its rows in the database.
-    [GtkTemplate (ui = "/fr/bellamy/missive/csv-import-dialog.ui")]
+    [GtkTemplate (ui = "/fr/benjaminbellamy/missive/csv-import-dialog.ui")]
     public class CsvImportDialog : Adw.Dialog {
         [GtkChild] private unowned Adw.EntryRow name_row;
         [GtkChild] private unowned Adw.ComboRow recipient_row;

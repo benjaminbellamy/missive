@@ -5,7 +5,7 @@ namespace Missive {
     // status badge, live progress, and the per-recipient list. Drives the send
     // engine (run/pause/stop/continue/retry) and updates live as it runs. Send
     // test and Delete also work; CC/BCC stay editable while draft.
-    [GtkTemplate (ui = "/fr/bellamy/missive/campaign-detail.ui")]
+    [GtkTemplate (ui = "/fr/benjaminbellamy/missive/campaign-detail.ui")]
     public class CampaignDetail : Adw.Dialog {
         [GtkChild] private unowned Gtk.Label status_badge;
         [GtkChild] private unowned Gtk.Label counts_label;

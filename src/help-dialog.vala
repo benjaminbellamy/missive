@@ -2,7 +2,7 @@
 
 namespace Missive {
     // A short how-to shown from the main menu.
-    [GtkTemplate (ui = "/fr/bellamy/missive/help-dialog.ui")]
+    [GtkTemplate (ui = "/fr/benjaminbellamy/missive/help-dialog.ui")]
     public class HelpDialog : Adw.Dialog {
         public HelpDialog () {
             Object ();

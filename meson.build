@@ -6,9 +6,9 @@ project('missive', ['c', 'vala'],
   ],
 )
 
-app_id = 'fr.bellamy.missive'
+app_id = 'fr.benjaminbellamy.missive'
 gettext_package = 'missive'
-resource_base = '/fr/bellamy/missive'
+resource_base = '/fr/benjaminbellamy/missive'
 
 gnome = import('gnome')
 i18n = import('i18n')

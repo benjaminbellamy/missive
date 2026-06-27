@@ -3,8 +3,8 @@
 This directory holds the manifest used to publish Missive on
 [Flathub](https://flathub.org). It is **prepared, not submitted**.
 
-- `fr.bellamy.missive.json` — the Flathub manifest. Unlike
-  `build-aux/fr.bellamy.missive.json` (which builds the working tree via
+- `fr.benjaminbellamy.missive.json` — the Flathub manifest. Unlike
+  `build-aux/fr.benjaminbellamy.missive.json` (which builds the working tree via
   `type: dir` for local development), this one pulls the app from the tagged
   release (`git` source, pinned to a tag + commit), as Flathub requires.
 
@@ -12,7 +12,7 @@ This directory holds the manifest used to publish Missive on
 
 Flathub requires the app ID to be a reverse-DNS name you can prove you control:
 
-- **`fr.bellamy.missive`** — requires control of the `bellamy.fr` domain and a
+- **`fr.benjaminbellamy.missive`** — requires control of the `benjaminbellamy.fr` domain and a
   verification step (a DNS `TXT` record or a file under `/.well-known/`).
 - If you don't control that domain, Flathub expects a code-hosting ID such as
   **`io.github.benjaminbellamy.missive`**. Renaming touches the GSchema id, the
@@ -25,7 +25,7 @@ Decide this first; everything else is in place.
 
 1. Fork [`flathub/flathub`](https://github.com/flathub/flathub) and create a
    branch named after the app ID.
-2. Copy `fr.bellamy.missive.json` to the repo root and open a pull request
+2. Copy `fr.benjaminbellamy.missive.json` to the repo root and open a pull request
    against the `new-pr` branch (see the Flathub
    [submission docs](https://docs.flathub.org/docs/for-app-authors/submission)).
 3. Flathub's bot builds and reviews it.
@@ -34,10 +34,10 @@ Decide this first; everything else is in place.
 
 ```sh
 # manifest lint — no errors
-flatpak run --command=flatpak-builder-lint org.flatpak.Builder manifest flathub/fr.bellamy.missive.json
+flatpak run --command=flatpak-builder-lint org.flatpak.Builder manifest flathub/fr.benjaminbellamy.missive.json
 
 # build from the pinned tag and lint the result
-flatpak-builder --force-clean --repo=repo-flathub build-flathub flathub/fr.bellamy.missive.json
+flatpak-builder --force-clean --repo=repo-flathub build-flathub flathub/fr.benjaminbellamy.missive.json
 flatpak run --command=flatpak-builder-lint org.flatpak.Builder repo repo-flathub
 ```
 

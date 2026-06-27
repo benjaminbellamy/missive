@@ -3,7 +3,7 @@
 namespace Missive {
     // Shows the first rows of a sheet in a table and lets the user change the
     // default recipient column (persisted immediately).
-    [GtkTemplate (ui = "/fr/bellamy/missive/csv-preview-dialog.ui")]
+    [GtkTemplate (ui = "/fr/benjaminbellamy/missive/csv-preview-dialog.ui")]
     public class CsvPreviewDialog : Adw.Dialog {
         [GtkChild] private unowned Gtk.DropDown recipient_dropdown;
         [GtkChild] private unowned Gtk.Label row_count_label;

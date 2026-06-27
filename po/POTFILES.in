@@ -1,5 +1,5 @@
-data/fr.bellamy.missive.desktop.in
-data/fr.bellamy.missive.metainfo.xml.in
+data/fr.benjaminbellamy.missive.desktop.in
+data/fr.benjaminbellamy.missive.metainfo.xml.in
 data/ui/window.blp
 data/ui/identities-view.blp
 data/ui/identity-editor.blp

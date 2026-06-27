@@ -39,7 +39,7 @@ blueprints = custom_target('blueprints',
 )
 
 resources = gnome.compile_resources('missive-resources',
-  'fr.bellamy.missive.gresource.xml',
+  'fr.benjaminbellamy.missive.gresource.xml',
   source_dir: meson.current_build_dir(),
   dependencies: blueprints,
   c_name: 'missive',
@@ -47,8 +47,8 @@ resources = gnome.compile_resources('missive-resources',
 
 # Desktop entry
 desktop_file = i18n.merge_file(
-  input: 'fr.bellamy.missive.desktop.in',
-  output: 'fr.bellamy.missive.desktop',
+  input: 'fr.benjaminbellamy.missive.desktop.in',
+  output: 'fr.benjaminbellamy.missive.desktop',
   type: 'desktop',
   po_dir: meson.project_source_root() / 'po',
   install: true,
@@ -64,8 +64,8 @@ endif
 
 # AppStream metainfo
 metainfo_file = i18n.merge_file(
-  input: 'fr.bellamy.missive.metainfo.xml.in',
-  output: 'fr.bellamy.missive.metainfo.xml',
+  input: 'fr.benjaminbellamy.missive.metainfo.xml.in',
+  output: 'fr.benjaminbellamy.missive.metainfo.xml',
   type: 'xml',
   po_dir: meson.project_source_root() / 'po',
   install: true,
@@ -81,12 +81,12 @@ endif
 
 # GSettings schema
 install_data(
-  'fr.bellamy.missive.gschema.xml',
+  'fr.benjaminbellamy.missive.gschema.xml',
   install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
 )
 
 # Compile schemas into the build tree so the app can run uninstalled too.
-gnome.compile_schemas(depend_files: files('fr.bellamy.missive.gschema.xml'))
+gnome.compile_schemas(depend_files: files('fr.benjaminbellamy.missive.gschema.xml'))
 
 compile_schemas = find_program('glib-compile-schemas', required: false)
 if compile_schemas.found()
@@ -97,10 +97,10 @@ endif
 
 # Icons
 install_data(
-  'icons/hicolor/scalable/apps/fr.bellamy.missive.svg',
+  'icons/hicolor/scalable/apps/fr.benjaminbellamy.missive.svg',
   install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps',
 )
 install_data(
-  'icons/hicolor/symbolic/apps/fr.bellamy.missive-symbolic.svg',
+  'icons/hicolor/symbolic/apps/fr.benjaminbellamy.missive-symbolic.svg',
   install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'symbolic' / 'apps',
 )

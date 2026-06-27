@@ -3,7 +3,7 @@
 namespace Missive {
     // The Templates section: an empty state or a boxed list of templates, each
     // with Duplicate and Delete; activating a row opens the editor.
-    [GtkTemplate (ui = "/fr/bellamy/missive/templates-view.ui")]
+    [GtkTemplate (ui = "/fr/benjaminbellamy/missive/templates-view.ui")]
     public class TemplatesView : Adw.Bin {
         [GtkChild] private unowned Gtk.Stack view_stack;
         [GtkChild] private unowned Gtk.ListBox template_list;

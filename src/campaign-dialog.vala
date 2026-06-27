@@ -5,7 +5,7 @@ namespace Missive {
     // column, CC/BCC and name; on Create it snapshots the template subject/body
     // and materializes one campaign_recipient per CSV row (resolving the To
     // address and skipping empty/invalid ones).
-    [GtkTemplate (ui = "/fr/bellamy/missive/campaign-dialog.ui")]
+    [GtkTemplate (ui = "/fr/benjaminbellamy/missive/campaign-dialog.ui")]
     public class CampaignDialog : Adw.Dialog {
         [GtkChild] private unowned Adw.EntryRow name_row;
         [GtkChild] private unowned Adw.ComboRow identity_row;

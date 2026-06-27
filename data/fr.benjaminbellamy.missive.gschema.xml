@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema id="fr.bellamy.missive" path="/fr/bellamy/missive/">
+  <schema id="fr.benjaminbellamy.missive" path="/fr/benjaminbellamy/missive/">
     <key name="language" type="s">
       <default>''</default>
       <summary>Application language</summary>

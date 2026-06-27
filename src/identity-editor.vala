@@ -3,7 +3,7 @@
 namespace Missive {
     // Modal editor for a single identity. Loads the password from the keyring
     // on open and writes it back on save; the password never goes to SQLite.
-    [GtkTemplate (ui = "/fr/bellamy/missive/identity-editor.ui")]
+    [GtkTemplate (ui = "/fr/benjaminbellamy/missive/identity-editor.ui")]
     public class IdentityEditor : Adw.Dialog {
         [GtkChild] private unowned Adw.EntryRow name_row;
         [GtkChild] private unowned Adw.EntryRow from_name_row;

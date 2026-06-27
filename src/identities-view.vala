@@ -3,7 +3,7 @@
 namespace Missive {
     // The Identities section: an empty state or a boxed list of identities,
     // each with Duplicate and Delete actions; activating a row edits it.
-    [GtkTemplate (ui = "/fr/bellamy/missive/identities-view.ui")]
+    [GtkTemplate (ui = "/fr/benjaminbellamy/missive/identities-view.ui")]
     public class IdentitiesView : Adw.Bin {
         [GtkChild] private unowned Gtk.Stack view_stack;
         [GtkChild] private unowned Gtk.ListBox identity_list;

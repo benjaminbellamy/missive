@@ -10,7 +10,7 @@ namespace Missive {
         private static unowned Secret.Schema schema () {
             if (_schema == null) {
                 _schema = new Secret.Schema (
-                    "fr.bellamy.missive.SmtpPassword",
+                    "fr.benjaminbellamy.missive.SmtpPassword",
                     Secret.SchemaFlags.NONE,
                     "identity_id", Secret.SchemaAttributeType.STRING);
             }

@@ -30,8 +30,8 @@ msgid "_About Missive"
 msgstr ""
 
 #: data/ui/window.blp:24 data/ui/window.blp:34 src/window.vala:148
-#: data/fr.bellamy.missive.desktop.in:2
-#: data/fr.bellamy.missive.metainfo.xml.in:7
+#: data/fr.benjaminbellamy.missive.desktop.in:2
+#: data/fr.benjaminbellamy.missive.metainfo.xml.in:7
 msgid "Missive"
 msgstr ""
 
@@ -833,54 +833,54 @@ msgstr ""
 msgid "Done: %d sent, %d failed, %d skipped"
 msgstr ""
 
-#: data/fr.bellamy.missive.desktop.in:3
+#: data/fr.benjaminbellamy.missive.desktop.in:3
 msgid "Mail Merge"
 msgstr ""
 
-#: data/fr.bellamy.missive.desktop.in:4
+#: data/fr.benjaminbellamy.missive.desktop.in:4
 msgid "Run personalized email campaigns over SMTP"
 msgstr ""
 
-#: data/fr.bellamy.missive.desktop.in:6
+#: data/fr.benjaminbellamy.missive.desktop.in:6
 msgid "mail;merge;email;campaign;newsletter;smtp;mailing;"
 msgstr ""
 
-#: data/fr.bellamy.missive.metainfo.xml.in:8
+#: data/fr.benjaminbellamy.missive.metainfo.xml.in:8
 msgid "Run personalized email campaigns"
 msgstr ""
 
-#: data/fr.bellamy.missive.metainfo.xml.in:11
+#: data/fr.benjaminbellamy.missive.metainfo.xml.in:11
 msgid "Missive sends personalized email campaigns by mail merge over SMTPS. It manages several sender identities, CSV recipient sheets, message templates, and campaigns, sending one personalized message per recipient at a configurable pace."
 msgstr ""
 
-#: data/fr.bellamy.missive.metainfo.xml.in:17
+#: data/fr.benjaminbellamy.missive.metainfo.xml.in:17
 msgid "Features:"
 msgstr ""
 
-#: data/fr.bellamy.missive.metainfo.xml.in:19
+#: data/fr.benjaminbellamy.missive.metainfo.xml.in:19
 msgid "Multiple SMTP sender identities with credentials stored in the keyring"
 msgstr ""
 
-#: data/fr.bellamy.missive.metainfo.xml.in:20
+#: data/fr.benjaminbellamy.missive.metainfo.xml.in:20
 msgid "Import recipient lists from CSV files"
 msgstr ""
 
-#: data/fr.bellamy.missive.metainfo.xml.in:21
+#: data/fr.benjaminbellamy.missive.metainfo.xml.in:21
 msgid "Reusable message templates with placeholder substitution"
 msgstr ""
 
-#: data/fr.bellamy.missive.metainfo.xml.in:22
+#: data/fr.benjaminbellamy.missive.metainfo.xml.in:22
 msgid "Campaign progress is saved and can be resumed after a restart"
 msgstr ""
 
-#: data/fr.bellamy.missive.metainfo.xml.in:31
+#: data/fr.benjaminbellamy.missive.metainfo.xml.in:31
 msgid "The Missive main window"
 msgstr ""
 
-#: data/fr.bellamy.missive.metainfo.xml.in:39
+#: data/fr.benjaminbellamy.missive.metainfo.xml.in:39
 msgid "Benjamin Bellamy"
 msgstr ""
 
-#: data/fr.bellamy.missive.metainfo.xml.in:47
+#: data/fr.benjaminbellamy.missive.metainfo.xml.in:47
 msgid "Initial development release."
 msgstr ""

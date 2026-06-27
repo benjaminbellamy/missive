@@ -24,7 +24,7 @@ curl -L -o /tmp/missive-1.2.0-x86_64.flatpak https://github.com/benjaminbellamy/
 Run:
 
 ```sh
-flatpak run fr.bellamy.missive
+flatpak run fr.benjaminbellamy.missive
 ```
 
 ![Missive main window](data/screenshots/main-window.png)
@@ -59,8 +59,8 @@ flatpak install flathub org.gnome.Platform//49 org.gnome.Sdk//49
 **Build, install and run** (from the project root):
 
 ```sh
-flatpak-builder --user --install --force-clean build-dir build-aux/fr.bellamy.missive.json
-flatpak run fr.bellamy.missive
+flatpak-builder --user --install --force-clean build-dir build-aux/fr.benjaminbellamy.missive.json
+flatpak run fr.benjaminbellamy.missive
 ```
 
 All translations are bundled in the app, so to see the interface in another

@@ -1,5 +1,5 @@
 {
-    "app-id": "fr.bellamy.missive",
+    "app-id": "fr.benjaminbellamy.missive",
     "runtime": "org.gnome.Platform",
     "runtime-version": "49",
     "sdk": "org.gnome.Sdk",

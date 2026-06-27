@@ -4,7 +4,7 @@ namespace Missive {
     // The Campaigns section: an empty state or a boxed list of campaigns, each
     // showing a status badge and "sent / total" progress. The header New action
     // opens the creation flow; activating a row opens the detail dialog.
-    [GtkTemplate (ui = "/fr/bellamy/missive/campaigns-view.ui")]
+    [GtkTemplate (ui = "/fr/benjaminbellamy/missive/campaigns-view.ui")]
     public class CampaignsView : Adw.Bin {
         [GtkChild] private unowned Gtk.Stack view_stack;
         [GtkChild] private unowned Gtk.ListBox campaign_list;
